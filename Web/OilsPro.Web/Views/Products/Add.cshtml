@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using OilsPro.Web.Models.ViewModels
+@model ProductInputViewModel
+
+<h1 class="text-center suls-text-color">Add Product</h1>
+<form asp-controller="Products" asp-action="Add" method="post" id="productForm">
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-6">
+                <label asp-for="ProductCode">Product code</label>
+                <input asp-for="ProductCode" class="form-control"/>
+                <span asp-validation-for="ProductCode" class="text-danger"></span>
+
+                <label asp-for="ProductName">Product name</label>
+                <input asp-for="ProductName" class="form-control" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+
+            <div class="col-6">
+                <label asp-for="Count"></label>
+                <input asp-for="Count" class="form-control" />
+                <span asp-validation-for="Count" class="text-danger"></span>
+
+                <label asp-for="Weight"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+
+                <input class="invisible" id="Id" name="Id" value="@Model.OrderId" />
+            </div>
+        </div>
+    </div>
+
+    <div class="button-holder d-flex justify-content-center">
+        <button type="submit" class="btn btn-warning" href="/Products/Add?id=@Model.OrderId">Add</button>
+    </div>
+</form>
+
+
+

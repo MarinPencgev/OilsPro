@@ -1,0 +1,56 @@
+﻿@{
+    this.ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid ml-5">
+    <div class="text-left">
+        <h1 class="display-4">UNCOMLETED ORDERS</h1>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr class="row">
+                <th scope="col" class="col-lg-1 suls-text-color">Sequence</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Receiver</th>
+                <th scope="col" class="col-lg-1 suls-text-color">Packs total count</th>
+                <th scope="col" class="col-lg-1 suls-text-color">Packs total weight</th>
+                <th scope="col" class="col-lg-4 suls-text-color">Delivery address</th>
+                <th scope="col" class="col-lg-3 suls-text-color">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr class="row">
+                    <td class="col-lg-1 suls-text-color">@order.Sequence</td>
+                    <td class="col-lg-2 suls-text-color">@order.ReceiverName</td>
+                    <td class="col-lg-1 suls-text-color">@order.OrderedPackagesCount</td>
+                    <td class="col-lg-1 suls-text-color">@order.OrderedPackagesWeight</td>
+                    <td class="col-lg-4 suls-text-color">@order.DeliveryAddress</td>
+                    <td class="col-lg-3 suls-text-color">
+                        <div class="button-holder">
+                            <a href="/Orders/Edit?id=@order.OrderId" class="btn btn-warning">Edit</a>
+                            <a href="/Orders/Remove?id=@order.OrderId" class="btn btn-warning">Remove</a>
+                            @if (1==1)
+                            {
+                                <a href="/Orders/Release?id=@order.OrderId" class="btn btn-warning">Release</a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+            <tr class="row">
+                <td class="col-lg-1 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-1 suls-text-color">-</td>
+                <td class="col-lg-1 suls-text-color">-</td>
+                <td class="col-lg-4 suls-text-color">-</td>
+                <td class="col-lg-3 suls-text-color">
+                    <div class="button-holder">
+                        <a href="/Orders/Create" class="btn btn-warning">+ New Order</a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

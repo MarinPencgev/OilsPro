@@ -1,0 +1,36 @@
+﻿@model IEnumerable<OilsPro.Data.Models.DeliveryAddress>
+
+@{
+    ViewData["Title"] = "Addresses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Addresses</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+    <tr class="row">
+        <th scope="col" class="col-lg-3 suls-text-color">Town</th>
+        <th scope="col" class="col-lg-3 suls-text-color">Street</th>
+        <th scope="col" class="col-lg-3 suls-text-color">Receiver</th>
+        <th scope="col" class="col-lg-3 suls-text-color">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="row">
+            <td class="col-lg-3 suls-text-color">@item.Town</td>
+            <td class="col-lg-3 suls-text-color">@item.Street</td>
+            <td class="col-lg-3 suls-text-color">@item.Receiver</td>
+            <td class="col-lg-3 suls-text-color">
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        
+}
+    </tbody>
+</table>

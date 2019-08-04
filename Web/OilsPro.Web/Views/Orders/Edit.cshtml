@@ -1,0 +1,110 @@
+﻿@using OilsPro.Web.Models.ViewModels
+@using OilsPro.Services
+@model CreateOrderViewModel
+@inject IOrdersService orderServices
+
+<h1 class="text-center suls-text-color">Edit Order</h1>
+<form asp-controller="Orders" asp-action="Edit" method="post">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4">
+
+                <label asp-for="SequenceNumber"></label>
+                <input asp-for="SequenceNumber" class="form-control" />
+                <span asp-validation-for="SequenceNumber" class="text-danger"></span>
+
+                <label asp-for="CreatedOn"></label>
+                <input asp-for="CreatedOn" class="form-control" />
+                <span asp-validation-for="CreatedOn" class="text-danger"></span>
+
+                <label asp-for="Purpose"></label>
+                <input asp-for="Purpose" class="form-control" />
+                <span asp-validation-for="Purpose" class="text-danger"></span>
+
+                <input class="invisible" id="Id" name="Id" value="@Model.Id" />
+                <input class="invisible" id="sequenceNumber" name="sequenceNumber" value="@Model.SequenceNumber" />
+            </div>
+            <div class="col-4">
+                <label asp-for="Carrier.Name">Carrier name</label>
+                <input asp-for="Carrier.Name" class="form-control" />
+                <span asp-validation-for="Carrier.Name" class="text-danger"></span>
+
+                <label asp-for="Vehicle.RegNumber">Vehicle number</label>
+                <input asp-for="Vehicle.RegNumber" class="form-control" />
+                <span asp-validation-for="Vehicle.RegNumber" class="text-danger"></span>
+
+                <label asp-for="Driver.FullName">Driver name</label>
+                <input asp-for="Driver.FullName" class="form-control" />
+                <span asp-validation-for="Driver.FullName" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+
+                <label asp-for="Receiver.Name">Receiver name</label>
+                <input asp-for="Receiver.Name" class="form-control" />
+                <span asp-validation-for="Receiver.Name" class="text-danger"></span>
+
+                <label asp-for="DeliveryAddress">Delivery address</label>
+                <input asp-for="DeliveryAddress" class="form-control" />
+                <span asp-validation-for="DeliveryAddress" class="text-danger"></span>
+
+            </div>
+        </div>
+    </div>
+
+
+    <table class="table table-hover mx-auto col-12">
+        <thead>
+            <tr class="row">
+                <th scope="col" class="col-lg-2 suls-text-color">Seq Number</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Product Code</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Product Name</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Pack Count</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Pack Weight</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int counter = 1;
+            }
+            @foreach (var product in Model.OrderedProducts)
+            {
+                <tr class="row">
+                    <td class="col-lg-2 suls-text-color">@(counter++)</td>
+                    <td class="col-lg-2 suls-text-color">@product.Product.ProductCode</td>
+                    <td class="col-lg-2 suls-text-color">@product.Product.Name</td>
+                    <td class="col-lg-2 suls-text-color">@product.OrderedPackagesCount</td>
+                    <td class="col-lg-2 suls-text-color">@product.OrderedPackagesWeight</td>
+                    <td class="col-lg-2 suls-text-color">
+                        <div class="button-holder">
+                            <a href="/Products/Remove?id=@product.OrderId@product.ProductId" class="btn btn-warning">Remove</a>
+                        </div>
+                    </td>
+                </tr>
+
+            }
+
+            <tr class="row">
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">
+                    <div class="button-holder">
+                        <a href="/Products/Add/?id=@Model.Id" class="btn btn-warning">Add Product</a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="top-border-line primary-separator"></div>
+    <div class="button-holder d-flex justify-content-center">
+        <button type="submit" class="btn btn-warning">Save changes</button>
+    </div>
+</form>
+
+
+

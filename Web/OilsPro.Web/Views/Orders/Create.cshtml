@@ -1,0 +1,109 @@
+﻿@using OilsPro.Services
+@using OilsPro.Data.Models
+@using OilsPro.Web.Models.ViewModels
+@model CreateOrderViewModel
+@inject IOrdersService orderservices
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<h1 class="text-center suls-text-color">Create Order</h1>
+<form asp-controller="Orders" asp-action="Create" method="post" id="myForm">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4">
+
+                <label asp-for="Receiver.Name">Receiver name</label>
+                <input asp-for="Receiver.Name" id="receiver" class="form-control" />
+                <span asp-validation-for="Receiver.Name" class="text-danger"></span>
+
+                <script>
+                    $("#receiver").change(function () {
+                        var receiverName = $("#receiver").val();
+                        $.ajax({
+                            type: "GET",
+                            url: "/Receivers/GetReceiverAddresses?receiverName=" + receiverName,
+                            data: "{}",
+                            success: function (response) {
+                                var option = '<option value="-1">Please Select an address</option>';
+                                for (var i = 0; i < response.length; i++) {
+                                    option += '<option value="' + response[i] + '">' + response[i] + '</option>';
+                                }
+                                $("#addresses").html(option);
+                            }
+                        });
+                    });
+                </script>
+
+                <label asp-for="DeliveryAddress">Addresses list >>></label>
+                <select asp-for="DeliveryAddress" class="form-control" id="addresses" name="DeliveryAddress"></select>
+                <span asp-validation-for="DeliveryAddress" class="text-danger"></span>
+
+
+                <label asp-for="Purpose"></label>
+                <select asp-for="Purpose" class="form-control" asp-items="@Html.GetEnumSelectList<OrderPurpose>()"></select>
+
+            </div>
+            <div class="col-4">
+
+                <label asp-for="Carrier.Name">Carrier name</label>
+                <input asp-for="Carrier.Name" id="carrier" class="form-control" />
+                <span asp-validation-for="Carrier.Name" class="text-danger"></span>
+
+                <script>
+                    $("#carrier").change(function () {
+                        var carrierName = $("#carrier").val();
+                        $.ajax({
+                            type: "GET",
+                            url: "/Carriers/GetCarrierVehicles?carrierName=" + carrierName,
+                            data: "{}",
+                            success: function (data) {
+                                var s = '<option value="-1">Please Select an vehicle</option>';
+                                for (var i = 0; i < data.length; i++) {
+                                    s += '<option value="' + data[i] + '">' + data[i] + '</option>';
+                                }
+                                $("#vehicles").html(s);
+                            }
+                        });
+                    });
+                </script>
+
+                <label asp-for="Vehicle.RegNumber">Vehicles list >>></label>
+                <select asp-for="Vehicle.RegNumber" class="form-control" id="vehicles" name="Vehicle.RegNumber"></select>
+                <span asp-validation-for="Vehicle.RegNumber" class="text-danger"></span>
+
+                <script>
+                    $("#carrier").change(function () {
+                        var carrierName = $("#carrier").val();
+                        $.ajax({
+                            type: "GET",
+                            url: "/Carriers/GetCarrierDrivers?carrierName=" + carrierName,
+                            data: "{}",
+                            success: function (data) {
+                                var s = '<option value="-1">Please Select an driver</option>';
+                                for (var i = 0; i < data.length; i++) {
+                                    s += '<option value="' + data[i] + '">' + data[i] + '</option>';
+                                }
+                                $("#drivers").html(s);
+                            }
+                        });
+                    });
+                </script>
+
+                <label asp-for="Driver.FullName">Drivers list >>></label>
+                <select asp-for="Driver.FullName" class="form-control" id="drivers" name="Driver.FullName"></select>
+                <span asp-validation-for="Driver.FullName" class="text-danger"></span>
+
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <div class="button-holder d-flex justify-content-center">
+        <button type="submit" class="btn btn-warning">Create</button>
+    </div>
+</form>
+
+
+

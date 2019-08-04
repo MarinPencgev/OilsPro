@@ -1,0 +1,36 @@
+﻿@model IEnumerable<OilsPro.Data.Models.Receiver>
+
+@{
+    ViewData["Title"] = "Receivers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Receivers</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr class="row">
+            <th scope="col" class="col-lg-4 suls-text-color">Receiver name</th>
+            <th scope="col" class="col-lg-4 suls-text-color">Delivery addresses</th>
+            <th scope="col" class="col-lg-4 suls-text-color">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="row">
+                <td class="col-lg-4 suls-text-color">@item.Name</td>
+                <td class="col-lg-4 suls-text-color">
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </td>
+                <td class="col-lg-4 suls-text-color">
+                    <a asp-controller="Receivers" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

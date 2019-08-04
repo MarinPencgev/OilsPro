@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using OilsPro.Data.Models
+@model Product
+
+<h1 class="text-center suls-text-color">Create Product</h1>
+<form asp-controller="Products" asp-action="Create" method="post" id="productForm">
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-6">
+                <label asp-for="ProductCode">Product code</label>
+                <input asp-for="ProductCode" class="form-control"/>
+                <span asp-validation-for="ProductCode" class="text-danger"></span>
+
+                <label asp-for="Name">Product name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+
+                <label asp-for="Viscosity"></label>
+                <input asp-for="Viscosity" class="form-control" />
+                <span asp-validation-for="Viscosity" class="text-danger"></span>
+            </div>
+
+            <div class="col-6">
+                <label asp-for="PackageCapacity">Package capacity</label>
+                <input asp-for="PackageCapacity" class="form-control" />
+                <span asp-validation-for="PackageCapacity" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-holder d-flex justify-content-center">
+        <button type="submit" class="btn btn-warning" href="/Products/Add">Create</button>
+    </div>
+</form>
+
+
+

@@ -1,0 +1,43 @@
+﻿
+@{
+    this.ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid ml-5">
+    <div class="text-left">
+        <h1 class="display-4">NOMENCLATURES</h1>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr class="row">
+                <th scope="col" class="col-lg-2 suls-text-color">Entity Name</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Recordings</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr class="row">
+                    <td class="col-lg-2 suls-text-color">@order.Key</td>
+                    <td class="col-lg-2 suls-text-color">@order.Value</td>
+                    <td class="col-lg-2 suls-text-color">
+                        <div class="button-holder">
+                            <a href="/Nomenclatures/@order.Key" class="btn btn-warning">Details</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+            <tr class="row">
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">
+                    <div class="button-holder">
+                        <a href="/Nomenclatures/Create" class="btn btn-warning">+ New Entity</a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

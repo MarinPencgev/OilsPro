@@ -1,0 +1,27 @@
+﻿@using OilsPro.Web.Models.ViewModels
+@using OilsPro.Web.ViewComponents
+@model EditReceiverViewModel
+
+<h1 class="text-center suls-text-color">Edit Receiver</h1>
+<form asp-controller="Nomenclatures" asp-action="EditReceiver" method="post">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-10">
+
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+                @(await Component.InvokeAsync<ReceiversAddressesViewComponent>(new { id = "2e5caf7c-536a-4a21-9df6-88bf31a78338" }))
+            </div>
+        </div>
+    </div>
+
+    <div class="top-border-line primary-separator"></div>
+    <div class="button-holder d-flex justify-content-center">
+        <button type="submit" class="btn btn-warning">Save changes</button>
+    </div>
+</form>
+
+
+
