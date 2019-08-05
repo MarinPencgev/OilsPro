@@ -27,7 +27,6 @@ namespace OilsPro.Web.Controllers
                 _seeder.Seed();
             }
 
-
             if (this.User.Identity.IsAuthenticated)
             {
                 var uncompletedOrders = _ordersService.GetAllUncomleted();

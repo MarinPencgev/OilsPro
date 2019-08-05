@@ -3,6 +3,5 @@
     public interface IDataSeeder
     {
         void Seed();
-        void OrderSeeding();
     }
 }

@@ -42,24 +42,23 @@ namespace OilsPro.Services
             {
                 this._context.Receivers.Add(new Receiver()
                 {
-                    
                     Name = $"Receiver{i}",
                     DeliveryAddresses = new List<DeliveryAddress>()
                     {
                         new DeliveryAddress
                         {
-                            Town = $"Town{i}",
-                            Street = $"Street {i})"
+                            Town = $"Town-1 Receiver{i}",
+                            Street = $"Street-1 Receiver{i}"
                         },
                         new DeliveryAddress
                         {
-                            Town = $"Town{i + 1}",
-                            Street = $"Street ({i + 1})",
+                            Town = $"Town-2 Receiver{i}",
+                            Street = $"Street-2 Receiver{i}",
                         },
                         new DeliveryAddress
                         {
-                            Town = $"Town{i + 2}",
-                            Street = $"Street ({i + 2})",
+                            Town = $"Town-3 Receiver{i}",
+                            Street = $"Street-3 Receiver{i}",
                         },
                     },
                     Orders = new List<Order>()
@@ -75,17 +74,17 @@ namespace OilsPro.Services
                     {
                         new Driver
                         {
-                            FullName = $"Driver Driverov {i}",
+                            FullName = $"Driver-1 Carrier{i}",
                             
                         },
                         new Driver
                         {
-                            FullName = $"Driver Driverov {i + 1}",
+                            FullName = $"Driver-2 Carrier{i}",
 
                         },
                         new Driver
                         {
-                            FullName = $"Driver Driverov {i + 2}"
+                            FullName = $"Driver-3 Carrier{i}"
 
                         }
 
@@ -94,57 +93,17 @@ namespace OilsPro.Services
                     {
                         new Vehicle
                         {
-                            RegNumber = $"PB{i}{i}{i}{i}AH"
+                            RegNumber = $"PB{i}{i}{i}{i}AH Carrier{i}"
                         },
                         new Vehicle
                         {
-                            RegNumber = $"PB{i+1}{i+1}{i+1}{i+1}AH"
+                            RegNumber = $"PB{i+1}{i+1}{i+1}{i+1}AH Carrier{i}"
                         },
                         new Vehicle
                         {
-                            RegNumber = $"PB{i+2}{i+2}{i+2}{i+2}AH"
+                            RegNumber = $"PB{i+2}{i+2}{i+2}{i+2}AH Carrier{i}"
                         },
                     },
-
-                });
-            }
-            
-            _context.SaveChanges();
-
-           // OrderSeeding();
-        }
-
-        public void OrderSeeding()
-        {
-            for (int i = 3; i < 7; i++)
-            {
-                this._context.Orders.Add(new Order()
-                {
-                    SequenceNumber = ++i,
-                    CreatedOn = DateTime.Now,
-                    Purpose = OrderPurpose.Consumption,
-                    Status = OrderStatus.Uncompleted,
-
-                    DeliveryAddress = this._context.DeliveryAddresses.Last(),
-                    Receiver = this._context.Receivers.Last(),
-                    Carrier = this._context.Carriers.First(),
-                    Driver = this._context.Drivers.Last(),
-                    Vehicle = this._context.Vehicles.First(),
-                    Products = new List<OrderedProducts>
-                    {
-                       new OrderedProducts
-                       {
-                           Product = this._context.Products.First(),
-                           OrderedPackagesCount = i * 10,
-                           OrderedPackagesWeight = i * 10 * 0.85m,
-                       },
-                       new OrderedProducts
-                       {
-                           Product = this._context.Products.Last(),
-                           OrderedPackagesCount = i * 20,
-                           OrderedPackagesWeight = i * 20 * 0.91m,
-                       },
-                    }
 
                 });
             }

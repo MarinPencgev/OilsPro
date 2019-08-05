@@ -34,8 +34,13 @@ namespace OilsPro.Web
             });
 
             services.AddDbContext<OilsProDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => 
+                    b.MigrationsAssembly("OilsPro.Web")));
+
+            //services.AddDbContext<OilsProDbContext>(options =>
+            //    options.UseSqlServer(
+            //        Configuration.GetConnectionString("DefaultConnection")));
+
 
             //Password settings
             services.AddIdentity<OilsProUser, IdentityRole>(o =>

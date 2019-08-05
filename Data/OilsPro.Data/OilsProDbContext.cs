@@ -9,7 +9,6 @@ namespace OilsPro.Data
         public OilsProDbContext(DbContextOptions<OilsProDbContext> options) : base(options)
         {
         }
-
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderedProducts> OrderedProducts { get; set; }
         public DbSet<Product> Products { get; set; }
