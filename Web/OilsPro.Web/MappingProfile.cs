@@ -14,6 +14,7 @@ namespace Oils
         {
             CreateMap<Receiver, EditReceiverViewModel>();
             CreateMap<Order, CreateOrderViewModel>();
+
         }
     }
 }

@@ -51,22 +51,8 @@ namespace OilsPro.Web.Controllers
         {
             var order = this._orderService.GetOrderById(id);
 
-            //var model = _mapper.Map<CreateOrderViewModel>(order); // The mapper did not map the OrderedProducts list 
-            var model = new CreateOrderViewModel()
-            {
-                Id = order.Id,
-                SequenceNumber = order.SequenceNumber,
-                CreatedOn = order.CreatedOn,
-                Purpose = order.Purpose,
-                Status = order.Status,
-                Carrier = order.Carrier,
-                DeliveryAddress = order.DeliveryAddress.Town + ", " + order.DeliveryAddress.Street,
-                Driver = order.Driver,
-                Receiver = order.Receiver,
-                Vehicle = order.Vehicle,
-
-                OrderedProducts = order.Products
-            };
+            var model = _mapper.Map<CreateOrderViewModel>(order); 
+            model.OrderedProducts = order.Products;
 
             return View(model); 
         }
@@ -99,8 +85,12 @@ namespace OilsPro.Web.Controllers
 
         public IActionResult Release(string id)
         {
-            _orderService.Release(id);
-            return this.Redirect("/"); //TODO View Receipt
+            var order = _orderService.Release(id);
+
+            var model = _mapper.Map<CreateOrderViewModel>(order);
+            model.OrderedProducts = order.Products;
+
+            return this.View(model);
         }
     }
 }

@@ -109,15 +109,25 @@ namespace OilsPro.Services
                          string vehicleRegNumber)
         {
             var order = _context.Orders
+                .Include(x => x.OilsUser)
+                .Include(x => x.DeliveryAddress)
+                .Include(x => x.Driver)
+                .Include(x => x.Vehicle)
+                .Include(x => x.Receiver)
+                .Include(x => x.Carrier)
                 .Include(x => x.Products)
                 .ThenInclude(x => x.Product)
                 .FirstOrDefault(x => x.Id == id);
+
+            var town = deliveryAddress.Split(", ")[0];
+            var street = deliveryAddress.Split(", ")[1];
 
             order.CreatedOn = createdOn;
             order.Purpose = purpose;
             order.SequenceNumber = sequenceNumber;
             order.Status = status;
-            order.DeliveryAddress.Street = deliveryAddress;
+            order.DeliveryAddress.Town = town;
+            order.DeliveryAddress.Street = street;
             order.Receiver.Name = receiverName;
             order.Carrier.Name = carrierName;
             order.Driver.FullName = driverName;
@@ -138,7 +148,16 @@ namespace OilsPro.Services
 
         public Order Release(string id)
         {
-            var order = _context.Orders.First(x => x.Id == id);
+            var order = _context.Orders
+                .Include(x => x.OilsUser)
+                .Include(x => x.DeliveryAddress)
+                .Include(x => x.Driver)
+                .Include(x => x.Vehicle)
+                .Include(x => x.Receiver)
+                .Include(x => x.Carrier)
+                .Include(x => x.Products)
+                .ThenInclude(x => x.Product)
+                .First(x => x.Id == id);
             order.Status = OrderStatus.Completed;
             order.ReleaseDate = DateTime.UtcNow;
 
