@@ -30,9 +30,13 @@
                         <div class="button-holder">
                             <a href="/Orders/Edit?id=@order.OrderId" class="btn btn-warning">Edit</a>
                             <a href="/Orders/Remove?id=@order.OrderId" class="btn btn-warning">Remove</a>
-                            @if (1==1)
+                            @if (order.OrderedPackagesCount > 0)
                             {
                                 <a href="/Orders/Release?id=@order.OrderId" class="btn btn-warning">Release</a>
+                            }
+                            else
+                            {
+                                <a disabled class="btn btn-secondary">Release</a>
                             }
                         </div>
                     </td>
