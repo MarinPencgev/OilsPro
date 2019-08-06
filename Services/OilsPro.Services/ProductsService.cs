@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using OilsPro.Data;
 using OilsPro.Data.Models;
 
@@ -14,16 +15,17 @@ namespace OilsPro.Services
             _context = context;
         }
 
-        public OrderedProducts Add(string orderId, string productCode, string productName, string packegesCount, string packegesWeight)
+        public OrderedProducts Include(string orderId, string productCode, string productName, string packegesCount, string packegesWeight, string lot)
         {
-            var product = _context.Products.FirstOrDefault(x => x.ProductCode == productCode && x.Name == productName);
+            var product = _context.Products.First(x => x.ProductCode == productCode && x.Name == productName);
 
             var orderedProduct = new OrderedProducts()
             {
                 OrderedPackagesCount = int.Parse(packegesCount),
                 OrderedPackagesWeight = decimal.Parse(packegesWeight),
                 ProductId = product.Id,
-                OrderId = orderId, // TODO to find current orderId
+                OrderId = orderId, 
+                LotId = _context.Products.SelectMany(x=>x.Lots).First(x=>x.SerialNumber == lot).Id
             };
 
             _context.OrderedProducts.Add(orderedProduct);
@@ -49,7 +51,9 @@ namespace OilsPro.Services
 
         public ICollection<Product> GetAll()
         {
-            return _context.Products.ToList();
+            return _context.Products
+                .Include(x=>x.Lots)
+                .ToList();
         }
 
         public Product Create(string name, string productCode, string viscosity, int packagesCapacity, decimal packagesWeight)
@@ -71,6 +75,15 @@ namespace OilsPro.Services
         public Product Edit(string id)
         {
             throw new System.NotImplementedException();
+        }
+
+        public Product GetByProductCode(string productCode)
+        {
+           var product = _context.Products
+                .Include(x => x.Lots)
+                .First(x => x.ProductCode == productCode);
+
+           return product;
         }
     }
 }

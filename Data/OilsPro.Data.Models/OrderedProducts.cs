@@ -8,6 +8,9 @@
         public string ProductId { get; set; }
         public Product Product { get; set; }
 
+        public string LotId { get; set; }
+        public Lot Lot { get; set; }
+
         public int OrderedPackagesCount { get; set; }
 
         public decimal OrderedPackagesWeight { get; set; }

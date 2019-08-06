@@ -50,7 +50,6 @@ C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\View
 C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Nomenclatures\Vehicles.g.cshtml.cs
 C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Orders\Create.g.cshtml.cs
 C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Orders\Edit.g.cshtml.cs
-C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Products\Add.g.cshtml.cs
 C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Products\Create.g.cshtml.cs
 C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Receivers\Edit.g.cshtml.cs
 C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\bin\Debug\netcoreapp2.2\OilsPro.Services.pdb

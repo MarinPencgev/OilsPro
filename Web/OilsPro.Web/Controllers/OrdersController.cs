@@ -34,7 +34,6 @@ namespace OilsPro.Web.Controllers
                 return this.View(input); 
             }
 
-    
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var order = this._orderService.Create(userId,
                                                   input.Purpose.ToString(),
@@ -51,7 +50,8 @@ namespace OilsPro.Web.Controllers
         {
             var order = this._orderService.GetOrderById(id);
 
-            var model = _mapper.Map<CreateOrderViewModel>(order); 
+            var model = _mapper.Map<CreateOrderViewModel>(order);
+            model.DeliveryAddress = order.DeliveryAddress.Town + ", " + order.DeliveryAddress.Street;
             model.OrderedProducts = order.Products;
 
             return View(model); 
@@ -89,6 +89,7 @@ namespace OilsPro.Web.Controllers
 
             var model = _mapper.Map<CreateOrderViewModel>(order);
             model.OrderedProducts = order.Products;
+            model.DeliveryAddress = order.DeliveryAddress.Town + ", " + order.DeliveryAddress.Street;
 
             return this.View(model);
         }

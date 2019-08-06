@@ -1,15 +1,15 @@
-﻿@using OilsPro.Web.Models.ViewModels
+﻿
+@using OilsPro.Web.Models.ViewModels
 @using OilsPro.Services
 @model CreateOrderViewModel
 @inject IOrdersService orderServices
 
-<h1 class="text-center suls-text-color">Edit Order</h1>
-<form asp-controller="Orders" asp-action="Edit" method="post">
 
+<h1 class="text-center suls-text-color">Edit Order</h1>
+<form asp-controller="Products" asp-action="Include" method="post">
     <div class="container-fluid">
         <div class="row">
             <div class="col-4">
-
                 <label asp-for="SequenceNumber"></label>
                 <input asp-for="SequenceNumber" class="form-control" />
                 <span asp-validation-for="SequenceNumber" class="text-danger"></span>
@@ -39,28 +39,25 @@
                 <span asp-validation-for="Driver.FullName" class="text-danger"></span>
             </div>
             <div class="col-4">
-
                 <label asp-for="Receiver.Name">Receiver name</label>
                 <input asp-for="Receiver.Name" class="form-control" />
                 <span asp-validation-for="Receiver.Name" class="text-danger"></span>
 
                 <label asp-for="DeliveryAddress">Delivery address</label>
-                <input asp-for="DeliveryAddress" class="form-control" />
-                <span asp-validation-for="DeliveryAddress" class="text-danger"></span>
+                <p asp-for="DeliveryAddress" class="form-control">@Model.DeliveryAddress</p>
 
             </div>
         </div>
     </div>
 
-
     <table class="table table-hover mx-auto col-12">
         <thead>
             <tr class="row">
-                <th scope="col" class="col-lg-2 suls-text-color">Seq Number</th>
-                <th scope="col" class="col-lg-2 suls-text-color">Product Code</th>
-                <th scope="col" class="col-lg-2 suls-text-color">Product Name</th>
-                <th scope="col" class="col-lg-2 suls-text-color">Pack Count</th>
-                <th scope="col" class="col-lg-2 suls-text-color">Pack Weight</th>
+                <th scope="col" class="col-lg-1 suls-text-color">Seq Number</th>
+                <th scope="col" class="col-lg-5 suls-text-color">Product</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Lot</th>
+                <th scope="col" class="col-lg-1 suls-text-color">Pack Count</th>
+                <th scope="col" class="col-lg-1 suls-text-color">Pack Weight</th>
                 <th scope="col" class="col-lg-2 suls-text-color">Action</th>
             </tr>
         </thead>
@@ -71,40 +68,107 @@
             @foreach (var product in Model.OrderedProducts)
             {
                 <tr class="row">
-                    <td class="col-lg-2 suls-text-color">@(counter++)</td>
-                    <td class="col-lg-2 suls-text-color">@product.Product.ProductCode</td>
-                    <td class="col-lg-2 suls-text-color">@product.Product.Name</td>
-                    <td class="col-lg-2 suls-text-color">@product.OrderedPackagesCount</td>
-                    <td class="col-lg-2 suls-text-color">@product.OrderedPackagesWeight</td>
+                    <td class="col-lg-1 suls-text-color">@(counter++)</td>
+                    <td class="col-lg-5 suls-text-color">@product.Product.ProductCode - @product.Product.Name</td>
+                    <td class="col-lg-2 suls-text-color">@product.Lot.SerialNumber</td>
+                    <td class="col-lg-1 suls-text-color">@product.OrderedPackagesCount</td>
+                    <td class="col-lg-1 suls-text-color">@product.OrderedPackagesWeight</td>
                     <td class="col-lg-2 suls-text-color">
                         <div class="button-holder">
                             <a href="/Products/Remove?id=@product.OrderId@product.ProductId" class="btn btn-warning">Remove</a>
                         </div>
                     </td>
                 </tr>
-
             }
 
-            <tr class="row">
-                <td class="col-lg-2 suls-text-color">-</td>
-                <td class="col-lg-2 suls-text-color">-</td>
-                <td class="col-lg-2 suls-text-color">-</td>
-                <td class="col-lg-2 suls-text-color">-</td>
-                <td class="col-lg-2 suls-text-color">-</td>
-                <td class="col-lg-2 suls-text-color">
-                    <div class="button-holder">
-                        <a href="/Products/Add/?id=@Model.Id" class="btn btn-warning">Add Product</a>
-                    </div>
-                </td>
-            </tr>
+        <tr class="row">
+            <td class="col-lg-1 suls-text-color">
+                <div>
+                    <p>#</p>
+                </div>
+            </td>
+            <td class="col-lg-5 suls-text-color">
+                <div>
+                    <select id="products" name="products" class="form-control"></select>
+                </div>
+            </td>
+            <td class="col-lg-2 suls-text-color">
+                <div>
+                    <select id="lots" name="lots" class="form-control"></select>
+                </div>
+            </td>
+            <td class="col-lg-1 suls-text-color">
+                <div>
+                    <input id="packagesCount" name="packagesCount" class="form-control" />
+                </div>
+            </td>
+            <td class="col-lg-1 suls-text-color">
+                <div>
+                    -
+                </div>
+            </td>
+
+            <td class="col-lg-2 suls-text-color">
+                <div class="button-holder">
+                    <button class="btn btn-warning" id="includeProduct">Include Product</button>
+                </div>
+            </td>
+        </tr>
         </tbody>
     </table>
 
     <div class="top-border-line primary-separator"></div>
     <div class="button-holder d-flex justify-content-center">
-        <button type="submit" class="btn btn-warning">Save changes</button>
+        <button class="btn btn-warning">Save changes</button>
     </div>
 </form>
 
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Products/AllProducts",
+            data: "{}",
+            success: function (response) {
+                var option = '<option value="-1">Select product...</option>';
+                for (var i = 0; i < response.length; i++) {
+                    option += '<option value="' + response[i].product + '">' + response[i].product + '</option>';
+                }
+                $("#products").html(option);
+            }
+        });
+    });
+</script>
 
-
+<script>
+    $("#products").change(function () {
+        var selectedProduct = $("#products").val();
+        $.ajax({
+            type: "GET",
+            url: "/Products/GetLotsByProduct?selectedProduct=" + selectedProduct,
+            data: "{}",
+            success: function (response) {
+                var option = '<option value="-1">Select lot...</option>';
+                for (var i = 0; i < response.length; i++) {
+                    option += '<option value="' + response[i] + '">' + response[i] + '</option>';
+                }
+                $("#lots").html(option);
+            }
+        });
+    });
+</script>
+@*<script>
+    $("#includeProduct").onclick(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Products/Include",
+            data:
+            {
+                OrderId: $("#id").val(),
+                Product: $("#products").val(),
+                Lot: $("#lots").val(),
+                Quantity : $("#packagesCount").val()
+            }
+        });           
+    });
+</script>*@

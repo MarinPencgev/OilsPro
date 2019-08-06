@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using OilsPro.Services;
 using OilsPro.Web.Models.ViewModels;
 
@@ -29,35 +31,35 @@ namespace OilsPro.Web.Controllers
                                     input.PackageCapacity,
                                     input.PackageWeight);
 
-            return this.Redirect("/Products/Add");
+            return this.Redirect("/Products/Include");
         }
 
-        public IActionResult Add(string id)
-        {
-            var model = new ProductInputViewModel
-            {
-                OrderId = id
-            };
+        //public IActionResult Include(string id)
+        //{
+        //    var model = new ProductInputViewModel
+        //    {
+        //        OrderId = id
+        //    };
 
-            return this.View("Add",model);
-        }
+        //    return this.View("Include",model);
+        //}
 
-        [HttpPost]
-        public IActionResult Add(string id, ProductInputViewModel productInput)
-        {
-            if (!ModelState.IsValid)
-            {
-                return this.View(productInput); 
-            }
-            var currentOrderId = id;
-            var orderedProduct = _productsService.Add(currentOrderId,
-                                                      productInput.ProductCode,
-                                                      productInput.ProductName,
-                                                      productInput.Count,
-                                                      productInput.Weight);
+        //[HttpPost]
+        //public IActionResult Include(string id, ProductInputViewModel productInput)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return this.View(productInput); 
+        //    }
+        //    var currentOrderId = id;
+        //    var orderedProduct = _productsService.Include(currentOrderId,
+        //                                              productInput.ProductCode,
+        //                                              productInput.ProductName,
+        //                                              productInput.Count,
+        //                                              productInput.Weight);
 
-            return Redirect($"/Orders/Edit?id={orderedProduct.OrderId}");
-        }
+        //    return Redirect($"/Orders/Edit?id={orderedProduct.OrderId}");
+        //}
 
         public IActionResult Remove(string id)
         {
@@ -72,6 +74,49 @@ namespace OilsPro.Web.Controllers
             _productsService.Edit(id);
 
             return Redirect($"/Nomenclatures/Products");
+        }
+
+        public IActionResult AllProducts()
+        {
+            var products = _productsService.GetAll()
+                .Select(x=> new
+                {
+                    Product = x.ProductCode + "-" + x.Name
+                })
+                .ToList();
+
+            return Json(products);
+        }
+
+        public IActionResult GetLotsByProduct(string selectedProduct)
+        {
+            var productCode = selectedProduct.Substring(0, 8);
+
+            var product = _productsService.GetAll().First(x => x.ProductCode == productCode);
+
+            var productLots = product.Lots.Select(x=>x.SerialNumber).ToList();
+
+            return Json(productLots); 
+        }
+
+        public IActionResult Include(string id, string products, string lots, string packagesCount)
+        {
+            var orderId = id;
+            
+            var productCode = products.Substring(0, 8);
+            var productName = products.Substring(9);
+
+            var product = _productsService.GetByProductCode(productCode);
+
+            var packageCapacity = product.PackageCapacity;
+
+            var density = product.Lots.First(x => x.SerialNumber == lots).Density;
+
+            var packagesWeight = Math.Round(decimal.Parse(packagesCount) * packageCapacity * density, 0).ToString();
+
+            var orderedProduct = _productsService.Include(id, productCode, productName, packagesCount, packagesWeight, lots);
+
+            return this.Redirect($"/Orders/Edit?id={id}");
         }
     }
 }

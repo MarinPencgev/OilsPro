@@ -33,11 +33,8 @@ namespace OilsPro.Services
             Driver driver = _context.Drivers.FirstOrDefault(x => x.FullName == driverName && x.CarrierId == carrier.Id);
             Vehicle vehicle = _context.Vehicles.FirstOrDefault(x => x.RegNumber == vehicleNumber && x.CarrierId == carrier.Id);
 
-            //int lastSequence = _context.Orders.Max(x => int.Parse(x.SequenceNumber));
-
             var order = new Order()
             {
-                //SequenceNumber = (lastSequence + 1).ToString(),
                 CreatedOn = DateTime.UtcNow,
                 Purpose = deliveryPurpose,
                 Status = OrderStatus.Uncompleted,
@@ -66,6 +63,7 @@ namespace OilsPro.Services
                 .Include(x => x.Vehicle)
                 .Include(x => x.Products)
                 .ThenInclude(x => x.Product)
+                .ThenInclude(x => x.Lots)
                 .SingleOrDefault(x => x.Id == id);
             return order;
         }
@@ -82,6 +80,8 @@ namespace OilsPro.Services
                 .Include(x => x.Carrier)
                 .Include(x => x.Products)
                 .ThenInclude(x => x.Product)
+                .ThenInclude(x=>x.Lots)
+                .ThenInclude(x=>x.SerialNumber)
                 .Where(x => x.Status == OrderStatus.Uncompleted && x.IsDeleted == false);
 
             return uncomletedOrders;

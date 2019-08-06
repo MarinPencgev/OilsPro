@@ -23,7 +23,7 @@ namespace OilsPro.Web.Models.ViewModels
 
         public OrderStatus Status { get; set; } = OrderStatus.Uncompleted;
 
-        public string DeliveryAddress { get; set; }
+        public string DeliveryAddress { get; set; } 
 
         [Display(Name = "Receiver Name")]
         [DataType(DataType.Text)]

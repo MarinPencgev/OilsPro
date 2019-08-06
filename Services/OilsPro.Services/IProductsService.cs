@@ -5,11 +5,12 @@ namespace OilsPro.Services
 {
     public interface IProductsService
     {
-        OrderedProducts Add(string orderId, string productCode, string productName, string packegesCount, string packegesWeight);
+        OrderedProducts Include(string orderId, string productCode, string productName, string packegesCount, string packegesWeight, string lot);
         OrderedProducts Remove(string id);
         ICollection<OrderedProducts> GetProductsByOrderId(string inputId);
         ICollection<Product> GetAll();
         Product Create(string name, string productCode, string viscosity, int packagesCapacity, decimal packagesWeight);
         Product Edit(string id);
+        Product GetByProductCode(string productCode);
     }
 }

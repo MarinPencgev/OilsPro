@@ -88,12 +88,12 @@ namespace OilsPro.Web
             //        context.Database.EnsureCreated();
             //        if (!context.Roles.Any())
             //        {
-            //            context.Roles.Add(new IdentityRole
+            //            context.Roles.Include(new IdentityRole
             //            {
             //                Name = "Admin",
             //                NormalizedName = "ADMIN"
             //            });
-            //            context.Roles.Add(new IdentityRole
+            //            context.Roles.Include(new IdentityRole
             //            {
             //                Name = "User",
             //                NormalizedName = "USER"
