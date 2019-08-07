@@ -28,11 +28,28 @@ namespace OilsPro.Services
                     {
                         new Lot()
                         {
-                            SerialNumber = $"12{i*10}/121212",
+                            SerialNumber = $"12{i*10}/12",
                             PackagesCount = 20 + i,
                             PackagesWeight = 3700,
                             Density = 0.905m,
-                        }
+
+                        },
+                        new Lot()
+                        {
+                            SerialNumber = $"55{i*20}/55",
+                            PackagesCount = 20 + i,
+                            PackagesWeight = 3700,
+                            Density = 0.8875m,
+
+                        },
+                        new Lot()
+                        {
+                            SerialNumber = $"88{i*30}/88",
+                            PackagesCount = 20 + i,
+                            PackagesWeight = 3700,
+                            Density = 0.814m,
+
+                        },
                     },
                     
                 });
@@ -75,7 +92,7 @@ namespace OilsPro.Services
                         new Driver
                         {
                             FullName = $"Driver-1 Carrier{i}",
-                            
+
                         },
                         new Driver
                         {

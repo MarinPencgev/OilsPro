@@ -23,7 +23,12 @@ namespace OilsPro.Data
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<OrderedProducts>().HasKey(x => new { x.OrderId, x.ProductId});
+            builder.Entity<OrderedProducts>().HasKey(x => new { x.OrderId, x.ProductId, x.LotId});
+
+            builder.Entity<Lot>()
+                .HasOne(x => x.Product)
+                .WithMany(x => x.Lots)
+                .HasForeignKey(x => x.ProductId);
         }
     }
 }

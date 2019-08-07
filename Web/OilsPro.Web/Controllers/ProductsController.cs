@@ -34,33 +34,6 @@ namespace OilsPro.Web.Controllers
             return this.Redirect("/Products/Include");
         }
 
-        //public IActionResult Include(string id)
-        //{
-        //    var model = new ProductInputViewModel
-        //    {
-        //        OrderId = id
-        //    };
-
-        //    return this.View("Include",model);
-        //}
-
-        //[HttpPost]
-        //public IActionResult Include(string id, ProductInputViewModel productInput)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return this.View(productInput); 
-        //    }
-        //    var currentOrderId = id;
-        //    var orderedProduct = _productsService.Include(currentOrderId,
-        //                                              productInput.ProductCode,
-        //                                              productInput.ProductName,
-        //                                              productInput.Count,
-        //                                              productInput.Weight);
-
-        //    return Redirect($"/Orders/Edit?id={orderedProduct.OrderId}");
-        //}
-
         public IActionResult Remove(string id)
         {
             _productsService.Remove(id);

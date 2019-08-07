@@ -7,6 +7,15 @@
 
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20190807081859_AddAttributes.cs" />
+    <Compile Remove="Migrations\20190807081859_AddAttributes.Designer.cs" />
+    <Compile Remove="Migrations\20190807082932_AddAttributes.cs" />
+    <Compile Remove="Migrations\20190807082932_AddAttributes.Designer.cs" />
+    <Compile Remove="Migrations\20190807083136_AddAttributes.cs" />
+    <Compile Remove="Migrations\20190807083136_AddAttributes.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="5.1.1" />

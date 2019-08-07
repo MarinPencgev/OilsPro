@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OilsPro.Data.Models
@@ -25,23 +26,27 @@ namespace OilsPro.Data.Models
 
         public OrderStatus Status { get; set; } = OrderStatus.Uncompleted;
 
+        [Required]
         public string OilsUserId { get; set; }
         public OilsProUser OilsUser { get; set; }
 
+        [Required]
         public string DeliveryAddressId { get; set; }
-        public virtual DeliveryAddress DeliveryAddress { get; set; }
+        public DeliveryAddress DeliveryAddress { get; set; }
 
         public string CarrierId { get; set; }
-        public virtual Carrier Carrier { get; set; }
+        public Carrier Carrier { get; set; }
 
         public string ReceiverId { get; set; }
-        public virtual Receiver Receiver { get; set; }
+        public Receiver Receiver { get; set; }
 
+        [Required]
         public string DriverId { get; set; }
-        public virtual Driver Driver { get; set; }
+        public Driver Driver { get; set; }
 
+        [Required]
         public string VehicleId { get; set; }
-        public virtual Vehicle Vehicle { get; set; }
+        public Vehicle Vehicle { get; set; }
 
         public ICollection<OrderedProducts> Products { get; set; }
     }
