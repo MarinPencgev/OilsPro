@@ -22,7 +22,6 @@ namespace OilsPro.Data.Models
         [Range(typeof(decimal), "0.7", "1.0")]
         public decimal Density { get; set; }
 
-        [Required]
         public string ProductId { get; set; }
         public Product Product { get; set; }
     }

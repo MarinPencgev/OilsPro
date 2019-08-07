@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal;
 using OilsPro.Data;
 using OilsPro.Data.Models;
 
@@ -62,9 +63,10 @@ namespace OilsPro.Services
                 .Include(x => x.Driver)
                 .Include(x => x.Vehicle)
                 .Include(x => x.Products)
-                .ThenInclude(x=>x.Lot)
                 .ThenInclude(x => x.Product)
+                .ThenInclude(x => x.Lots)
                 .SingleOrDefault(x => x.Id == id);
+            //TODO to fix eager loading to load Lot
             return order;
         }
 
