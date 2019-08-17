@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Oils;
@@ -81,27 +82,41 @@ namespace OilsPro.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             //Adding Roles
-            //using (var serviceScope = app.ApplicationServices.CreateScope())
-            //{
-            //    using (var context = serviceScope.ServiceProvider.GetRequiredService<OilsProDbContext>())
-            //    {
-            //        context.Database.EnsureCreated();
-            //        if (!context.Roles.Any())
-            //        {
-            //            context.Roles.Include(new IdentityRole
-            //            {
-            //                Name = "Admin",
-            //                NormalizedName = "ADMIN"
-            //            });
-            //            context.Roles.Include(new IdentityRole
-            //            {
-            //                Name = "User",
-            //                NormalizedName = "USER"
-            //            });
-            //            context.SaveChanges();
-            //        }
-            //    }
-            //}
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetRequiredService<OilsProDbContext>())
+                {
+                    context.Database.EnsureCreated();
+                    if (!context.Roles.Any())
+                    {
+                        //Ivo
+                        //context.Roles.Include(new IdentityRole
+                        //{
+                        //    Name = "Admin",
+                        //    NormalizedName = "ADMIN"
+                        //});
+                        //context.Roles.Include(new IdentityRole
+                        //{
+                        //    Name = "User",
+                        //    NormalizedName = "USER"
+                        //});
+                        var admin = new IdentityRole
+                        {
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        };
+                        var user = new IdentityRole
+                        {
+                            Name = "User",
+                            NormalizedName = "USER"
+                        };
+                        context.Roles.Add(admin);
+                        context.Roles.Add(user);
+
+                        context.SaveChanges();
+                    }
+                }
+            }
 
             if (env.IsDevelopment())
             {

@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using OilsPro.Data.Models;
 
 namespace OilsPro.Data
 {
-    public class OilsProDbContext : IdentityDbContext<OilsProUser>
+    public class OilsProDbContext : IdentityDbContext<OilsProUser, IdentityRole, string>
     {
         public OilsProDbContext(DbContextOptions<OilsProDbContext> options) : base(options)
         {
