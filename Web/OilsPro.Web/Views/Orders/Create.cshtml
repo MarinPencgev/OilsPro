@@ -37,7 +37,6 @@
                 <select asp-for="DeliveryAddress" class="form-control" id="addresses" name="DeliveryAddress"></select>
                 <span asp-validation-for="DeliveryAddress" class="text-danger"></span>
 
-
                 <label asp-for="Purpose"></label>
                 <select asp-for="Purpose" class="form-control" asp-items="@Html.GetEnumSelectList<OrderPurpose>()"></select>
 

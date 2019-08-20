@@ -12,7 +12,9 @@
                 <label asp-for="Name"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
-                @(await Component.InvokeAsync<ReceiversAddressesViewComponent>(new { id = "2e5caf7c-536a-4a21-9df6-88bf31a78338" }))
+                <br />
+                <br />
+                @(await Component.InvokeAsync<ReceiversAddressesViewComponent>(new { id = Model.Id }))
             </div>
         </div>
     </div>

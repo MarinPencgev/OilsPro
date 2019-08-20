@@ -8,23 +8,20 @@ using OilsPro.Data;
 
 namespace OilsPro.Web.ViewComponents
 {
-    public class ReceiversAddressesViewComponent: ViewComponent
+    public class CarriersDriversViewModel : ViewComponent
     {
         private readonly OilsProDbContext _context;
 
-        public ReceiversAddressesViewComponent(OilsProDbContext context)
+        public CarriersDriversViewModel(OilsProDbContext context)
         {
             _context = context;
         }
 
         public async Task<IViewComponentResult> InvokeAsync(string id)
         {
-            var addresses = _context.DeliveryAddresses
-                .Include(x=>x.Receiver)
-                .Where(x => x.ReceiverId == id)
-                .ToListAsync();
+            var drivers = _context.Drivers.Where(x => x.CarrierId == id).ToListAsync();
 
-            return View(await addresses);
+            return View("", await drivers);
         }
     }
 }

@@ -25,5 +25,16 @@ namespace OilsPro.Web.Controllers
 
             return Json(drivers);
         }
+
+        public IActionResult VehiclesDetails(string id)
+        {
+            var model = _carriersService.GetVehiclesByCarrierId(id);
+            return this.View("Components/CarriersVehicles/Default", model);
+        }
+        public IActionResult DriversDetails(string id)
+        {
+            var model = _carriersService.GetDriversByCarrierId(id);
+            return this.View("Components/CarriersDrivers/Default", model);
+        }
     }
 }

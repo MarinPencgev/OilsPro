@@ -1,12 +1,17 @@
 ﻿@model IEnumerable<OilsPro.Data.Models.Driver>
 
 @{
-    ViewData["Title"] = "Drivers";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Default";
 }
 
-<h1>Drivers</h1>
+<!DOCTYPE html>
 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Default</title>
+</head>
+<body>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -32,14 +37,13 @@
                 @Html.DisplayFor(modelItem => item.Carrier.Id)
             </td>
             <td>
-                @if (this.User.IsInRole("Admin"))
-                {
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit |</a> 
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                }
-               
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+</body>
+</html>

@@ -16,7 +16,9 @@ namespace OilsPro.Services
         }
         public Receiver GetReceiverById(string id)
         {
-            var receiver = _context.Receivers.First(x => x.Id == id);
+            var receiver = _context.Receivers
+                .Include(x=>x.DeliveryAddresses)
+                .First(x => x.Id == id);
             return receiver;
         }
 
@@ -26,10 +28,59 @@ namespace OilsPro.Services
                 .Include(x => x.DeliveryAddresses)
                 .FirstOrDefault(x => x.Name == receiverName)
                 .DeliveryAddresses
-                .Select(x=>x.Town + ", " + x.Street)
+                .Select(x => x.Town + ", " + x.Street)
                 .ToList();
             return addresses;
         }
 
+        public ICollection<DeliveryAddress> GetDeliveryAddressesByReceiverId(string id)
+        {
+            var addresses = _context.Receivers
+                .Include(x => x.DeliveryAddresses)
+                .First(x => x.Id == id)
+                .DeliveryAddresses
+                .ToList();
+
+            return addresses;
+        }
+
+        public Receiver IncludeNewAddress(string receiverId, string town, string street)
+        {
+            var receiver = _context.Receivers
+                .Include(x=>x.DeliveryAddresses)
+                .First(x => x.Id == receiverId);
+
+            receiver.DeliveryAddresses.Add(new DeliveryAddress
+            {
+                Town = town,
+                Street = street
+            });
+
+            _context.SaveChanges();
+
+            return receiver;
+        }
+
+        public DeliveryAddress EditIncludedAddress(string inputId, string inputTown, string inputStreet)
+        {
+            var address = _context.DeliveryAddresses.Find(inputId);
+
+            address.Town = inputTown;
+            address.Street = inputStreet;
+
+            _context.SaveChanges();
+
+            return address;
+        }
+
+        public Receiver GetReceiverByAddressId(string inputId)
+        {
+            var address = _context.DeliveryAddresses.Find(inputId);
+            var receiver = _context.Receivers
+                .Include(x=>x.DeliveryAddresses)
+                .FirstOrDefault(x => x.DeliveryAddresses.Contains(address));
+
+            return receiver;
+        }
     }
 }

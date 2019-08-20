@@ -85,6 +85,7 @@ namespace OilsPro.Web.Areas.Identity.Pages.Account
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
+                    //Adding first register user to role admin
                     if (_userManager.Users.Count() == 1)
                     {
                        await _userManager.AddToRoleAsync(user, "Admin");

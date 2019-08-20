@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using OilsPro.Data;
+using OilsPro.Data.Models;
 
 namespace OilsPro.Services
 {
@@ -29,6 +30,24 @@ namespace OilsPro.Services
             var drivers = _context.Drivers
                 .Where(x => x.Carrier.Name == carrierName)
                 .Select(x => x.FullName)
+                .ToList();
+
+            return drivers;
+        }
+
+        public ICollection<Vehicle> GetVehiclesByCarrierId(string id)
+        {
+            var vehicles = _context.Vehicles
+                .Where(x => x.Carrier.Id == id)
+                .ToList();
+
+            return vehicles;
+        }
+
+        public ICollection<Driver> GetDriversByCarrierId(string id)
+        {
+            var drivers = _context.Drivers
+                .Where(x => x.Carrier.Id == id)
                 .ToList();
 
             return drivers;

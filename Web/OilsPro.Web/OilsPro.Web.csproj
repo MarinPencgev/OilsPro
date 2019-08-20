@@ -34,8 +34,7 @@
 
 
   <ItemGroup>
-    <Folder Include="Views\DeliveryAddresses\" />
-    <Folder Include="Views\Shared\Components\CarriersVehicles\" />
+    <Folder Include="Views\Carriers\" />
   </ItemGroup>
 
 </Project>

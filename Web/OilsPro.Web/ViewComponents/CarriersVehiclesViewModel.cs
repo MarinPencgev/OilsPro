@@ -22,7 +22,7 @@ namespace OilsPro.Web.ViewComponents
         {
             var vehicles = _context.Vehicles.Where(x => x.CarrierId == id).ToListAsync();
 
-            return View(await vehicles);
+            return View("", await vehicles);
         }
     }
 }

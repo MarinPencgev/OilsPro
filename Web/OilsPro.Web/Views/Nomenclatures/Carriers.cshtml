@@ -27,16 +27,20 @@
                 <td class="col-lg-3 suls-text-color">@item.Name</td>
 
                 <td class="col-lg-3 suls-text-color">
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a asp-controller="Carriers" asp-action="VehiclesDetails" asp-route-id="@item.Id">Details</a>
                 </td>
                
                 <td class="col-lg-3 suls-text-color">
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a asp-controller="Carriers" asp-action="DriversDetails" asp-route-id="@item.Id">Details</a>
                 </td>
 
                 <td class="col-lg-3 suls-text-color">
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    @if (this.User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit |</a> 
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
+                    
                 </td>
             </tr>
 

@@ -29,7 +29,21 @@ namespace OilsPro.Web.Controllers
         public IActionResult Edit(EditReceiverViewModel input)
         {
             var receiver = _mapper.Map<Receiver>(input);
-            return this.View();
+            return this.View(input);
+        }
+        public IActionResult EditIncludedAddress(string id)
+        {
+            var receiver =  _receiversService.GetReceiverByAddressId(id);
+            var address = receiver.DeliveryAddresses.FirstOrDefault(x => x.Id == id);
+            return this.View(address);
+        }
+        [HttpPost]
+        public IActionResult EditIncludedAddress(EditAddressViewModel input)
+        {
+            var address = _receiversService.EditIncludedAddress(input.Id, input.Town, input.Street);
+
+            var receiver = _receiversService.GetReceiverByAddressId(input.Id);
+            return this.Redirect($"/Receivers/Edit?id={receiver.Id}");
         }
 
         public IActionResult GetReceiverAddresses(string receiverName)
@@ -39,19 +53,27 @@ namespace OilsPro.Web.Controllers
             return Json(addresses);
         }
 
-        public IActionResult CreateNewAddress()
+        public IActionResult CreateNewAddress(string id)
         {
-            return View();
+            var model = new DeliveryAddress
+            {
+                ReceiverId =  id
+            };
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult CreateNewAddress(string receiverId)
+        public IActionResult CreateNewAddress(IncludeAddressViewModel input)
         {
-            //_receiversService.CreateNewAddress(receiverId);
+            _receiversService.IncludeNewAddress(input.ReceiverId, input.Town, input.Street);
 
-            return Redirect("/Receivers/Edit");
+            return Redirect($"/Receivers/Edit?id={input.ReceiverId}");
         }
 
-
+        public IActionResult Details(string id)
+        {
+            var model = _receiversService.GetDeliveryAddressesByReceiverId(id);
+            return this.View("Components/ReceiversAddresses/Default", model);
+        }
     }
 }
