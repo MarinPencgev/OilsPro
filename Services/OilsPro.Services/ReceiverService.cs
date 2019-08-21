@@ -82,5 +82,21 @@ namespace OilsPro.Services
 
             return receiver;
         }
+
+        public void ChangeName(string inputId, string inputName)
+        {
+            var receiver = _context.Receivers.Find(inputId);
+            receiver.Name = inputName;
+
+            _context.SaveChanges();
+        }
+
+        public Receiver Edit(Receiver receiver)
+        {
+            _context.Update(receiver);
+            _context.SaveChanges();
+
+            return receiver;
+        }
     }
 }

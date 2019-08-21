@@ -1,10 +1,9 @@
 ﻿@using OilsPro.Web.Models.ViewModels
 @using OilsPro.Web.ViewComponents
-@model EditReceiverViewModel
+@model EditCarrierViewModel
 
-<h1 class="text-center suls-text-color">Edit Receiver</h1>
-<form asp-controller="Receivers" asp-action="Edit"asp-route-id="@Model.Id" method="post">
-
+<h1 class="text-center suls-text-color">Edit Carrier</h1>
+<form asp-controller="Carriers" asp-action="Edit"asp-route-id="@Model.Id" method="post">
     <div class="container-fluid">
         <div class="row">
             <div class="col-4">
@@ -13,12 +12,18 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="col-12">
-                <br/>
-                @(await Component.InvokeAsync<ReceiversAddressesViewComponent>(new {id = Model.Id}))
+                <br />
+                <div class="row">
+                    <div class="col-6">
+                        @(await Component.InvokeAsync<CarriersVehiclesViewComponent>(new { id = Model.Id }))
+                    </div>
+                    <div class="col-6">
+                        @(await Component.InvokeAsync<CarriersDriversViewComponent>(new { id = Model.Id }))
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
     <div class="top-border-line primary-separator"></div>
     <div class="button-holder d-flex justify-content-center">
         <button type="submit" class="btn btn-warning">Save changes</button>

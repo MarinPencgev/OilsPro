@@ -52,5 +52,19 @@ namespace OilsPro.Services
 
             return drivers;
         }
+
+        public Carrier GetCarrierById(string id)
+        {
+            var carrier = _context.Carriers.Find(id);
+            return carrier;
+        }
+
+        public Carrier Edit(Carrier carrier)
+        {
+            _context.Update(carrier);
+            _context.SaveChanges();
+
+            return carrier;
+        }
     }
 }

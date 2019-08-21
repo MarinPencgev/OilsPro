@@ -1,16 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using OilsPro.Data;
+using OilsPro.Data.Models;
 using OilsPro.Services;
+using OilsPro.Web.Models.ViewModels;
 
 namespace OilsPro.Web.Controllers
 {
     public class CarriersController : Controller
     {
         private readonly ICarriersService _carriersService;
+        private readonly IMapper _mapper;
 
-        public CarriersController(ICarriersService carriersService)
+        public CarriersController(ICarriersService carriersService, IMapper mapper)
         {
             _carriersService = carriersService;
+            _mapper = mapper;
         }
         public IActionResult GetCarrierVehicles(string carrierName)
         {
@@ -35,6 +40,21 @@ namespace OilsPro.Web.Controllers
         {
             var model = _carriersService.GetDriversByCarrierId(id);
             return this.View("Components/CarriersDrivers/Default", model);
+        }
+
+        public IActionResult Edit(string id)
+        {
+            var carrier = _carriersService.GetCarrierById(id);
+            var model = _mapper.Map<EditCarrierViewModel>(carrier);
+            return this.View("Edit", model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(EditCarrierViewModel input)
+        {
+            var carrier = _mapper.Map<Carrier>(input);
+            var editedReceiver = _carriersService.Edit(carrier);
+            return this.Redirect("/Nomenclatures/Carriers");
         }
     }
 }

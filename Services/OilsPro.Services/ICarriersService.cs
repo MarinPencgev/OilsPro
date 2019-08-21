@@ -11,5 +11,7 @@ namespace OilsPro.Services
         ICollection<string> GetCarrierDrivers(string carrierName);
         ICollection<Vehicle> GetVehiclesByCarrierId(string id);
         ICollection<Driver> GetDriversByCarrierId(string id);
+        Carrier GetCarrierById(string id);
+        Carrier Edit(Carrier carrier);
     }
 }

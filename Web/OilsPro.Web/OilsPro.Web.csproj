@@ -32,9 +32,4 @@
     <ProjectReference Include="..\..\Services\OilsPro.Services\OilsPro.Services.csproj" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <Folder Include="Views\Carriers\" />
-  </ItemGroup>
-
 </Project>

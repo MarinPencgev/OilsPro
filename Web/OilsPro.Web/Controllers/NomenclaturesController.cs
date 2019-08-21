@@ -2,17 +2,19 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using OilsPro.Services;
+using OilsPro.Web.Models.ViewModels;
 
 namespace OilsPro.Web.Controllers
 {
     public class NomenclaturesController: Controller
     {
         private readonly INomenclaturesService _nomenclaturesService;
+        private readonly IReceiverService _receiverService;
         private readonly IMapper _mapper;
-
-        public NomenclaturesController(INomenclaturesService nomenclaturesService, IMapper mapper)
+        public NomenclaturesController(INomenclaturesService nomenclaturesService, IReceiverService receiverService ,IMapper mapper)
         {
             _nomenclaturesService = nomenclaturesService;
+            _receiverService = receiverService;
             _mapper = mapper;
         }
         public IActionResult All()
@@ -60,6 +62,11 @@ namespace OilsPro.Web.Controllers
             return this.View(model);
         }
 
-        
+        //public IActionResult EditReceiver(EditReceiverViewModel input)
+        //{
+        //    var receiver = _receiverService.GetReceiverById(input.Id);
+        //    _receiverService.ChangeName(input.Id, input.Name);
+        //    return this.Redirect("/Nomenclatures/Receivers");
+        //}
     }
 }

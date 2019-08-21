@@ -12,5 +12,7 @@ namespace OilsPro.Services
         Receiver IncludeNewAddress(string receiverId, string town, string street);
         DeliveryAddress EditIncludedAddress(string inputId, string inputTown, string inputStreet);
         Receiver GetReceiverByAddressId(string inputId);
+        void ChangeName(string inputId, string inputName);
+        Receiver Edit(Receiver receiver);
     }
 }

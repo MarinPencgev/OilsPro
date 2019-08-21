@@ -13,8 +13,9 @@ namespace Oils
         public MappingProfile()
         {
             CreateMap<Receiver, EditReceiverViewModel>();
+            CreateMap<EditReceiverViewModel, Receiver>();
             CreateMap<Order, CreateOrderViewModel>();
-
+            CreateMap<Carrier, EditCarrierViewModel>();
         }
     }
 }

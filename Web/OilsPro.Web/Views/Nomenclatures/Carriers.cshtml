@@ -37,7 +37,7 @@
                 <td class="col-lg-3 suls-text-color">
                     @if (this.User.IsInRole("Admin"))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit |</a> 
+                        <a asp-controller="Carriers" asp-action="Edit" asp-route-id="@item.Id">Edit |</a> 
                         <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     }
                     

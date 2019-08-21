@@ -59,3 +59,5 @@ C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\View
 C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Components\CarriersVehicles\Default.g.cshtml.cs
 C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Components\CarriersDrivers\Default.g.cshtml.cs
 C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Receivers\EditIncludedAddress.g.cshtml.cs
+C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Carriers\Edit.g.cshtml.cs
+C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Carriers\CreateNewVehicle.g.cshtml.cs

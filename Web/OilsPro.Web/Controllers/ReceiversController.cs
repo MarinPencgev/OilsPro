@@ -29,7 +29,8 @@ namespace OilsPro.Web.Controllers
         public IActionResult Edit(EditReceiverViewModel input)
         {
             var receiver = _mapper.Map<Receiver>(input);
-            return this.View(input);
+            var editedReceiver = _receiversService.Edit(receiver);
+            return this.Redirect("/Nomenclatures/Receivers");
         }
         public IActionResult EditIncludedAddress(string id)
         {
