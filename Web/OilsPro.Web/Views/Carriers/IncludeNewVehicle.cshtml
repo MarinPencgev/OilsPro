@@ -1,17 +1,17 @@
 ﻿@model OilsPro.Data.Models.Vehicle
 
 @{
-    ViewData["Title"] = "CreateNewVehicle";
+    ViewData["Title"] = "IncludeNewVehicle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>CreateNewVehicle</h1>
+<h1>IncludeNewVehicle</h1>
 
 <h4>Vehicle</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateNewVehicle">
+        <form asp-action="IncludeNewVehicle">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="RegNumber" class="control-label"></label>
@@ -19,8 +19,8 @@
                 <span asp-validation-for="RegNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">Carrier name</label>
-                <select name="carrierName" class ="form-control" asp-items="ViewBag.Carriers"></select>
+                <label asp-for="CarrierId" class="control-label"></label>
+                <input asp-for="CarrierId" class="form-control" value="@ViewBag.CarrierId" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -30,6 +30,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a  asp-action="Edit" asp-controller="Carriers" asp-route-id="@ViewBag.CarrierId">Back to List</a>
 </div>
 

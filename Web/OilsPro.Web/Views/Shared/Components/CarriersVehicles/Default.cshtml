@@ -7,7 +7,7 @@
 <h6>Included Vehicles</h6>
 
 <p>
-    <a asp-action="CreateNewVehicle" asp-route-id="@ViewBag.CarrierId">Create New</a>
+    <a asp-action="IncludeNewVehicle" asp-route-id="@ViewBag.CarrierId">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -29,7 +29,7 @@
                     @Html.DisplayFor(modelItem => item.RegNumber)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Carrier.Id)
+                    @Html.DisplayFor(modelItem => item.Carrier.Name)
                 </td>
                 <td>
                     <a asp-action="EditIncludedVehicle" asp-route-id="@item.Id">Edit</a> |

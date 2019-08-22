@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Immutable;
+using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using OilsPro.Data;
 using OilsPro.Data.Models;
 using OilsPro.Services;
@@ -36,12 +38,16 @@ namespace OilsPro.Web.Controllers
         {
             var model = _carriersService.GetVehiclesByCarrierId(id);
 
+            ViewBag.CarrierId = id;
+
             return this.View("Components/CarriersVehicles/Default", model);
         }
 
         public IActionResult DriversDetails(string id)
         {
             var model = _carriersService.GetDriversByCarrierId(id);
+
+            ViewBag.CarrierId = id;
 
             return this.View("Components/CarriersDrivers/Default", model);
         }
@@ -79,41 +85,6 @@ namespace OilsPro.Web.Controllers
 
             return this.Redirect($"/Carriers/Edit?id={carrier.Id}");
         }
-        public IActionResult CreateNewVehicle(string id)
-        {
-            var model = new Vehicle()
-            {
-                CarrierId = id
-            };
-
-            return View(model);
-        }
-
-        [HttpPost]
-        public IActionResult CreateNewVehicle(IncludeVehicleViewModel input)
-        {
-            _carriersService.IncludeNewVehicle(input.CarrierId, input.RegNumber);
-
-            return Redirect($"/Carriers/Edit?id={input.CarrierId}");
-        }
-
-        public IActionResult CreateNewDriver(string id)
-        {
-            var model = new Driver()
-            {
-                CarrierId = id
-            };
-
-            return View(model);
-        }
-
-        [HttpPost]
-        public IActionResult CreateNewDriver(IncludeDriverViewModel input)
-        {
-            _carriersService.IncludeNewDriver(input.CarrierId, input.FullName);
-
-            return Redirect($"/Carriers/Edit?id={input.CarrierId}");
-        }
 
         public IActionResult EditIncludedDriver(string id)
         {
@@ -132,6 +103,36 @@ namespace OilsPro.Web.Controllers
             return this.Redirect($"/Carriers/Edit?id={carrier.Id}");
         }
 
+        public IActionResult IncludeNewVehicle(string id)
+        {
+            ViewBag.CarrierId = id;
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult IncludeNewVehicle(IncludeVehicleViewModel input)
+        {
+            _carriersService.IncludeNewVehicle(input.CarrierId, input.RegNumber);
+
+            return Redirect($"/Carriers/Edit?id={input.CarrierId}");
+        }
+
+        public IActionResult IncludeNewDriver(string id)
+        {
+            ViewBag.CarrierId = id;
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult IncludeNewDriver(IncludeDriverViewModel input)
+        {
+            _carriersService.IncludeNewDriver(input.CarrierId, input.FullName);
+
+            return Redirect($"/Carriers/Edit?id={input.CarrierId}");
+        }
+
         public IActionResult DeleteVehicle(string id)
         {
             var carrier = _carriersService.RemoveVehicle(id);
@@ -144,6 +145,46 @@ namespace OilsPro.Web.Controllers
             var carrier = _carriersService.RemoveDriver(id);
 
             return this.Redirect($"/Carriers/Edit?id={carrier.Id}");
+        }
+
+        public IActionResult CreateNewVehicle()
+        {
+            var carriers = _carriersService.GetAllCarriers()
+                .Select(x => x.Name)
+                .Select(x => new SelectListItem(x, x))
+                .ToList();
+
+            ViewBag.Carriers = carriers;
+
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateNewVehicle(CreateVehicleViewModel input)
+        {
+            var vehicle = _carriersService.CreateNewVehicle(input.RegNumber, input.CarrierName);
+
+            return Redirect("/Nomenclatures/Vehicles");
+        }
+
+        public IActionResult CreateNewDriver()
+        {
+            var carriers = _carriersService.GetAllCarriers()
+                .Select(x => x.Name)
+                .Select(x => new SelectListItem(x, x))
+                .ToList();
+
+            ViewBag.Carriers = carriers;
+
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateNewDriver(CreateDriverViewModel input)
+        {
+            var vehicle = _carriersService.CreateNewDriver(input.FullName, input.CarrierName);
+
+            return Redirect("/Nomenclatures/Vehicles");
         }
     }
 }

@@ -8,7 +8,7 @@
 <h1>Drivers</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-controller="Carriers" asp-action="CreateNewDriver">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -23,23 +23,24 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Carrier.Name)
-            </td>
-            <td>
-                @if (this.User.IsInRole("Admin"))
-                {
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit |</a> 
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                }
-               
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Carrier.Name)
+                </td>
+                <td>
+                    @if (this.User.IsInRole("Admin"))
+                    {
+                        <a asp-controller="Carriers" asp-action="EditIncludedDriver" asp-route-id="@item.Id">Edit |</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

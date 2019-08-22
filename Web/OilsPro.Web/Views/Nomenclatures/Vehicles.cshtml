@@ -8,7 +8,7 @@
 <h1>Vehicles</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-controller="Carriers" asp-action="CreateNewVehicle">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -17,7 +17,7 @@
                 @Html.DisplayNameFor(model => model.RegNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Carrier.Name)
+                @Html.DisplayNameFor(model => model.Carrier)
             </th>
             <th></th>
         </tr>
@@ -30,12 +30,12 @@
                     @Html.DisplayFor(modelItem => item.RegNumber)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Carrier.Id)
+                    @Html.DisplayFor(modelItem => item.Carrier.Name)
                 </td>
                 <td>
                     @if (this.User.IsInRole("Admin"))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit |</a>
+                        <a asp-controller="Carriers" asp-action="EditIncludedVehicle" asp-route-id="@item.Id">Edit |</a>
                         <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     }
                 </td>

@@ -14,5 +14,7 @@ namespace OilsPro.Services
         Receiver GetReceiverByAddressId(string inputId);
         void ChangeName(string inputId, string inputName);
         Receiver Edit(Receiver receiver);
+        ICollection<Receiver> GetAllReceivers();
+        DeliveryAddress CreateNewAddress(string town, string street, string receiverName);
     }
 }

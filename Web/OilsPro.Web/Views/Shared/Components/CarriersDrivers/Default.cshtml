@@ -16,7 +16,7 @@
     <h6>Included Drivers</h6>
     <p>
 
-        <a asp-action="CreateNewDriver" asp-route-id="@ViewBag.CarrierId">Create New</a>
+        <a asp-action="IncludeNewDriver" asp-route-id="@ViewBag.CarrierId">Create New</a>
 
     </p>
     <table class="table">
@@ -39,7 +39,7 @@
                         @Html.DisplayFor(modelItem => item.FullName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Carrier.Id)
+                        @Html.DisplayFor(modelItem => item.Carrier.Name)
                     </td>
                     <td>
                         <a asp-action="EditIncludedDriver" asp-route-id="@item.Id">Edit</a> |

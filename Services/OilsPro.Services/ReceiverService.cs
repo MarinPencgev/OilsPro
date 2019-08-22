@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using OilsPro.Data;
@@ -102,6 +103,40 @@ namespace OilsPro.Services
             _context.SaveChanges();
 
             return receiver;
+        }
+
+        public ICollection<Receiver> GetAllReceivers()
+        {
+            var receivers = _context.Receivers
+                .Include(x => x.DeliveryAddresses)
+                .ToList();
+
+            return receivers;
+        }
+
+        public DeliveryAddress CreateNewAddress(string town, string street, string receiverName)
+        {
+            var receiver = _context.Receivers
+                .Include(x => x.DeliveryAddresses)
+                .FirstOrDefault(x => x.Name == receiverName);
+
+            var deliveryAddress = new DeliveryAddress()
+            {
+                Town = town,
+                Street = street,
+                ReceiverId = receiver.Id,
+            };
+
+            if (receiver.DeliveryAddresses.Any(x => x.Town== town && x.Street == street))
+            {
+                //TODO message if contains address
+                throw new ArgumentException("there are.......");
+            }
+
+            _context.DeliveryAddresses.Add(deliveryAddress);
+            _context.SaveChanges();
+
+            return deliveryAddress;
         }
     }
 }

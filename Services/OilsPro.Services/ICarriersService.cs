@@ -21,5 +21,8 @@ namespace OilsPro.Services
         Carrier IncludeNewDriver(string carrierId, string fullName);
         Carrier RemoveVehicle(string id);
         Carrier RemoveDriver(string id);
+        ICollection<Carrier> GetAllCarriers();
+        Vehicle CreateNewVehicle(string regNumber, string carrierName);
+        Driver CreateNewDriver(string fullName, string carrierName);
     }
 }

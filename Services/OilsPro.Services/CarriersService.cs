@@ -39,6 +39,7 @@ namespace OilsPro.Services
         public ICollection<Vehicle> GetVehiclesByCarrierId(string id)
         {
             var vehicles = _context.Vehicles
+                .Include(x => x.Carrier)
                 .Where(x => x.Carrier.Id == id)
                 .ToList();
 
@@ -48,6 +49,7 @@ namespace OilsPro.Services
         public ICollection<Driver> GetDriversByCarrierId(string id)
         {
             var drivers = _context.Drivers
+                .Include(x => x.Carrier)
                 .Where(x => x.Carrier.Id == id)
                 .ToList();
 
@@ -166,6 +168,66 @@ namespace OilsPro.Services
             _context.SaveChanges();
 
             return carrier;
+        }
+
+        public ICollection<Carrier> GetAllCarriers()
+        {
+            var carriers = _context.Carriers
+                .Include(x => x.Drivers)
+                .Include(x => x.Vehicles)
+                .ToList();
+
+            return carriers;
+        }
+
+        public Vehicle CreateNewVehicle(string regNumber, string carrierName)
+        {
+            var carrier = _context.Carriers
+                .Include(x=>x.Vehicles)
+                .Include(x=>x.Drivers)
+                .FirstOrDefault(x => x.Name == carrierName);
+
+            var vehicle = new Vehicle
+            {
+                RegNumber = regNumber,
+                CarrierId = carrier.Id,
+            };
+
+            if (carrier.Vehicles.Any(x => x.RegNumber == regNumber))
+            {
+                //TODO message if contains vehicle
+                throw new ArgumentException("there are.......");
+            }
+
+            _context.Vehicles.Add(vehicle);
+            _context.SaveChanges();
+
+            return vehicle;
+        }
+
+        public Driver CreateNewDriver(string fullName, string carrierName)
+        {
+            var carrier = _context.Carriers
+                .Include(x => x.Vehicles)
+                .Include(x => x.Drivers)
+                .FirstOrDefault(x => x.Name == carrierName);
+
+            var driver = new Driver()
+            {
+                FullName = fullName,
+                CarrierId = carrier.Id,
+            };
+
+            if (carrier.Drivers.Any(x => x.FullName == fullName))
+            {
+                //TODO message if contains driver
+                throw new ArgumentException("there are.......");
+            }
+
+            _context.Drivers.Add(driver);
+            _context.SaveChanges();
+
+            return driver;
         }
     }
 }
