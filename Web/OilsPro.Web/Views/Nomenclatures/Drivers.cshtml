@@ -29,7 +29,7 @@
                 @Html.DisplayFor(modelItem => item.FullName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Carrier.Id)
+                @Html.DisplayFor(modelItem => item.Carrier.Name)
             </td>
             <td>
                 @if (this.User.IsInRole("Admin"))

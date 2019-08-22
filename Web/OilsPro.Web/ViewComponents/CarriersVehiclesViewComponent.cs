@@ -22,6 +22,8 @@ namespace OilsPro.Web.ViewComponents
         {
             var vehicles = _context.Vehicles.Where(x => x.CarrierId == id).ToListAsync();
 
+            ViewBag.CarrierId = id;
+
             return View("", await vehicles);
         }
     }

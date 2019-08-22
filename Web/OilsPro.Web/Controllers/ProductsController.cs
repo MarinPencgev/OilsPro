@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using OilsPro.Data.Models;
 using OilsPro.Services;
 using OilsPro.Web.Models.ViewModels;
 
@@ -10,11 +12,13 @@ namespace OilsPro.Web.Controllers
     {
         private readonly IProductsService _productsService;
         private readonly IOrdersService _ordersService;
+        private readonly IMapper _mapper;
 
-        public ProductsController(IProductsService productsService, IOrdersService ordersService)
+        public ProductsController(IProductsService productsService, IOrdersService ordersService, IMapper mapper)
         {
             _productsService = productsService;
             _ordersService = ordersService;
+            _mapper = mapper;
         }
 
         public IActionResult Create(string id)
@@ -31,7 +35,8 @@ namespace OilsPro.Web.Controllers
                                     input.PackageCapacity,
                                     input.PackageWeight);
 
-            return this.Redirect("/Products/Include");
+            //return this.Redirect("/Products/Include");
+            return this.Redirect("/Nomenclatures/Products");
         }
 
         public IActionResult Remove(string id)
@@ -40,13 +45,6 @@ namespace OilsPro.Web.Controllers
 
             var currentOrderId = id.Substring(0,36);
             return Redirect($"/Orders/Edit?id={currentOrderId}");
-        }
-
-        public IActionResult Edit(string id)
-        {
-            _productsService.Edit(id);
-
-            return Redirect($"/Nomenclatures/Products");
         }
 
         public IActionResult AllProducts()
@@ -90,6 +88,22 @@ namespace OilsPro.Web.Controllers
             var orderedProduct = _productsService.Include(id, productCode, productName, packagesCount, packagesWeight, lots);
 
             return this.Redirect($"/Orders/Edit?id={id}");
+        }
+
+        public IActionResult Edit(string id)
+        {
+            var model = _productsService.GetById(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(EditProductViewModel input)
+        {
+            var product = _mapper.Map<Product>(input);
+
+            _productsService.Edit(product);
+
+            return this.Redirect("/Nomenclatures/Products");
         }
     }
 }

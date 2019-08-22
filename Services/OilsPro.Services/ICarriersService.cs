@@ -13,5 +13,13 @@ namespace OilsPro.Services
         ICollection<Driver> GetDriversByCarrierId(string id);
         Carrier GetCarrierById(string id);
         Carrier Edit(Carrier carrier);
+        Carrier GetCarrierByVehicleId(string id);
+        Carrier GetCarrierByDriverId(string id);
+        Vehicle EditIncludedVehicle(string id, string regNumber);
+        Driver EditIncludedDriver(string id, string fullName);
+        Carrier IncludeNewVehicle(string carrierId, string regNumber);
+        Carrier IncludeNewDriver(string carrierId, string fullName);
+        Carrier RemoveVehicle(string id);
+        Carrier RemoveDriver(string id);
     }
 }

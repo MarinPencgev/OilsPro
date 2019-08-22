@@ -16,8 +16,13 @@ namespace OilsPro.Services
         }
         public Receiver GetReceiverById(string id)
         {
+            if (id == null)
+            {
+                return new Receiver();
+            }
+
             var receiver = _context.Receivers
-                .Include(x=>x.DeliveryAddresses)
+                .Include(x => x.DeliveryAddresses)
                 .First(x => x.Id == id);
             return receiver;
         }
@@ -47,7 +52,7 @@ namespace OilsPro.Services
         public Receiver IncludeNewAddress(string receiverId, string town, string street)
         {
             var receiver = _context.Receivers
-                .Include(x=>x.DeliveryAddresses)
+                .Include(x => x.DeliveryAddresses)
                 .First(x => x.Id == receiverId);
 
             receiver.DeliveryAddresses.Add(new DeliveryAddress
@@ -77,7 +82,7 @@ namespace OilsPro.Services
         {
             var address = _context.DeliveryAddresses.Find(inputId);
             var receiver = _context.Receivers
-                .Include(x=>x.DeliveryAddresses)
+                .Include(x => x.DeliveryAddresses)
                 .FirstOrDefault(x => x.DeliveryAddresses.Contains(address));
 
             return receiver;

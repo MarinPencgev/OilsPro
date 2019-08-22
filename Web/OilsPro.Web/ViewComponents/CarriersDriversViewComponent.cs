@@ -21,6 +21,8 @@ namespace OilsPro.Web.ViewComponents
         {
             var drivers = _context.Drivers.Where(x => x.CarrierId == id).ToListAsync();
 
+            ViewBag.CarrierId = id;
+
             return View("", await drivers);
         }
     }

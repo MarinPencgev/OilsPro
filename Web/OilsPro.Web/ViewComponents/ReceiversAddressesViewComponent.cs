@@ -23,7 +23,7 @@ namespace OilsPro.Web.ViewComponents
                 .Include(x=>x.Receiver)
                 .Where(x => x.ReceiverId == id)
                 .ToListAsync();
-
+            ViewBag.ReceiverId = id;
             return View(await addresses);
         }
     }

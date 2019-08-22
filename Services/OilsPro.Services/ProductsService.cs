@@ -85,5 +85,17 @@ namespace OilsPro.Services
 
            return product;
         }
+
+        public void Edit(Product product)
+        {
+            _context.Update(product);
+            _context.SaveChanges();
+        }
+
+        public Product GetById(string id)
+        {
+            var product = _context.Products.Find(id);
+            return product;
+        }
     }
 }

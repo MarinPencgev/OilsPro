@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Linq;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using OilsPro.Data;
 
 namespace OilsPro.Services
@@ -48,17 +49,31 @@ namespace OilsPro.Services
             switch (entityType)
             {
                 case "Products":
-                    return _context.Products.ToList();
+                    return _context.Products
+                        .Include(x=>x.Lots)
+                        .ToList();
                 case "Receivers":
-                    return _context.Receivers.ToList();
+                    return _context.Receivers
+                        .Include(x=>x.DeliveryAddresses)
+                        .Include(x=>x.Orders)
+                        .ToList();
                 case "Carriers":
-                    return _context.Carriers.ToList();
+                    return _context.Carriers
+                        .Include(x=>x.Drivers)
+                        .Include(x=>x.Vehicles)
+                        .ToList();
                 case "Vehicles":
-                    return _context.Vehicles.ToList();
+                    return _context.Vehicles
+                        .Include(x=>x.Carrier)
+                        .ToList();
                 case "Drivers":
-                    return _context.Drivers.ToList();
+                    return _context.Drivers
+                        .Include(x => x.Carrier)
+                        .ToList();
                 case "Addresses":
-                    return _context.DeliveryAddresses.ToList();
+                    return _context.DeliveryAddresses
+                        .Include(x=>x.Receiver)
+                        .ToList();
             }
 
             return null;

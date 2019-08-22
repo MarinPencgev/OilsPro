@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using OilsPro.Data.Models;
@@ -19,25 +20,31 @@ namespace OilsPro.Web.Controllers
             _receiversService = receiversService;
             _mapper = mapper;
         }
+
         public IActionResult Edit(string id)
         {
             var receiver = _receiversService.GetReceiverById(id);
             var model = _mapper.Map<EditReceiverViewModel>(receiver);
-            return this.View("Edit", model);
+
+            return this.View(model);
         }
+
         [HttpPost]
         public IActionResult Edit(EditReceiverViewModel input)
         {
             var receiver = _mapper.Map<Receiver>(input);
             var editedReceiver = _receiversService.Edit(receiver);
+
             return this.Redirect("/Nomenclatures/Receivers");
         }
+
         public IActionResult EditIncludedAddress(string id)
         {
             var receiver =  _receiversService.GetReceiverByAddressId(id);
             var address = receiver.DeliveryAddresses.FirstOrDefault(x => x.Id == id);
             return this.View(address);
         }
+
         [HttpPost]
         public IActionResult EditIncludedAddress(EditAddressViewModel input)
         {
@@ -74,6 +81,7 @@ namespace OilsPro.Web.Controllers
         public IActionResult Details(string id)
         {
             var model = _receiversService.GetDeliveryAddressesByReceiverId(id);
+
             return this.View("Components/ReceiversAddresses/Default", model);
         }
     }

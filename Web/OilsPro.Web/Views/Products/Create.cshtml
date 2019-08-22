@@ -7,13 +7,11 @@
 
 <h1 class="text-center suls-text-color">Create Product</h1>
 <form asp-controller="Products" asp-action="Create" method="post" id="productForm">
-
     <div class="container-fluid">
         <div class="row">
-
             <div class="col-6">
                 <label asp-for="ProductCode">Product code</label>
-                <input asp-for="ProductCode" class="form-control"/>
+                <input asp-for="ProductCode" class="form-control" />
                 <span asp-validation-for="ProductCode" class="text-danger"></span>
 
                 <label asp-for="Name">Product name</label>
@@ -32,9 +30,11 @@
             </div>
         </div>
     </div>
-
+    <br />
+    <br />
+    <br />
     <div class="button-holder d-flex justify-content-center">
-        <button type="submit" class="btn btn-warning" href="/Products/Include">Create</button>
+        <button type="submit" class="btn btn-warning">Create</button>
     </div>
 </form>
 

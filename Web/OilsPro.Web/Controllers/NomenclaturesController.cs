@@ -61,12 +61,5 @@ namespace OilsPro.Web.Controllers
             var model = _nomenclaturesService.All("Addresses");
             return this.View(model);
         }
-
-        //public IActionResult EditReceiver(EditReceiverViewModel input)
-        //{
-        //    var receiver = _receiverService.GetReceiverById(input.Id);
-        //    _receiverService.ChangeName(input.Id, input.Name);
-        //    return this.Redirect("/Nomenclatures/Receivers");
-        //}
     }
 }

@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using OilsPro.Data;
 using OilsPro.Data.Models;
@@ -34,11 +35,14 @@ namespace OilsPro.Web.Controllers
         public IActionResult VehiclesDetails(string id)
         {
             var model = _carriersService.GetVehiclesByCarrierId(id);
+
             return this.View("Components/CarriersVehicles/Default", model);
         }
+
         public IActionResult DriversDetails(string id)
         {
             var model = _carriersService.GetDriversByCarrierId(id);
+
             return this.View("Components/CarriersDrivers/Default", model);
         }
 
@@ -46,7 +50,8 @@ namespace OilsPro.Web.Controllers
         {
             var carrier = _carriersService.GetCarrierById(id);
             var model = _mapper.Map<EditCarrierViewModel>(carrier);
-            return this.View("Edit", model);
+
+            return this.View(model);
         }
 
         [HttpPost]
@@ -54,7 +59,91 @@ namespace OilsPro.Web.Controllers
         {
             var carrier = _mapper.Map<Carrier>(input);
             var editedReceiver = _carriersService.Edit(carrier);
+
             return this.Redirect("/Nomenclatures/Carriers");
+        }
+
+        public IActionResult EditIncludedVehicle(string id)
+        {
+            var carrier = _carriersService.GetCarrierByVehicleId(id);
+            var vehicle = carrier.Vehicles.FirstOrDefault(x=>x.Id == id);
+
+            return this.View(vehicle);
+        }
+
+        [HttpPost]
+        public IActionResult EditIncludedVehicle(EditVehicleViewModel input)
+        {
+            var vehicle = _carriersService.EditIncludedVehicle(input.Id, input.RegNumber);
+            var carrier = _carriersService.GetCarrierByVehicleId(input.Id);
+
+            return this.Redirect($"/Carriers/Edit?id={carrier.Id}");
+        }
+        public IActionResult CreateNewVehicle(string id)
+        {
+            var model = new Vehicle()
+            {
+                CarrierId = id
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult CreateNewVehicle(IncludeVehicleViewModel input)
+        {
+            _carriersService.IncludeNewVehicle(input.CarrierId, input.RegNumber);
+
+            return Redirect($"/Carriers/Edit?id={input.CarrierId}");
+        }
+
+        public IActionResult CreateNewDriver(string id)
+        {
+            var model = new Driver()
+            {
+                CarrierId = id
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult CreateNewDriver(IncludeDriverViewModel input)
+        {
+            _carriersService.IncludeNewDriver(input.CarrierId, input.FullName);
+
+            return Redirect($"/Carriers/Edit?id={input.CarrierId}");
+        }
+
+        public IActionResult EditIncludedDriver(string id)
+        {
+            var carrier = _carriersService.GetCarrierByDriverId(id);
+            var driver = carrier.Drivers.FirstOrDefault(x => x.Id == id);
+
+            return this.View(driver);
+        }
+
+        [HttpPost]
+        public IActionResult EditIncludedDriver(EditDriverViewModel input)
+        {
+            var driver = _carriersService.EditIncludedDriver(input.Id, input.FullName);
+            var carrier = _carriersService.GetCarrierByDriverId(input.Id);
+
+            return this.Redirect($"/Carriers/Edit?id={carrier.Id}");
+        }
+
+        public IActionResult DeleteVehicle(string id)
+        {
+            var carrier = _carriersService.RemoveVehicle(id);
+
+            return this.Redirect($"/Carriers/Edit?id={carrier.Id}");
+        }
+
+        public IActionResult DeleteDriver(string id)
+        {
+            var carrier = _carriersService.RemoveDriver(id);
+
+            return this.Redirect($"/Carriers/Edit?id={carrier.Id}");
         }
     }
 }

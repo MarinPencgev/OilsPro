@@ -1,18 +1,19 @@
 ﻿@model OilsPro.Data.Models.Vehicle
 
 @{
-    ViewData["Title"] = "CreateNewVehicle";
+    ViewData["Title"] = "EditIncludedVehicle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>CreateNewVehicle</h1>
+<h1>Edit Vehicle</h1>
 
-<h4>Vehicle</h4>
+<h4>Included Vehicle</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateNewVehicle">
+        <form asp-action="EditIncludedVehicle">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="RegNumber" class="control-label"></label>
                 <input asp-for="RegNumber" class="form-control" />
@@ -21,15 +22,16 @@
             <div class="form-group">
                 <label asp-for="CarrierId" class="control-label"></label>
                 <input asp-for="CarrierId" class="form-control" value="@Model.CarrierId" />
+                <span asp-validation-for="CarrierId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a  asp-action="Edit" asp-controller="Carriers" asp-route-id="@Model.CarrierId">Back to List</a>
+    <a asp-action="Edit" asp-controller="Carriers" asp-route-id="@Model.CarrierId">Back to List</a>
 </div>
 

@@ -10,7 +10,9 @@ namespace OilsPro.Services
         ICollection<OrderedProducts> GetProductsByOrderId(string inputId);
         ICollection<Product> GetAll();
         Product Create(string name, string productCode, string viscosity, int packagesCapacity, decimal packagesWeight);
-        Product Edit(string id);
         Product GetByProductCode(string productCode);
+
+        void Edit(Product product);
+        Product GetById(string id);
     }
 }
