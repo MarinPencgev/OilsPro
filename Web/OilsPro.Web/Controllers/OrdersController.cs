@@ -1,5 +1,7 @@
-﻿using System.Security.Claims;
+﻿using System.Linq;
+using System.Security.Claims;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OilsPro.Services;
 using OilsPro.Web.Models.ViewModels;
@@ -11,14 +13,20 @@ namespace OilsPro.Web.Controllers
         private readonly IOrdersService _orderService;
         private readonly IProductsService _productsService;
         private readonly IMapper _mapper;
+        private readonly ICarriersService _carriersService;
 
-        public OrdersController(IOrdersService orderService, IProductsService productsService, IMapper mapper)
+        public OrdersController(IOrdersService orderService,
+                                IProductsService productsService,
+                                IMapper mapper,
+                                ICarriersService carriersService)
         {
             _orderService = orderService;
             _productsService = productsService;
             _mapper = mapper;
+            _carriersService = carriersService;
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             var products = new CreateOrderViewModel();
@@ -26,9 +34,22 @@ namespace OilsPro.Web.Controllers
             return View(products);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Create(CreateOrderViewModel input)
         {
+            if (!ModelState.IsValid)
+            {
+                var products = new CreateOrderViewModel();
+                return View(products);
+            }
+            var carrier = _carriersService.GetAllCarriers()
+                .FirstOrDefault(x => x.Name == input.Carrier.Name);
+            input.Driver.Carrier = carrier;
+            input.Driver.CarrierId = carrier.Id;
+            input.Vehicle.Carrier = carrier;
+            input.Vehicle.CarrierId = carrier.Id;
+
             if (!ModelState.IsValid)
             {
                 return this.View(input); 
@@ -46,6 +67,7 @@ namespace OilsPro.Web.Controllers
             return Redirect($"/Orders/Edit?id={order.Id}");
         }
 
+        [Authorize]
         public IActionResult Edit(string id)
         {
             var order = this._orderService.GetOrderById(id);
@@ -57,6 +79,7 @@ namespace OilsPro.Web.Controllers
             return View(model); 
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Edit(CreateOrderViewModel input)
         {
@@ -77,12 +100,15 @@ namespace OilsPro.Web.Controllers
                                input.Vehicle.RegNumber);
             return View(input);
         }
+
+        [Authorize]
         public IActionResult Remove(string id)
         {
             _orderService.Remove(id);
             return this.Redirect("/");
         }
 
+        [Authorize]
         public IActionResult Release(string id)
         {
             var order = _orderService.Release(id);

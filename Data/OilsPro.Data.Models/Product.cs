@@ -16,7 +16,8 @@ namespace OilsPro.Data.Models
         public string Name { get; set; }
 
         [Required]
-        [RegularExpression("[0-9]{8}")]
+        [MaxLength(8)]
+        [RegularExpression("[0-9]")]
         public string ProductCode { get; set; }
 
         [Required]

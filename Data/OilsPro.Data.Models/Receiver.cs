@@ -13,7 +13,7 @@ namespace OilsPro.Data.Models
         public string Id { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(30)]
         public string Name { get; set; }
 
         public ICollection<DeliveryAddress> DeliveryAddresses { get; set; }

@@ -23,16 +23,18 @@ namespace OilsPro.Web.Models.ViewModels
 
         public OrderStatus Status { get; set; } = OrderStatus.Uncompleted;
 
+        [Required]
         public string DeliveryAddress { get; set; } 
 
+        [Required]
         [Display(Name = "Receiver Name")]
         [DataType(DataType.Text)]
         public Receiver Receiver { get; set; }
-
+        [Required]
         public Carrier Carrier { get; set; }
-
+        [Required]
         public Vehicle Vehicle { get; set; }
-
+        [Required]
         public Driver Driver { get; set; }
 
         public ICollection<OrderedProducts> OrderedProducts { get; set; }

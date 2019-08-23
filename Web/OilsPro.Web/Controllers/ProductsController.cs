@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OilsPro.Data.Models;
 using OilsPro.Services;
@@ -21,24 +22,30 @@ namespace OilsPro.Web.Controllers
             _mapper = mapper;
         }
 
+        [Authorize]
         public IActionResult Create(string id)
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Create(CreateProductInputView input)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             _productsService.Create(input.Name,
                                     input.ProductCode,
                                     input.Viscosity,
                                     input.PackageCapacity,
                                     input.PackageWeight);
 
-            //return this.Redirect("/Products/Include");
             return this.Redirect("/Nomenclatures/Products");
         }
 
+        [Authorize]
         public IActionResult Remove(string id)
         {
             _productsService.Remove(id);
@@ -47,6 +54,7 @@ namespace OilsPro.Web.Controllers
             return Redirect($"/Orders/Edit?id={currentOrderId}");
         }
 
+        [Authorize]
         public IActionResult AllProducts()
         {
             var products = _productsService.GetAll()
@@ -59,6 +67,7 @@ namespace OilsPro.Web.Controllers
             return Json(products);
         }
 
+        [Authorize]
         public IActionResult GetLotsByProduct(string selectedProduct)
         {
             var productCode = selectedProduct.Substring(0, 8);
@@ -70,6 +79,7 @@ namespace OilsPro.Web.Controllers
             return Json(productLots); 
         }
 
+        [Authorize]
         public IActionResult Include(string id, string products, string lots, string packagesCount)
         {
             var orderId = id;
@@ -90,15 +100,23 @@ namespace OilsPro.Web.Controllers
             return this.Redirect($"/Orders/Edit?id={id}");
         }
 
+        [Authorize]
         public IActionResult Edit(string id)
         {
             var model = _productsService.GetById(id);
             return View(model);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Edit(EditProductViewModel input)
         {
+            if (!ModelState.IsValid)
+            {
+                var model = _productsService.GetById(input.Id);
+                return View(model);
+            }
+
             var product = _mapper.Map<Product>(input);
 
             _productsService.Edit(product);

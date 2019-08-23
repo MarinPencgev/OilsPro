@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateNewDriver">
+        <form asp-action="CreateNewDriver" id="myForm">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FullName" class="control-label"></label>
@@ -20,11 +20,21 @@
             </div>
             <div class="form-group">
                 <label asp-for="CarrierId" class="control-label"></label>
-                <select name="carrierName" class="form-control" asp-items="ViewBag.Carriers"></select>
+                <select name="carrierName" class="form-control" asp-items="ViewBag.Carriers" id="carrier"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="button" value="Create" class="btn btn-primary" id="create"/>
             </div>
+            <script>
+                $("#create").click(function () {
+                    var carrierName = $("#carrier").val();
+                    if (carrierName === "Choose >>>") {
+                        alert("Choose a carrier name, please !");
+                    } else {
+                        document.getElementById("myForm").submit();
+                    }
+                });
+            </script>
         </form>
     </div>
 </div>

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OilsPro.Services;
 using OilsPro.Web.Models.ViewModels;
@@ -17,6 +18,8 @@ namespace OilsPro.Web.Controllers
             _receiverService = receiverService;
             _mapper = mapper;
         }
+
+        [Authorize]
         public IActionResult All()
         {
             var nomenclatures = new Dictionary<string, int>()
@@ -30,32 +33,43 @@ namespace OilsPro.Web.Controllers
             };
             return this.View(nomenclatures);
         }
+
+        [Authorize]
         public IActionResult Products()
         {
             var model = _nomenclaturesService.All("Products");
             return this.View(model);
         }
+
+        [Authorize]
         public IActionResult Receivers()
         {
             var model = _nomenclaturesService.All("Receivers");
             return this.View(model);
         }
+
+        [Authorize]
         public IActionResult Carriers()
         {
             var model = _nomenclaturesService.All("Carriers");
             return this.View(model);
         }
+
+        [Authorize]
         public IActionResult Vehicles()
         {
             var model = _nomenclaturesService.All("Vehicles");
             return this.View(model);
         }
+
+        [Authorize]
         public IActionResult Drivers()
         {
             var model = _nomenclaturesService.All("Drivers");
             return this.View(model);
         }
 
+        [Authorize]
         public IActionResult Addresses()
         {
             var model = _nomenclaturesService.All("Addresses");

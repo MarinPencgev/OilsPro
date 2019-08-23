@@ -30,6 +30,24 @@ namespace OilsPro.Data
                 .HasOne(x => x.Product)
                 .WithMany(x => x.Lots)
                 .HasForeignKey(x => x.ProductId);
+
+            builder.Entity<Receiver>()
+                .HasMany(x => x.Orders)
+                .WithOne(x => x.Receiver)
+                .HasForeignKey(x => x.ReceiverId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Carrier>()
+                .HasMany(x => x.Vehicles)
+                .WithOne(x => x.Carrier)
+                .HasForeignKey(x => x.CarrierId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Carrier>()
+                .HasMany(x => x.Drivers)
+                .WithOne(x => x.Carrier)
+                .HasForeignKey(x => x.CarrierId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
