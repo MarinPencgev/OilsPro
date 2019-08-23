@@ -20,26 +20,38 @@
             </div>
             <div class="form-group">
                 <label class="control-label">Carrier name</label>
-                <select name="carrierName" class ="form-control" asp-items="ViewBag.Carriers" id="carrier"></select>
+                <select name="carrierName" class="form-control" asp-items="ViewBag.Carriers" id="carrier"></select>
             </div>
             <div class="form-group">
                 <input type="button" value="Create" class="btn btn-primary" id="create" />
             </div>
-            <script>
-                $("#create").click(function () {
-                    var carrierName = $("#carrier").val();
-                    if (carrierName === "Choose >>>") {
-                        alert("Choose a carrier name, please !");
-                    } else {
-                        document.getElementById("myForm").submit();
-                    }
-                });
-            </script>
+
+            <script src="~/Js/SelectCarrier.js"></script>
+
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="Nomenclatures" asp-action="Vehicles">Back to List</a>
 </div>
 
+@*----------------MODAL-----------------------------*@
+<div class="modal" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Check for carrier selection</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Choose a carrier name, please !</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>

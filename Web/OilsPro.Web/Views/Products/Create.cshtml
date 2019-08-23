@@ -8,8 +8,8 @@
 <h1 class="text-center suls-text-color">Create Product</h1>
 <form asp-controller="Products" asp-action="Create" method="post" id="productForm">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-6">
+        <div class="row form-group">
+            <div class="col-6 ">
                 <label asp-for="ProductCode">Product code</label>
                 <input asp-for="ProductCode" class="form-control" />
                 <span asp-validation-for="ProductCode" class="text-danger"></span>

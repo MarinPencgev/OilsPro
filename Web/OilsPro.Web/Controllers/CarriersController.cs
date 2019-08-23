@@ -203,21 +203,7 @@ namespace OilsPro.Web.Controllers
         [Authorize]
         public IActionResult CreateNewVehicle()
         {
-            List<SelectListItem> list = new List<SelectListItem>
-            {
-                new SelectListItem("Choose >>>", "Choose >>>")
-            };
-
-            var carrierNames = _carriersService.GetAllCarriers()
-                .Select(x => x.Name)
-                .ToList();
-
-            foreach (var carrier in carrierNames)
-            {
-                list.Add(new SelectListItem(carrier, carrier));
-            }
-
-            ViewBag.Carriers = list;
+            ViewBag.Carriers = SetCarriersToSelectListItems();
 
             return this.View();
         }
@@ -228,6 +214,8 @@ namespace OilsPro.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.Carriers = SetCarriersToSelectListItems();
+
                 return this.View();
             }
             var vehicle = _carriersService.CreateNewVehicle(input.RegNumber, input.CarrierName);
@@ -263,11 +251,46 @@ namespace OilsPro.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
+                List<SelectListItem> list = new List<SelectListItem>
+                {
+                    new SelectListItem("Choose >>>", "Choose >>>")
+                };
+
+                var carrierNames = _carriersService.GetAllCarriers()
+                    .Select(x => x.Name)
+                    .ToList();
+
+                foreach (var carrier in carrierNames)
+                {
+                    list.Add(new SelectListItem(carrier, carrier));
+                }
+
+                ViewBag.Carriers = list;
+
                 return this.View();
             }
             var vehicle = _carriersService.CreateNewDriver(input.FullName, input.CarrierName);
 
             return Redirect("/Nomenclatures/Drivers");
+        }
+
+        private List<SelectListItem> SetCarriersToSelectListItems()
+        {
+            List<SelectListItem> list = new List<SelectListItem>
+            {
+                new SelectListItem("Choose >>>", "Choose >>>")
+            };
+
+            var carrierNames = _carriersService.GetAllCarriers()
+                .Select(x => x.Name)
+                .ToList();
+
+            foreach (var carrier in carrierNames)
+            {
+                list.Add(new SelectListItem(carrier, carrier));
+            }
+
+            return list;
         }
     }
 }

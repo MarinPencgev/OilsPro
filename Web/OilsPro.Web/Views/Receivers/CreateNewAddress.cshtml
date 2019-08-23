@@ -25,37 +25,28 @@
             </div>
             <div class="form-group">
                 <label asp-for="ReceiverId" class="control-label"></label>
-                <select name="receiverName" class ="form-control" asp-items="ViewBag.Receivers" id="receiver"></select>
+                <select name="receiverName" class="form-control" asp-items="ViewBag.Receivers" id="receiver"></select>
             </div>
             <div class="form-group">
-                <input type="button" value="Create" class="btn btn-primary" id="create"/>
+                <input type="button" value="Create" class="btn btn-primary" id="create" />
             </div>
-            <script>
-                $("#create").click(function () {
-                    var receiverName = $("#receiver").val();
-                    if (receiverName === "Choose >>>") {
-                        //alert("Choose a receiver name, please !");
-                        $('#myModal').modal({
-                            keyboard: false
-                        });
-                    } else {
-                        document.getElementById("myForm").submit();
-                    }
-                });
-            </script>
+
+            <script src="~/Js/SelectReceiver.js"></script>
+
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="Nomenclatures" asp-action="Addresses">Back to List</a>
 </div>
 
+@*----------------MODAL-----------------------------*@
 <div class="modal" tabindex="-1" role="dialog" id="myModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">Check for receiver selection</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

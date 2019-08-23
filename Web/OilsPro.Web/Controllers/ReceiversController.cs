@@ -144,11 +144,32 @@ namespace OilsPro.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.Receivers = SetReceiversToSelectListItem();
+
                 return this.View();
             }
+
             var vehicle = _receiversService.CreateNewAddress(input.Town, input.Street, input.ReceiverName);
 
             return Redirect("/Nomenclatures/Addresses");
+        }
+
+        private List<SelectListItem> SetReceiversToSelectListItem()
+        {
+            List<SelectListItem> list = new List<SelectListItem>
+            {
+                new SelectListItem("Choose >>>", "Choose >>>")
+            };
+
+            var receiverNames = _receiversService.GetAllReceivers()
+                .Select(x => x.Name).ToList();
+
+            foreach (var receiver in receiverNames)
+            {
+                list.Add(new SelectListItem(receiver, receiver));
+            }
+
+            return list;
         }
     }
 }

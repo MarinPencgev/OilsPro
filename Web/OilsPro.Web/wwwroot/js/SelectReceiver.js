@@ -3,6 +3,7 @@
 
 // Write your JavaScript code.
 
+//Create Address
     $("#create").click(function () {
         var receiverName = $("#receiver").val();
         if (receiverName === "Choose >>>") {
@@ -14,3 +15,10 @@
             document.getElementById("myForm").submit();
         }
     });
+
+
+
+
+
+
+
