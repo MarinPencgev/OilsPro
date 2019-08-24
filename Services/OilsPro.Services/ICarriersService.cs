@@ -19,10 +19,11 @@ namespace OilsPro.Services
         Driver EditIncludedDriver(string id, string fullName);
         Carrier IncludeNewVehicle(string carrierId, string regNumber);
         Carrier IncludeNewDriver(string carrierId, string fullName);
-        Carrier RemoveVehicle(string id);
-        Carrier RemoveDriver(string id);
+        Vehicle RemoveVehicle(string vehicleId);
+        Driver RemoveDriver(string driverId);
         ICollection<Carrier> GetAllCarriers();
         Vehicle CreateNewVehicle(string regNumber, string carrierName);
         Driver CreateNewDriver(string fullName, string carrierName);
+        Carrier Delete(string carrierId);
     }
 }

@@ -48,9 +48,8 @@
                     @if (this.User.IsInRole("Admin"))
                     {
                         <a asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id">Edit |</a>
-                        <a asp-action = "Delete" asp-route-id ="@item.Id" > Delete</a>
+                        <a asp-controller="Products" asp-action = "Delete" asp-route-id ="@item.Id"> Delete</a>
                     }
-
                 </td>
             </tr>
         }

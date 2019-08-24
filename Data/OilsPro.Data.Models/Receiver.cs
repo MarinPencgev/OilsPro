@@ -16,6 +16,8 @@ namespace OilsPro.Data.Models
         [MaxLength(30)]
         public string Name { get; set; }
 
+        public bool isDeleted { get; set; }
+
         public ICollection<DeliveryAddress> DeliveryAddresses { get; set; }
         public ICollection<Order> Orders { get; set; }
     }

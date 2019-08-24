@@ -19,6 +19,7 @@ namespace OilsPro.Services
         public ICollection<string> GetCarrierVehicles(string carrierName)
         {
             var vehicles = _context.Vehicles
+                .Where(x => x.isDeleted == false)
                 .Where(x => x.Carrier.Name == carrierName)
                 .Select(x => x.RegNumber)
                 .ToList();
@@ -29,6 +30,7 @@ namespace OilsPro.Services
         public ICollection<string> GetCarrierDrivers(string carrierName)
         {
             var drivers = _context.Drivers
+                .Where(x=>x.isDeleted == false)
                 .Where(x => x.Carrier.Name == carrierName)
                 .Select(x => x.FullName)
                 .ToList();
@@ -146,28 +148,30 @@ namespace OilsPro.Services
             return carrier;
         }
 
-        public Carrier RemoveVehicle(string id)
+        public Vehicle RemoveVehicle(string vehicleId)
         {
-            var vehicle = _context.Vehicles.Find(id);
+            var vehicle = _context.Vehicles
+                .Include(x=>x.Carrier)
+                .FirstOrDefault(x=>x.Id == vehicleId);
 
-            var carrier = _context.Carriers.FirstOrDefault(x => x.Vehicles.Contains(vehicle));
+            vehicle.isDeleted = true;
 
-            _context.Remove(vehicle);
             _context.SaveChanges();
 
-            return carrier;
+            return vehicle;
         }
 
-        public Carrier RemoveDriver(string id)
+        public Driver RemoveDriver(string driverId)
         {
-            var driver = _context.Drivers.Find(id);
+            var driver = _context.Drivers
+                .Include(x=>x.Carrier)
+                .FirstOrDefault(x=>x.Id == driverId);
 
-            var carrier = _context.Carriers.FirstOrDefault(x => x.Drivers.Contains(driver));
+            driver.isDeleted = true;
 
-            _context.Remove(driver);
             _context.SaveChanges();
 
-            return carrier;
+            return driver;
         }
 
         public ICollection<Carrier> GetAllCarriers()
@@ -228,6 +232,16 @@ namespace OilsPro.Services
             _context.SaveChanges();
 
             return driver;
+        }
+
+        public Carrier Delete(string carrierId)
+        {
+            var carrier = _context.Carriers.Find(carrierId);
+            carrier.isDeleted = true;
+
+            _context.SaveChanges();
+
+            return carrier;
         }
     }
 }

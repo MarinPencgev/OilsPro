@@ -14,6 +14,8 @@ namespace OilsPro.Data.Models
         [MaxLength(50)]
         public string Street { get; set; }
 
+        public bool isDeleted { get; set; }
+
         [Required]
         public string ReceiverId { get; set; }
         public Receiver Receiver { get; set; }

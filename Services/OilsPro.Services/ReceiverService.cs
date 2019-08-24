@@ -31,9 +31,11 @@ namespace OilsPro.Services
         public ICollection<string> GetReceiverAddresses(string receiverName)
         {
             var addresses = _context.Receivers
+                .Where(x=>x.isDeleted == false)
                 .Include(x => x.DeliveryAddresses)
                 .FirstOrDefault(x => x.Name == receiverName)
                 .DeliveryAddresses
+                .Where(x=>x.isDeleted == false)
                 .Select(x => x.Town + ", " + x.Street)
                 .ToList();
             return addresses;
@@ -137,6 +139,30 @@ namespace OilsPro.Services
             _context.SaveChanges();
 
             return deliveryAddress;
+        }
+
+        public DeliveryAddress DeleteAddress(string addressId)
+        {
+            var address = _context.DeliveryAddresses
+                .Include(x=>x.Receiver)
+                .FirstOrDefault(x => x.Id == addressId);
+
+            address.isDeleted = true;
+
+            _context.SaveChanges();
+
+            return address;
+        }
+
+        public Receiver Delete(string receiverId)
+        {
+            var receiver = _context.Receivers.Find(receiverId);
+
+            receiver.isDeleted = true;
+
+            _context.SaveChanges();
+
+            return receiver;
         }
     }
 }

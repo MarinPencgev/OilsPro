@@ -28,6 +28,8 @@ namespace OilsPro.Data.Models
         [Range(0, int.MaxValue)]
         public int PackageCapacity { get; set; }
 
+        public bool isDeleted { get; set; }
+
         public ICollection<Lot> Lots { get; set; }
     }
 }

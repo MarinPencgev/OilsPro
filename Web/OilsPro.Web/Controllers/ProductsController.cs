@@ -123,5 +123,12 @@ namespace OilsPro.Web.Controllers
 
             return this.Redirect("/Nomenclatures/Products");
         }
+
+        public IActionResult Delete(string id)
+        {
+            var product = _productsService.Delete(id);
+            
+            return this.Redirect("/Nomenclatures/Products");
+        }
     }
 }

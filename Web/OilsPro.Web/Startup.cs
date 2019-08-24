@@ -38,11 +38,6 @@ namespace OilsPro.Web
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => 
                     b.MigrationsAssembly("OilsPro.Web")));
 
-            //services.AddDbContext<OilsProDbContext>(options =>
-            //    options.UseSqlServer(
-            //        Configuration.GetConnectionString("DefaultConnection")));
-
-
             //Password settings
             services.AddIdentity<OilsProUser, IdentityRole>(o =>
             {
@@ -63,7 +58,6 @@ namespace OilsPro.Web
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile());
-
             });
 
             IMapper mapper = mappingConfig.CreateMapper();
@@ -91,17 +85,6 @@ namespace OilsPro.Web
 
                     if (!context.Roles.Any())
                     {
-                        //Ivo
-                        //context.Roles.Include(new IdentityRole
-                        //{
-                        //    Name = "Admin",
-                        //    NormalizedName = "ADMIN"
-                        //});
-                        //context.Roles.Include(new IdentityRole
-                        //{
-                        //    Name = "User",
-                        //    NormalizedName = "USER"
-                        //});
                         var admin = new IdentityRole
                         {
                             Name = "Admin",

@@ -20,7 +20,10 @@ namespace OilsPro.Web.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(string id)
         {
-            var vehicles = _context.Vehicles.Where(x => x.CarrierId == id).ToListAsync();
+            var vehicles = _context.Vehicles
+                .Include(x => x.Carrier)
+                .Where(x => x.CarrierId == id && x.isDeleted == false)
+                .ToListAsync();
 
             ViewBag.CarrierId = id;
 

@@ -171,5 +171,21 @@ namespace OilsPro.Web.Controllers
 
             return list;
         }
+
+        public IActionResult DeleteAddress(string id)
+        {
+            var address = _receiversService.DeleteAddress(id);
+
+            var receiverId = address.ReceiverId;
+
+            return this.Redirect($"/Receivers/Edit?id={receiverId}");
+        }
+
+        public IActionResult Delete(string id)
+        {
+            var receiver = _receiversService.Delete(id);
+
+            return this.Redirect("/Nomenclatures/Receivers");
+        }
     }
 }

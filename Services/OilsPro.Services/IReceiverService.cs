@@ -16,5 +16,7 @@ namespace OilsPro.Services
         Receiver Edit(Receiver receiver);
         ICollection<Receiver> GetAllReceivers();
         DeliveryAddress CreateNewAddress(string town, string street, string receiverName);
+        DeliveryAddress DeleteAddress(string addressId);
+        Receiver Delete(string receiverId);
     }
 }

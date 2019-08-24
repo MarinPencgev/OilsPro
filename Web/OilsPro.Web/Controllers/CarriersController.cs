@@ -187,17 +187,19 @@ namespace OilsPro.Web.Controllers
         [Authorize]
         public IActionResult DeleteVehicle(string id)
         {
-            var carrier = _carriersService.RemoveVehicle(id);
+            var vehicle = _carriersService.RemoveVehicle(id);
+            var carrierId = vehicle.Carrier.Id;
 
-            return this.Redirect($"/Carriers/Edit?id={carrier.Id}");
+            return this.Redirect($"/Carriers/Edit?id={carrierId}");
         }
 
         [Authorize]
         public IActionResult DeleteDriver(string id)
         {
-            var carrier = _carriersService.RemoveDriver(id);
+            var deletedDriver = _carriersService.RemoveDriver(id);
+            var carrierId = deletedDriver.Carrier.Id; 
 
-            return this.Redirect($"/Carriers/Edit?id={carrier.Id}");
+            return this.Redirect($"/Carriers/Edit?id={carrierId}");
         }
 
         [Authorize]
@@ -291,6 +293,13 @@ namespace OilsPro.Web.Controllers
             }
 
             return list;
+        }
+
+        public IActionResult Delete(string id)
+        {
+            var carrier = _carriersService.Delete(id);
+
+            return this.Redirect("/Nomenclatures/Carriers");
         }
     }
 }

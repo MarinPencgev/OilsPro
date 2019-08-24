@@ -24,8 +24,8 @@ namespace OilsPro.Services
                 OrderedPackagesCount = int.Parse(packegesCount),
                 OrderedPackagesWeight = decimal.Parse(packegesWeight),
                 ProductId = product.Id,
-                OrderId = orderId, 
-                LotId = _context.Products.SelectMany(x=>x.Lots).First(x=>x.SerialNumber == lot).Id
+                OrderId = orderId,
+                LotId = _context.Products.SelectMany(x => x.Lots).First(x => x.SerialNumber == lot).Id
             };
 
             _context.OrderedProducts.Add(orderedProduct);
@@ -36,12 +36,12 @@ namespace OilsPro.Services
 
         public OrderedProducts Remove(string id)
         {
-           var orderedProduct = _context.OrderedProducts.First(x => x.OrderId + x.ProductId == id);
+            var orderedProduct = _context.OrderedProducts.First(x => x.OrderId + x.ProductId == id);
 
-           _context.OrderedProducts.Remove(orderedProduct);
-           _context.SaveChanges();
+            _context.OrderedProducts.Remove(orderedProduct);
+            _context.SaveChanges();
 
-           return orderedProduct;
+            return orderedProduct;
         }
 
         public ICollection<OrderedProducts> GetProductsByOrderId(string id)
@@ -52,7 +52,7 @@ namespace OilsPro.Services
         public ICollection<Product> GetAll()
         {
             return _context.Products
-                .Include(x=>x.Lots)
+                .Include(x => x.Lots)
                 .ToList();
         }
 
@@ -79,11 +79,11 @@ namespace OilsPro.Services
 
         public Product GetByProductCode(string productCode)
         {
-           var product = _context.Products
-                .Include(x => x.Lots)
-                .First(x => x.ProductCode == productCode);
+            var product = _context.Products
+                 .Include(x => x.Lots)
+                 .First(x => x.ProductCode == productCode);
 
-           return product;
+            return product;
         }
 
         public void Edit(Product product)
@@ -94,7 +94,19 @@ namespace OilsPro.Services
 
         public Product GetById(string id)
         {
-            var product = _context.Products.Find(id);
+            var product = _context.Products
+                .Include(x => x.Lots)
+                .FirstOrDefault(x => x.Id == id);
+            return product;
+        }
+
+        public Product Delete(string productId)
+        {
+            var product = _context.Products.Find(productId);
+            product.isDeleted = true;
+
+            _context.SaveChanges();
+
             return product;
         }
     }

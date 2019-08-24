@@ -21,7 +21,7 @@ namespace OilsPro.Web.ViewComponents
         {
             var addresses = _context.DeliveryAddresses
                 .Include(x=>x.Receiver)
-                .Where(x => x.ReceiverId == id)
+                .Where(x => x.ReceiverId == id && x.isDeleted == false)
                 .ToListAsync();
             ViewBag.ReceiverId = id;
             return View(await addresses);

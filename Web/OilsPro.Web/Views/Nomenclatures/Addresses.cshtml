@@ -5,35 +5,36 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Include addresses</h1>
+<h1>Addresses</h1>
 
 <p>
     <a asp-controller="Receivers" asp-action="CreateNewAddress">Create New</a>
 </p>
 <table class="table">
     <thead>
-    <tr class="row">
-        <th scope="col" class="col-lg-3 suls-text-color">Town</th>
-        <th scope="col" class="col-lg-3 suls-text-color">Street</th>
-        <th scope="col" class="col-lg-3 suls-text-color">Receiver</th>
-        <th scope="col" class="col-lg-3 suls-text-color">Action</th>
-    </tr>
+        <tr class="row">
+            <th scope="col" class="col-lg-3 suls-text-color">Town</th>
+            <th scope="col" class="col-lg-3 suls-text-color">Street</th>
+            <th scope="col" class="col-lg-3 suls-text-color">Receiver</th>
+            <th scope="col" class="col-lg-3 suls-text-color"></th>
+        </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr class="row">
-            <td class="col-lg-3 suls-text-color">@item.Town</td>
-            <td class="col-lg-3 suls-text-color">@item.Street</td>
-            <td class="col-lg-3 suls-text-color">@item.Receiver.Name</td>
-            <td class="col-lg-3 suls-text-color">
-                @if (this.User.IsInRole("Admin"))
-                {
-                <a asp-controller="Receivers" asp-action="EditIncludedAddress" asp-route-id="@item.Id">Edit |</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                }
-            </td>
-        </tr>
-        
-}
+        @foreach (var item in Model)
+        {
+            <tr class="row">
+                <td class="col-lg-3 suls-text-color">@item.Town</td>
+                <td class="col-lg-3 suls-text-color">@item.Street</td>
+                <td class="col-lg-3 suls-text-color">@item.Receiver.Name</td>
+                <td class="col-lg-3 suls-text-color">
+                    @if (this.User.IsInRole("Admin"))
+                    {
+                        <a asp-controller="Receivers" asp-action="EditIncludedAddress" asp-route-id="@item.Id">Edit |</a>
+                        <a asp-controller="Receivers" asp-action="DeleteAddress" asp-route-id="@item.Id">Delete</a>
+                    }
+                </td>
+            </tr>
+
+        }
     </tbody>
 </table>

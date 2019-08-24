@@ -17,7 +17,7 @@
             <th scope="col" class="col-lg-3 suls-text-color">Carrier name</th>
             <th scope="col" class="col-lg-3 suls-text-color">Vehicles</th>
             <th scope="col" class="col-lg-3 suls-text-color">Drivers</th>
-            <th scope="col" class="col-lg-3 suls-text-color">Action</th>
+            <th scope="col" class="col-lg-3 suls-text-color"></th>
         </tr>
     </thead>
     <tbody>
@@ -38,7 +38,7 @@
                     @if (this.User.IsInRole("Admin"))
                     {
                         <a asp-controller="Carriers" asp-action="Edit" asp-route-id="@item.Id">Edit |</a> 
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-controller="Carriers" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     }
                     
                 </td>

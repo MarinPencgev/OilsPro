@@ -14,5 +14,6 @@ namespace OilsPro.Services
 
         void Edit(Product product);
         Product GetById(string id);
+        Product Delete(string productId);
     }
 }

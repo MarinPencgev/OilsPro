@@ -7,6 +7,7 @@ namespace OilsPro.Data.Models
         [Key]
         public string OrderId { get; set; }
         public Order Order { get; set; }
+
         [Key]
         public string ProductId { get; set; }
         public Product Product { get; set; }

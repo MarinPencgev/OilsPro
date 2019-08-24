@@ -83,17 +83,17 @@ namespace OilsPro.Web.Areas.Identity.Pages.Account
                     await _emailSender.SendEmailAsync(Input.Username, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-
                     //Adding first register user to role admin
                     if (_userManager.Users.Count() == 1)
                     {
-                       await _userManager.AddToRoleAsync(user, "Admin");
+                        await _userManager.AddToRoleAsync(user, "Admin");
                     }
                     else
                     {
                         await _userManager.AddToRoleAsync(user, "User");
                     }
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
 
                     return LocalRedirect(returnUrl);
                 }

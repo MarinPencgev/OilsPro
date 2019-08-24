@@ -42,8 +42,12 @@
                         @Html.DisplayFor(modelItem => item.Carrier.Name)
                     </td>
                     <td>
-                        <a asp-action="EditIncludedDriver" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="DeleteDriver" asp-route-id="@item.Id">Delete</a>
+                        @if (this.User.IsInRole("Admin"))
+                        {
+                            <a asp-action="EditIncludedDriver" asp-route-id="@item.Id">Edit |</a>
+                            <a asp-action="DeleteDriver" asp-route-id="@item.Id">Delete</a>
+                        }
+
                     </td>
                 </tr>
             }

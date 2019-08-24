@@ -10,6 +10,8 @@ namespace OilsPro.Data.Models
         [MaxLength(30)]
         public string RegNumber { get; set; }
 
+        public bool isDeleted { get; set; }
+
         public string CarrierId { get; set; }
         public Carrier Carrier { get; set; }
     }

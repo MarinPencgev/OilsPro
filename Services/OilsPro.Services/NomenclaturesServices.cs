@@ -50,28 +50,34 @@ namespace OilsPro.Services
             {
                 case "Products":
                     return _context.Products
+                        .Where(x => x.isDeleted == false)
                         .Include(x=>x.Lots)
                         .ToList();
                 case "Receivers":
                     return _context.Receivers
+                        .Where(x => x.isDeleted == false)
                         .Include(x=>x.DeliveryAddresses)
                         .Include(x=>x.Orders)
                         .ToList();
                 case "Carriers":
                     return _context.Carriers
+                        .Where(x=>x.isDeleted == false)
                         .Include(x=>x.Drivers)
                         .Include(x=>x.Vehicles)
                         .ToList();
                 case "Vehicles":
                     return _context.Vehicles
+                        .Where(x => x.isDeleted == false)
                         .Include(x=>x.Carrier)
                         .ToList();
                 case "Drivers":
                     return _context.Drivers
+                        .Where(x => x.isDeleted == false)
                         .Include(x => x.Carrier)
                         .ToList();
                 case "Addresses":
                     return _context.DeliveryAddresses
+                        .Where(x => x.isDeleted == false)
                         .Include(x=>x.Receiver)
                         .ToList();
             }
