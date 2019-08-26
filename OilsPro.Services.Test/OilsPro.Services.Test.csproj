@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.6" />
+    <PackageReference Include="nunit" Version="3.11.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data\OilsPro.Data.Models\OilsPro.Data.Models.csproj" />
+    <ProjectReference Include="..\Data\OilsPro.Data\OilsPro.Data.csproj" />
+    <ProjectReference Include="..\Services\OilsPro.Services\OilsPro.Services.csproj" />
+    <ProjectReference Include="..\Web\OilsPro.Web\OilsPro.Web.csproj" />
+  </ItemGroup>
+
+</Project>

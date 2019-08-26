@@ -9,13 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{2CFC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{24AEFDE6-AE58-4D9B-84CE-1A27652A37F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OilsPro.Data", "Data\OilsPro.Data\OilsPro.Data.csproj", "{091E8150-9A7D-4E21-88FC-431E5D990C3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OilsPro.Data", "Data\OilsPro.Data\OilsPro.Data.csproj", "{091E8150-9A7D-4E21-88FC-431E5D990C3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OilsPro.Data.Models", "Data\OilsPro.Data.Models\OilsPro.Data.Models.csproj", "{03460CFF-8B85-44B3-8C12-7787A6EE6A41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OilsPro.Data.Models", "Data\OilsPro.Data.Models\OilsPro.Data.Models.csproj", "{03460CFF-8B85-44B3-8C12-7787A6EE6A41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OilsPro.Web", "Web\OilsPro.Web\OilsPro.Web.csproj", "{5648C189-2601-4978-B5CC-29C1DAF4345F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OilsPro.Web", "Web\OilsPro.Web\OilsPro.Web.csproj", "{5648C189-2601-4978-B5CC-29C1DAF4345F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OilsPro.Services", "Services\OilsPro.Services\OilsPro.Services.csproj", "{941ABB34-156F-4A8C-8789-7E4D5C03441E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OilsPro.Services", "Services\OilsPro.Services\OilsPro.Services.csproj", "{941ABB34-156F-4A8C-8789-7E4D5C03441E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1644E42B-15AC-4127-854E-2541CA0F0AC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OilsPro.Services.Test", "OilsPro.Services.Test\OilsPro.Services.Test.csproj", "{6BE4CD53-5ACD-4A7A-A57F-FD19BA45D53B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,10 @@ Global
 		{941ABB34-156F-4A8C-8789-7E4D5C03441E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{941ABB34-156F-4A8C-8789-7E4D5C03441E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{941ABB34-156F-4A8C-8789-7E4D5C03441E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BE4CD53-5ACD-4A7A-A57F-FD19BA45D53B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BE4CD53-5ACD-4A7A-A57F-FD19BA45D53B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BE4CD53-5ACD-4A7A-A57F-FD19BA45D53B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BE4CD53-5ACD-4A7A-A57F-FD19BA45D53B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +56,7 @@ Global
 		{03460CFF-8B85-44B3-8C12-7787A6EE6A41} = {F3C045F4-D3B9-46E9-8982-01740DD59414}
 		{5648C189-2601-4978-B5CC-29C1DAF4345F} = {24AEFDE6-AE58-4D9B-84CE-1A27652A37F3}
 		{941ABB34-156F-4A8C-8789-7E4D5C03441E} = {2CFC0B6F-056F-4439-97FE-9F5D6839FD13}
+		{6BE4CD53-5ACD-4A7A-A57F-FD19BA45D53B} = {1644E42B-15AC-4127-854E-2541CA0F0AC4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6E781D68-F6BF-4A73-A1C5-B1BB864DEACD}

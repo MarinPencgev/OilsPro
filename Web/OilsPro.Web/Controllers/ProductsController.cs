@@ -23,9 +23,9 @@ namespace OilsPro.Web.Controllers
         }
 
         [Authorize]
-        public IActionResult Create(string id)
+        public IActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         [Authorize]

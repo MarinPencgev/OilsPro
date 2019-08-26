@@ -29,9 +29,9 @@
                     <td class="col-lg-4 suls-text-color">
                         <div class="button-holder">
                             <a href="/Orders/Edit?id=@order.OrderId" class="btn btn-warning">Complete</a>
-                            <a href="/Orders/Remove?id=@order.OrderId" class="btn btn-warning" id="remove" data-toggle="modal">Remove</a>
+                            <a href="/Orders/Remove?id=@order.OrderId" class="btn btn-warning" id="remove">Remove</a>
 
-                            @*<script src="~/Js/RemoveOrder.js"></script>*@
+                            <script src="~/Js/RemoveOrder.js"></script>
 
                             @if (order.OrderedPackagesCount > 0)
                             {
@@ -44,6 +44,8 @@
                         </div>
                     </td>
                 </tr>
+
+                <input class="invisible" id="Id" name="Id" value="@order.OrderId" />
             }
             <tr class="row">
                 <td class="col-lg-1 suls-text-color">-</td>
@@ -75,9 +77,19 @@
                 <p>Selected order will be removed! Are you sure!</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="save" >Proceed</button>
+                <button  class="btn btn-primary" id="proceed">Proceed</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
 </div>
+
+@*<script>
+    $("#remove").click(function () {
+        var orderId = $("#Id").val();
+
+        var href = '/Orders/Remove?id=' + orderId;
+        document.getElementById("proceed").href = href;
+
+    });
+</script>*@

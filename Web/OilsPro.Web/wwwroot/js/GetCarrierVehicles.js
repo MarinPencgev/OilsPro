@@ -5,7 +5,7 @@
         url: "/Carriers/GetCarrierVehicles?carrierName=" + carrierName,
         data: "{}",
         success: function (data) {
-            var s = '<option value="-1">Please Select an vehicle</option>';
+            var s = '<option value="-1">Select vehicle...</option>';
             for (var i = 0; i < data.length; i++) {
                 s += '<option value="' + data[i] + '">' + data[i] + '</option>';
             }

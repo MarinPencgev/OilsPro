@@ -18,14 +18,14 @@ namespace OilsPro.Services
         public OrderedProducts Include(string orderId, string productCode, string productName, string packegesCount, string packegesWeight, string lot)
         {
             var product = _context.Products.First(x => x.ProductCode == productCode && x.Name == productName);
-
+            var lotId = _context.Lots.First(x => x.SerialNumber == lot).Id;
             var orderedProduct = new OrderedProducts()
             {
                 OrderedPackagesCount = int.Parse(packegesCount),
                 OrderedPackagesWeight = decimal.Parse(packegesWeight),
                 ProductId = product.Id,
                 OrderId = orderId,
-                LotId = _context.Products.SelectMany(x => x.Lots).First(x => x.SerialNumber == lot).Id
+                LotId = lotId,
             };
 
             _context.OrderedProducts.Add(orderedProduct);
@@ -52,6 +52,7 @@ namespace OilsPro.Services
         public ICollection<Product> GetAll()
         {
             return _context.Products
+                .Where(x=>x.Lots.Count > 0)
                 .Include(x => x.Lots)
                 .ToList();
         }

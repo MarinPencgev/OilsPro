@@ -41,6 +41,7 @@ namespace OilsPro.Web.Controllers
             if (!ModelState.IsValid)
             {
                 var products = new CreateOrderViewModel();
+
                 return View(products);
             }
             var carrier = _carriersService.GetAllCarriers()

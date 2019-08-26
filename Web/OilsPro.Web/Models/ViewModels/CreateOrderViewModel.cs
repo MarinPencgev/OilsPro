@@ -30,11 +30,17 @@ namespace OilsPro.Web.Models.ViewModels
         [Display(Name = "Receiver Name")]
         [DataType(DataType.Text)]
         public Receiver Receiver { get; set; }
+
         [Required]
+        [DataType(DataType.Text)]
         public Carrier Carrier { get; set; }
+
         [Required]
+        [DataType(DataType.Text)]
         public Vehicle Vehicle { get; set; }
+
         [Required]
+        [DataType(DataType.Text)]
         public Driver Driver { get; set; }
 
         public ICollection<OrderedProducts> OrderedProducts { get; set; }
