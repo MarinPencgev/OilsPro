@@ -10,7 +10,7 @@ namespace OilsPro.Data.Models
 
         public DateTime DeliveryDate { get; set; }
 
-        public string SupierId { get; set; }
+        public string SupplierId { get; set; }
         public Supplier Supplier { get; set; }
 
         public string LotId { get; set; }

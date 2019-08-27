@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using OilsPro.Data.Models;
 
 namespace OilsPro.Services
@@ -11,7 +12,6 @@ namespace OilsPro.Services
         ICollection<Product> GetAll();
         Product Create(string name, string productCode, string viscosity, int packagesCapacity, decimal packagesWeight);
         Product GetByProductCode(string productCode);
-
         void Edit(Product product);
         Product GetById(string id);
         Product Delete(string productId);

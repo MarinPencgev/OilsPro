@@ -1,0 +1,50 @@
+﻿@model OilsPro.Data.Models.Lot
+
+@{
+    ViewData["Title"] = "CreateNewLot";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>CreateNewLot</h1>
+
+<h4>Lot</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateNewLot">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SerialNumber" class="control-label"></label>
+                <input asp-for="SerialNumber" class="form-control" />
+                <span asp-validation-for="SerialNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PackagesCount" class="control-label"></label>
+                <input asp-for="PackagesCount" class="form-control" />
+                <span asp-validation-for="PackagesCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PackagesWeight" class="control-label"></label>
+                <input asp-for="PackagesWeight" class="form-control" />
+                <span asp-validation-for="PackagesWeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Density" class="control-label"></label>
+                <input asp-for="Density" class="form-control" />
+                <span asp-validation-for="Density" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductId" class="control-label">Product name</label>
+                <select asp-for="ProductId" class ="form-control" asp-items="ViewBag.Products"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using OilsPro.Data;
@@ -110,5 +111,6 @@ namespace OilsPro.Services
 
             return product;
         }
+        
     }
 }

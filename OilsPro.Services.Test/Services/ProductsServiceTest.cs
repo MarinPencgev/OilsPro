@@ -77,40 +77,40 @@ namespace OilsPro.Services.Test.Services
             Assert.True(order.Products.Count == 0, errorMessagePrefix);
         }
 
-        [Test]
-        public void GetProductsByOrderId_Return_Correct_Result()
-        {
-            string errorMessagePrefix = "ProductsService GetProductsByOrderId() method does not work properly.";
+        //[Test]
+        //public void GetProductsByOrderId_Return_Correct_Result()
+        //{
+        //    string errorMessagePrefix = "ProductsService GetProductsByOrderId() method does not work properly.";
 
-            var context = OilsProDbContextInMemoryFactory.InitializeContext();
+        //    var context = OilsProDbContextInMemoryFactory.InitializeContext();
 
-            SeedData(context);
+        //    SeedData(context);
 
-            this.productsService = new ProductsService(context);
+        //    this.productsService = new ProductsService(context);
 
-            var includeProduct1 =
-                productsService.Include(order.Id, product.ProductCode, product.Name, "10", "1800", lot.SerialNumber);
+        //    var includeProduct1 =
+        //        productsService.Include(order.Id, product.ProductCode, product.Name, "10", "1800", lot.SerialNumber);
 
-            context.Products.Add(new Product
-            {
-                Name = "Product2",
-                ProductCode = "02020202"
-            });
-            context.SaveChanges();
+        //    context.Products.Add(new Product
+        //    {
+        //        Name = "Product2",
+        //        ProductCode = "02020202"
+        //    });
+        //    context.SaveChanges();
 
-            var product2 = context.Products.FirstOrDefault(x => x.Name == "Product2");
+        //    var product2 = context.Products.FirstOrDefault(x => x.Name == "Product2");
 
-            var includeProduct2 =
-                productsService.Include(order.Id, product2.ProductCode, product2.Name, "20", "3600", lot.SerialNumber);
+        //    var includeProduct2 =
+        //        productsService.Include(order.Id, product2.ProductCode, product2.Name, "20", "3600", lot.SerialNumber);
 
-            var result = this.productsService.GetProductsByOrderId(order.Id).ToList();
+        //    var result = this.productsService.GetProductsByOrderId(order.Id).ToList();
 
-            var expectedResult = context.OrderedProducts.Where(x => x.OrderId == order.Id).ToList();
+        //    var expectedResult = context.OrderedProducts.Where(x => x.OrderId == order.Id).ToList();
 
-            for (int i = 0; i < result.Count; i++)
-            {
-                Assert.AreEqual(result[i], expectedResult[i], errorMessagePrefix);
-            }
-        }
+        //    for (int i = 0; i < result.Count; i++)
+        //    {
+        //        Assert.AreEqual(result[i], expectedResult[i], errorMessagePrefix);
+        //    }
+        //}
     }
 }

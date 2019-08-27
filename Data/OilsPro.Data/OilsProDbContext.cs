@@ -19,6 +19,8 @@ namespace OilsPro.Data
         public DbSet<Carrier> Carriers { get; set; }
         public DbSet<Driver> Drivers { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<Delivery> Deliveries { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -26,10 +28,23 @@ namespace OilsPro.Data
 
             builder.Entity<OrderedProducts>().HasKey(x => new { x.OrderId, x.ProductId, x.LotId});
 
+            builder.Entity<Order>()
+                .HasMany(x => x.Products)
+                .WithOne(x => x.Order)
+                .HasForeignKey(x => x.OrderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Product>()
+                .HasMany(x => x.Lots)
+                .WithOne(x => x.Product)
+                .HasForeignKey(x => x.ProductId)
+                .OnDelete(DeleteBehavior.Restrict); ;
+
             builder.Entity<Lot>()
                 .HasOne(x => x.Product)
                 .WithMany(x => x.Lots)
-                .HasForeignKey(x => x.ProductId);
+                .HasForeignKey(x => x.ProductId)
+                .OnDelete(DeleteBehavior.Restrict); ;
 
             builder.Entity<Receiver>()
                 .HasMany(x => x.Orders)

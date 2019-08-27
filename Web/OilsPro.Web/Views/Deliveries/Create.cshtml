@@ -1,0 +1,47 @@
+﻿@model OilsPro.Data.Models.Delivery
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Delivery</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DeliveryDate" class="control-label"></label>
+                <input asp-for="DeliveryDate" class="form-control" />
+                <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Supplier.Name" class="control-label">Supplier name</label>
+                <select class="form-control" asp-items="ViewBag.Suppliers" name="SupplierName" id="supplierName"></select>
+                <a href="/Suppliers/Create">Create New Supplier</a>
+
+                @*<script src="~/Js/GetSuppliers.js"></script>*@
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="LotId" class="control-label"></label>
+                <select asp-for="LotId" class="form-control" asp-items="ViewBag.Lots" name="LotSerialNumber" id="lotSerialNumber"></select>
+                <a href="/Deliveries/CreateNewLot">Create New Lot</a>
+
+                @*<script src="~/Js/GetLots.js"></script>*@
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

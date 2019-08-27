@@ -11,8 +11,8 @@ namespace OilsPro.Data.Models
         [Key]
         public string ProductId { get; set; }
         public Product Product { get; set; }
+
         [Key]
-        [Required]
         public string LotId { get; set; }
         public Lot Lot { get; set; }
 

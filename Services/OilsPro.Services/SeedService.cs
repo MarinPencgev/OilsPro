@@ -51,7 +51,7 @@ namespace OilsPro.Services
 
                         },
                     },
-                    
+
                 });
             }
 
@@ -122,6 +122,15 @@ namespace OilsPro.Services
                         },
                     },
 
+                });
+            }
+
+            for (int i = 1; i < 10; i++)
+            {
+                this._context.Suppliers.Add(new Supplier
+                {
+                    Name = $"Supplier{i}",
+                    
                 });
             }
             _context.SaveChanges();

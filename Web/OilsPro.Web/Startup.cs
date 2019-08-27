@@ -71,6 +71,8 @@ namespace OilsPro.Web
             services.AddTransient<INomenclaturesService, NomenclaturesServices>();
             services.AddTransient<IReceiverService, ReceiverService>();
             services.AddTransient<ICarriersService, CarriersService>();
+            services.AddTransient<IDeliveriesService, DeliveriesService>();
+            services.AddTransient<ISuppliersService, SuppliersService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -80,7 +82,7 @@ namespace OilsPro.Web
             {
                 using (var context = serviceScope.ServiceProvider.GetRequiredService<OilsProDbContext>())
                 {
-                    //context.Database.EnsureDeleted();
+                    context.Database.EnsureDeleted();
                     context.Database.EnsureCreated();
 
                     if (!context.Roles.Any())

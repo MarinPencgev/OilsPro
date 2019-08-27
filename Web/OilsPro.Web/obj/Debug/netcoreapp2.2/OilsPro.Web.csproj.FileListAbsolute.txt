@@ -68,3 +68,8 @@ C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\View
 C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Carriers\CreateNewVehicle.g.cshtml.cs
 C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Carriers\CreateNewDriver.g.cshtml.cs
 C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Receivers\CreateNewAddress.g.cshtml.cs
+C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Deliveries\All.g.cshtml.cs
+C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Deliveries\Create.g.cshtml.cs
+C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Suppliers\Create.g.cshtml.cs
+C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Deliveries\CreateNewLot.g.cshtml.cs
+C:\Users\Nora\Desktop\OilsPro\Web\OilsPro.Web\obj\Debug\netcoreapp2.2\Razor\Views\Deliveries\Edit.g.cshtml.cs
