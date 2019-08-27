@@ -82,7 +82,7 @@ namespace OilsPro.Web
             {
                 using (var context = serviceScope.ServiceProvider.GetRequiredService<OilsProDbContext>())
                 {
-                    context.Database.EnsureDeleted();
+                    //context.Database.EnsureDeleted();
                     context.Database.EnsureCreated();
 
                     if (!context.Roles.Any())

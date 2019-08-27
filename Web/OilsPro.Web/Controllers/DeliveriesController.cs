@@ -14,11 +14,13 @@ namespace OilsPro.Web.Controllers
     {
         private readonly IDeliveriesService _deliveriesService;
         private readonly ISuppliersService _suppliersService;
+        private readonly IProductsService _productsService;
 
-        public DeliveriesController(IDeliveriesService deliveriesService, ISuppliersService suppliersService)
+        public DeliveriesController(IDeliveriesService deliveriesService, ISuppliersService suppliersService, IProductsService productsService)
         {
             _deliveriesService = deliveriesService;
             _suppliersService = suppliersService;
+            _productsService = productsService;
         }
         public IActionResult All()
         {
@@ -63,7 +65,7 @@ namespace OilsPro.Web.Controllers
 
         public IActionResult CreateNewLot()
         {
-
+            ViewBag.Products = SetProductsToSelectListItems();
             return this.View();
         }
 
@@ -128,6 +130,24 @@ namespace OilsPro.Web.Controllers
             foreach (var lot in lotsSerialNumbers)
             {
                 list.Add(new SelectListItem(lot, lot));
+            }
+
+            return list;
+        }
+        private List<SelectListItem> SetProductsToSelectListItems()
+        {
+            List<SelectListItem> list = new List<SelectListItem>
+            {
+                new SelectListItem("Choose >>>", "Choose >>>")
+            };
+
+            var products = _productsService.GetAll()
+                .Select(x=>x.Name + " - " + x.ProductCode)
+                .ToList();
+
+            foreach (var product in products)
+            {
+                list.Add(new SelectListItem(product, product));
             }
 
             return list;

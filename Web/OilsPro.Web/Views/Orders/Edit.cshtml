@@ -44,7 +44,7 @@
             <tr class="row">
                 <th scope="col" class="col-lg-1 suls-text-color">Seq Number</th>
                 <th scope="col" class="col-lg-5 suls-text-color">Product</th>
-                <th scope="col" class="col-lg-2 suls-text-color">Lot/Density</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Lot</th>
                 <th scope="col" class="col-lg-1 suls-text-color">Pack Count</th>
                 <th scope="col" class="col-lg-1 suls-text-color">Pack Weight</th>
                 <th scope="col" class="col-lg-2 suls-text-color">Action</th>
@@ -59,7 +59,7 @@
                 <tr class="row">
                     <td class="col-lg-1 suls-text-color">@(counter++)</td>
                     <td class="col-lg-5 suls-text-color">@product.Product.ProductCode - @product.Product.Name</td>
-                    <td class="col-lg-2 suls-text-color">Some Lot</td>
+                    <td class="col-lg-2 suls-text-color">@product.Lot.SerialNumber</td>
                     <td class="col-lg-1 suls-text-color">@product.OrderedPackagesCount</td>
                     <td class="col-lg-1 suls-text-color">@(Math.Round(product.OrderedPackagesWeight, 0))</td>
                     <td class="col-lg-2 suls-text-color">

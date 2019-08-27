@@ -13,31 +13,9 @@ namespace OilsPro.Services.Test.Services
     {
         private IProductsService productsService;
 
-        //Order order = new Order();
-
-        //Product product = new Product
-        //{
-        //    Name = "Product1",
-        //    ProductCode = "01010101",
-        //};
-        //Lot lot = new Lot
-        //{
-        //    SerialNumber = "12/56"
-        //};
-
-        //private void SeedData(OilsProDbContext context)
-        //{
-        //    context.Add(lot);
-        //    context.Add(product);
-        //    context.Add(order);
-
-        //    context.SaveChanges();
-        //}
-
         [Test]
         public void Include_And_Remove_Product_To_Order_Work_Correctly()
         {
-
             string errorMessagePrefix = "ProductsService Include() method does not work properly.";
 
             var context = OilsProDbContextInMemoryFactory.InitializeContext();
@@ -77,40 +55,48 @@ namespace OilsPro.Services.Test.Services
             Assert.True(order.Products.Count == 0, errorMessagePrefix);
         }
 
-        //[Test]
-        //public void GetProductsByOrderId_Return_Correct_Result()
-        //{
-        //    string errorMessagePrefix = "ProductsService GetProductsByOrderId() method does not work properly.";
+        [Test]
+        public void GetProductsByOrderId_Return_Correct_Result()
+        {
+            string errorMessagePrefix = "ProductsService GetProductsByOrderId() method does not work properly.";
 
-        //    var context = OilsProDbContextInMemoryFactory.InitializeContext();
+            var context = OilsProDbContextInMemoryFactory.InitializeContext();
+            this.productsService = new ProductsService(context);
 
-        //    SeedData(context);
+            Order order = new Order
+            {
+                Id = "Order111",
+                Products = new List<OrderedProducts>
+                {
+                    new OrderedProducts
+                    {
+                        Product = new Product
+                        {
+                            Name = "Product1",
+                            ProductCode = "01010101",
+                        }
+                    },
+                    new OrderedProducts
+                    {
+                        Product = new Product
+                        {
+                            Name = "Product2",
+                            ProductCode = "02020202",
+                        }
+                    },
+                }
+            };
 
-        //    this.productsService = new ProductsService(context);
+            context.SaveChanges();
+            
+            var result = productsService.GetProductsByOrderId("Order111").ToList();
 
-        //    var includeProduct1 =
-        //        productsService.Include(order.Id, product.ProductCode, product.Name, "10", "1800", lot.SerialNumber);
+            var expected = order.Products.ToList();
 
-        //    context.Products.Add(new Product
-        //    {
-        //        Name = "Product2",
-        //        ProductCode = "02020202"
-        //    });
-        //    context.SaveChanges();
-
-        //    var product2 = context.Products.FirstOrDefault(x => x.Name == "Product2");
-
-        //    var includeProduct2 =
-        //        productsService.Include(order.Id, product2.ProductCode, product2.Name, "20", "3600", lot.SerialNumber);
-
-        //    var result = this.productsService.GetProductsByOrderId(order.Id).ToList();
-
-        //    var expectedResult = context.OrderedProducts.Where(x => x.OrderId == order.Id).ToList();
-
-        //    for (int i = 0; i < result.Count; i++)
-        //    {
-        //        Assert.AreEqual(result[i], expectedResult[i], errorMessagePrefix);
-        //    }
-        //}
+            for (int i = 0; i < result.Count; i++)
+            {
+                Assert.AreEqual(result[i], expected[i], errorMessagePrefix);
+            }
+        }
     }
 }
