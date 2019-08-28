@@ -16,6 +16,7 @@ namespace OilsPro.Services
             _context = context;
         }
 
+
         public OrderedProducts Include(string orderId, string productCode, string productName, string packegesCount, string packegesWeight, string lot)
         {
             var product = _context.Products.First(x => x.ProductCode == productCode && x.Name == productName);
@@ -74,12 +75,7 @@ namespace OilsPro.Services
             return product;
         }
 
-        public Product Edit(string id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Product GetByProductCode(string productCode)
+        public Product GetProductByCode(string productCode)
         {
             var product = _context.Products
                  .Include(x => x.Lots)
@@ -88,8 +84,14 @@ namespace OilsPro.Services
             return product;
         }
 
-        public void Edit(Product product)
+        public void Edit(Product editedProduct)
         {
+            var product = _context.Products.FirstOrDefault(x => x.Id == editedProduct.Id);
+            product.Name = editedProduct.Name;
+            product.ProductCode = editedProduct.ProductCode;
+            product.Viscosity = editedProduct.Viscosity;
+            product.PackageCapacity = editedProduct.PackageCapacity;
+
             _context.Update(product);
             _context.SaveChanges();
         }

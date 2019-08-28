@@ -87,7 +87,7 @@ namespace OilsPro.Web.Controllers
             var productCode = products.Substring(0, 8);
             var productName = products.Substring(9);
 
-            var product = _productsService.GetByProductCode(productCode);
+            var product = _productsService.GetProductByCode(productCode);
 
             var packageCapacity = product.PackageCapacity;
 
