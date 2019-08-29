@@ -1,4 +1,5 @@
-﻿@using OilsPro.Web.Models.ViewModels
+﻿@using System.Linq
+@using OilsPro.Web.Models.ViewModels
 @using OilsPro.Services
 @model CreateOrderViewModel
 @inject IOrdersService orderServices
@@ -106,20 +107,20 @@
                 </td>
                 <td class="col-lg-5 suls-text-color">
                     <div>
-                        <select id="products" name="products" class="form-control"></select>
+                        <select id="products" name="product" class="form-control"></select>
                         <span class="error-msg" id="productsErr"></span>
                     </div>
                 </td>
                 <td class="col-lg-2 suls-text-color">
                     <div>
-                        <select id="lots" name="lots" class="form-control"></select>
+                        <select id="lots" name="lot" class="form-control" ></select>
                         <span class="error-msg" id="lotsErr"></span>
                     </div>
                 </td>
                 <td class="col-lg-1 suls-text-color">
                     <div>
-                        <input id="packagesCount" name="packagesCount" class="form-control" onkeyup="checkform()" />
-                        <span class="error-msg" id="packagesCountErr"></span>
+                        <input id="packagesCount" name="packagesCount" class="form-control" required />
+                        <span class="text-danger"></span>
                     </div>
                 </td>
                 <td class="col-lg-1 suls-text-color">

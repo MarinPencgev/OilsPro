@@ -47,7 +47,11 @@ namespace OilsPro.Web.Controllers
             var receiver = _mapper.Map<Receiver>(input);
             var editedReceiver = _receiversService.Edit(receiver);
 
-            return this.Redirect("/Nomenclatures/Receivers");
+            if (editedReceiver.DeliveryAddresses.Any())
+            {
+                return this.Redirect("/Nomenclatures/Receivers");
+            }
+            return this.Redirect($"/Receivers/Edit?id={editedReceiver.Id}");
         }
 
         [Authorize]
@@ -79,7 +83,7 @@ namespace OilsPro.Web.Controllers
         [Authorize]
         public IActionResult GetReceiverAddresses(string receiverName)
         {
-            var addresses = _receiversService.GetReceiverAddresses(receiverName);
+            var addresses = _receiversService.GetAddressesByReceiverName(receiverName);
 
             return Json(addresses);
         }
@@ -110,7 +114,7 @@ namespace OilsPro.Web.Controllers
         [Authorize]
         public IActionResult Details(string id)
         {
-            var model = _receiversService.GetDeliveryAddressesByReceiverId(id);
+            var model = _receiversService.GetAddressesByReceiverId(id);
 
             ViewBag.ReceiverId = id;
 

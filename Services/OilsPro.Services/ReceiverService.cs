@@ -28,7 +28,7 @@ namespace OilsPro.Services
             return receiver;
         }
 
-        public ICollection<string> GetReceiverAddresses(string receiverName)
+        public ICollection<string> GetAddressesByReceiverName(string receiverName)
         {
             var addresses = _context.Receivers
                 .Where(x=>x.isDeleted == false)
@@ -41,7 +41,7 @@ namespace OilsPro.Services
             return addresses;
         }
 
-        public ICollection<DeliveryAddress> GetDeliveryAddressesByReceiverId(string id)
+        public ICollection<DeliveryAddress> GetAddressesByReceiverId(string id)
         {
             var addresses = _context.Receivers
                 .Include(x => x.DeliveryAddresses)
@@ -91,14 +91,6 @@ namespace OilsPro.Services
             return receiver;
         }
 
-        public void ChangeName(string inputId, string inputName)
-        {
-            var receiver = _context.Receivers.Find(inputId);
-            receiver.Name = inputName;
-
-            _context.SaveChanges();
-        }
-
         public Receiver Edit(Receiver receiver)
         {
             _context.Update(receiver);
@@ -144,7 +136,6 @@ namespace OilsPro.Services
         public DeliveryAddress DeleteAddress(string addressId)
         {
             var address = _context.DeliveryAddresses
-                .Include(x=>x.Receiver)
                 .FirstOrDefault(x => x.Id == addressId);
 
             address.isDeleted = true;

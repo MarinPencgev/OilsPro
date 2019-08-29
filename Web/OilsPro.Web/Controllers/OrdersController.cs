@@ -81,28 +81,6 @@ namespace OilsPro.Web.Controllers
         }
 
         [Authorize]
-        [HttpPost]
-        public IActionResult Edit(CreateOrderViewModel input)
-        {
-            if (!ModelState.IsValid)
-            {
-                return this.View(input);
-            }
-            input.OrderedProducts = _productsService.GetProductsByOrderId(input.Id);
-            _orderService.Edit(input.SequenceNumber,
-                               input.Id,
-                               input.CreatedOn,
-                               input.Purpose,
-                               input.Status,
-                               input.DeliveryAddress,
-                               input.Receiver.Name,
-                               input.Carrier.Name,
-                               input.Driver.FullName,
-                               input.Vehicle.RegNumber);
-            return View(input);
-        }
-
-        [Authorize]
         public IActionResult Remove(string id)
         {
             _orderService.Remove(id);

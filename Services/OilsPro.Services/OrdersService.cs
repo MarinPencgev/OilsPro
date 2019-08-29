@@ -70,7 +70,6 @@ namespace OilsPro.Services
             return order;
         }
 
-
         public IQueryable<Order> GetAllUncomleted()
         {
             var uncomletedOrders = _context.Orders
@@ -99,45 +98,6 @@ namespace OilsPro.Services
             return _context.Drivers.Where(x => x.Carrier.Name == name).ToList();
         }
 
-        public void Edit(int sequenceNumber,
-                         string id,
-                         DateTime createdOn,
-                         OrderPurpose purpose,
-                         OrderStatus status,
-                         string deliveryAddress,
-                         string receiverName,
-                         string carrierName,
-                         string driverName,
-                         string vehicleRegNumber)
-        {
-            var order = _context.Orders
-                .Include(x => x.OilsUser)
-                .Include(x => x.DeliveryAddress)
-                .Include(x => x.Driver)
-                .Include(x => x.Vehicle)
-                .Include(x => x.Receiver)
-                .Include(x => x.Carrier)
-                .Include(x => x.Products)
-                .ThenInclude(x => x.Product)
-                .FirstOrDefault(x => x.Id == id);
-
-            var town = deliveryAddress.Split(", ")[0];
-            var street = deliveryAddress.Split(", ")[1];
-
-            order.CreatedOn = createdOn;
-            order.Purpose = purpose;
-            order.SequenceNumber = sequenceNumber;
-            order.Status = status;
-            order.DeliveryAddress.Town = town;
-            order.DeliveryAddress.Street = street;
-            order.Receiver.Name = receiverName;
-            order.Carrier.Name = carrierName;
-            order.Driver.FullName = driverName;
-            order.Vehicle.RegNumber = vehicleRegNumber;
-
-            _context.SaveChanges();
-        }
-
         public Order Remove(string id)
         {
             var order = _context.Orders.First(x => x.Id == id);
@@ -150,16 +110,8 @@ namespace OilsPro.Services
 
         public Order Release(string id)
         {
-            var order = _context.Orders
-                .Include(x => x.OilsUser)
-                .Include(x => x.DeliveryAddress)
-                .Include(x => x.Driver)
-                .Include(x => x.Vehicle)
-                .Include(x => x.Receiver)
-                .Include(x => x.Carrier)
-                .Include(x => x.Products)
-                .ThenInclude(x => x.Product)
-                .First(x => x.Id == id);
+            var order = _context.Orders.FirstOrDefault(x => x.Id == id);
+
             order.Status = OrderStatus.Completed;
             order.ReleaseDate = DateTime.UtcNow;
 
@@ -168,5 +120,4 @@ namespace OilsPro.Services
             return order;
         }
     }
-
 }

@@ -79,25 +79,55 @@ namespace OilsPro.Web.Controllers
             return Json(productLots); 
         }
 
+        //[Authorize]
+        //public IActionResult Include(string id, string products, string lots, string packagesCount)
+        //{
+        //    if (products == null || lots== null ||packagesCount == null)
+        //    {
+        //        return this.Redirect($"/Orders/Edit?id={id}");
+        //        //TODO temporary solution
+        //    }
+        //    var orderId = id;
+
+        //    var productCode = products.Substring(0, 8);
+        //    var productName = products.Substring(9);
+
+        //    var product = _productsService.GetProductByCode(productCode);
+
+        //    var packageCapacity = product.PackageCapacity;
+
+        //    var density = product.Lots.First(x => x.SerialNumber == lots).Density;
+
+        //    var packagesWeight = Math.Round(decimal.Parse(packagesCount) * packageCapacity * density, 0).ToString();
+
+        //    var orderedProduct = _productsService.Include(id, productCode, productName, packagesCount, packagesWeight, lots);
+
+        //    return this.Redirect($"/Orders/Edit?id={id}");
+        //}
+
+        [HttpPost]
         [Authorize]
-        public IActionResult Include(string id, string products, string lots, string packagesCount)
+        public IActionResult Include(IncludeProductViewModel input)
         {
-            var orderId = id;
-            
-            var productCode = products.Substring(0, 8);
-            var productName = products.Substring(9);
+            if (!ModelState.IsValid)
+            {
+                return this.Redirect($"/Orders/Edit?id={input.Id}");
+            }
+
+            var productCode = input.Product.Substring(0, 8);
+            var productName = input.Product.Substring(9);
 
             var product = _productsService.GetProductByCode(productCode);
 
             var packageCapacity = product.PackageCapacity;
 
-            var density = product.Lots.First(x => x.SerialNumber == lots).Density;
+            var density = product.Lots.First(x => x.SerialNumber == input.Lot).Density;
 
-            var packagesWeight = Math.Round(decimal.Parse(packagesCount) * packageCapacity * density, 0).ToString();
+            var packagesWeight = Math.Round(decimal.Parse(input.PackagesCount) * packageCapacity * density, 0).ToString();
 
-            var orderedProduct = _productsService.Include(id, productCode, productName, packagesCount, packagesWeight, lots);
+            var orderedProduct = _productsService.Include(input.Id, productCode, productName, input.PackagesCount, packagesWeight, input.Lot);
 
-            return this.Redirect($"/Orders/Edit?id={id}");
+            return this.Redirect($"/Orders/Edit?id={input.Id}");
         }
 
         [Authorize]

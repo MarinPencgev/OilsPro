@@ -20,16 +20,7 @@ namespace OilsPro.Services
 
         ICollection<Vehicle> GetVehiclesByCarrierName(string name);
         ICollection<Driver> GetDriversByCarrierName(string name);
-        void Edit(int sequenceNumber,
-                  string id,
-                  DateTime createdOn,
-                  OrderPurpose purpose,
-                  OrderStatus status,
-                  string deliveryAddress,
-                  string receiverName,
-                  string carrierName,
-                  string driverName,
-                  string vehicleRegNumber);
+
         Order Remove(string id);
         Order Release(string id);
     }

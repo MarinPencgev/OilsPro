@@ -29,7 +29,7 @@ namespace OilsPro.Services
         public ICollection<Lot> GetAllLots()
         {
             var lots = _context.Lots
-                .Include(x => x.Product)
+
                 .ToList();
 
             return lots;

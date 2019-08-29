@@ -1,14 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
-using OilsPro.Data;
 using OilsPro.Data.Models;
 using OilsPro.Services.Test.Common;
 
-namespace OilsPro.Services.Test.Services
+namespace OilsPro.Services.Test.ServicesTest
 {
     public class ProductsServiceTest
     {
@@ -26,7 +22,6 @@ namespace OilsPro.Services.Test.Services
             var expected = context.Products.First();
 
             Assert.AreEqual(expected, result, errorMessagePrefix);
-
         }
 
         [Test]
