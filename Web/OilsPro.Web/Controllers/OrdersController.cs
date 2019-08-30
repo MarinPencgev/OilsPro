@@ -27,6 +27,13 @@ namespace OilsPro.Web.Controllers
         }
 
         [Authorize]
+        public IActionResult All()
+        {
+            var completedOrders = _orderService.GetAllCompleted();
+            return View(completedOrders);
+        }
+
+        [Authorize]
         public IActionResult Create()
         {
             var products = new CreateOrderViewModel();

@@ -28,7 +28,7 @@ namespace OilsPro.Web.Controllers
 
             if (this.User.Identity.IsAuthenticated)
             {
-                var uncompletedOrders = _ordersService.GetAllUncomleted();
+                var uncompletedOrders = _ordersService.GetAllUncompleted();
 
                 var model = uncompletedOrders.Select(x => new UncomletedOrdersViewModel
                 {

@@ -4,86 +4,83 @@
 @inject IOrdersService orderservices
 
 <h1 class="text-center suls-text-color">Receipt</h1>
+<br/>
 <div class="container-fluid">
     <div class="row">
         <div class="col-4">
-
             <label asp-for="SequenceNumber"></label>
-            <p>: @Model.SequenceNumber</p>
+            <p>@Model.SequenceNumber</p>
 
             <label asp-for="CreatedOn"></label>
-            <p>: @Model.CreatedOn</p>
+            <p>@Model.CreatedOn</p>
 
             <label asp-for="Purpose"></label>
-            <p>: @Model.Purpose</p>
-
+            <p>@Model.Purpose</p>
         </div>
         <div class="col-4">
             <label asp-for="Carrier.Name">Carrier name</label>
-            <input asp-for="Carrier.Name" class="form-control" />
-
+            <p>@Model.Carrier.Name</p>
 
             <label asp-for="Vehicle.RegNumber">Vehicle number</label>
-            <input asp-for="Vehicle.RegNumber" class="form-control" />
-
+            <p>@Model.Vehicle.RegNumber</p>
 
             <label asp-for="Driver.FullName">Driver name</label>
-            <input asp-for="Driver.FullName" class="form-control" />
+            <p>@Model.Driver.FullName</p>
         </div>
         <div class="col-4">
             <label asp-for="Receiver.Name">Receiver name</label>
-            <input asp-for="Receiver.Name" class="form-control" />
-
+            <p>@Model.Receiver.Name</p>
 
             <label asp-for="DeliveryAddress">Delivery address</label>
-            <p>: @Model.DeliveryAddress</p>
+            <p>@Model.DeliveryAddress</p>
         </div>
     </div>
 </div>
-<table class="table table-hover mx-auto col-12">
-    <thead>
-        <tr class="row">
-            <th scope="col" class="col-lg-2 suls-text-color">Seq Number</th>
-            <th scope="col" class="col-lg-2 suls-text-color">Product Code</th>
-            <th scope="col" class="col-lg-2 suls-text-color">Product Name</th>
-            <th scope="col" class="col-lg-2 suls-text-color">Pack Count</th>
-            <th scope="col" class="col-lg-2 suls-text-color">Pack Weight</th>
-            <td class="col-lg-2 suls-text-color">
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            int counter = 1;
-        }
-        @foreach (var product in Model.OrderedProducts)
-        {
+<div class="container-fluid">
+    <table class="table table-hover mx-auto col-12">
+        <thead>
             <tr class="row">
-                <td class="col-lg-2 suls-text-color">@(counter++)</td>
-                <td class="col-lg-2 suls-text-color">@product.Product.ProductCode</td>
-                <td class="col-lg-2 suls-text-color">@product.Product.Name</td>
-                <td class="col-lg-2 suls-text-color">@product.OrderedPackagesCount</td>
-                <td class="col-lg-2 suls-text-color">@product.OrderedPackagesWeight</td>
+                <th scope="col" class="col-lg-2 suls-text-color">Seq Number</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Product Code</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Product Name</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Pack Count</th>
+                <th scope="col" class="col-lg-2 suls-text-color">Pack Weight</th>
                 <td class="col-lg-2 suls-text-color">
                 </td>
             </tr>
-        }
-        <tr class="row">
-            <td class="col-lg-2 suls-text-color">-</td>
-            <td class="col-lg-2 suls-text-color">-</td>
-            <td class="col-lg-2 suls-text-color">-</td>
-            <td class="col-lg-2 suls-text-color">-</td>
-            <td class="col-lg-2 suls-text-color">-</td>
-            <td class="col-lg-2 suls-text-color">
-            </td>
-        </tr>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @{
+                int counter = 1;
+            }
+            @foreach (var product in Model.OrderedProducts)
+            {
+                <tr class="row">
+                    <td class="col-lg-2 suls-text-color">@(counter++)</td>
+                    <td class="col-lg-2 suls-text-color">@product.Product.ProductCode</td>
+                    <td class="col-lg-2 suls-text-color">@product.Product.Name</td>
+                    <td class="col-lg-2 suls-text-color">@product.OrderedPackagesCount</td>
+                    <td class="col-lg-2 suls-text-color">@product.OrderedPackagesWeight</td>
+                    <td class="col-lg-2 suls-text-color">
+                    </td>
+                </tr>
+            }
+            <tr class="row">
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-<div class="button-holder d-flex justify-content-center">
-    <a href="/" class="btn btn-warning">Print receipt</a>
+    <div class="button-holder d-flex justify-content-center">
+        <a href="/" class="btn btn-warning">Print receipt</a>
+    </div>
 </div>
-
 
 
 

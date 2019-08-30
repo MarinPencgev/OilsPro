@@ -1,0 +1,93 @@
+﻿@model IEnumerable<OilsPro.Data.Models.Order>
+
+@{
+    ViewData["Title"] = "All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>COMPLETED ORDERS</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SequenceNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Purpose)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OilsUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Receiver)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carrier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle)
+            </th>
+            <th>
+                Packages Count
+            </th>
+            <th>
+                Packages Weight
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SequenceNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Purpose)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OilsUser.UserName)
+            </td>
+            <td>
+                @(item.DeliveryAddress.Town + ", " + item.DeliveryAddress.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Receiver.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Carrier.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Driver.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vehicle.RegNumber)
+            </td>
+            <td>
+                @item.Products.Sum(x => x.OrderedPackagesCount)
+            </td>
+            <td>
+                @item.Products.Sum(x => x.OrderedPackagesWeight).ToString("#,##0")
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

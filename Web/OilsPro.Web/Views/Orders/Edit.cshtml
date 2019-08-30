@@ -4,147 +4,147 @@
 @model CreateOrderViewModel
 @inject IOrdersService orderServices
 
-<h1 class="text-center suls-text-color">Complete Order</h1>
+    <h1 class="text-center suls-text-color">Order №@Model.SequenceNumber</h1>
+<br />
 <form asp-controller="Products" asp-action="Include" method="post">
     <div class="container-fluid">
         <div class="row">
             <div class="col-4">
-                <label asp-for="SequenceNumber"></label>
-                <p asp-for="SequenceNumber" class="form-control">@Model.SequenceNumber</p>
-
                 <label asp-for="CreatedOn"></label>
-                <p asp-for="CreatedOn" class="form-control">@Model.CreatedOn</p>
+                <p asp-for="CreatedOn">@Model.CreatedOn</p>
 
                 <label asp-for="Purpose"></label>
-                <p asp-for="Purpose" class="form-control">@Model.Purpose</p>
+                <p asp-for="Purpose">@Model.Purpose</p>
 
                 <input class="invisible" id="Id" name="Id" value="@Model.Id" />
                 <input class="invisible" id="sequenceNumber" name="sequenceNumber" value="@Model.SequenceNumber" />
             </div>
             <div class="col-4">
                 <label asp-for="Carrier.Name">Carrier name</label>
-                <p asp-for="Carrier.Name" class="form-control">@Model.Carrier.Name</p>
+                <p asp-for="Carrier.Name">@Model.Carrier.Name</p>
 
                 <label asp-for="Vehicle.RegNumber">Vehicle number</label>
-                <p asp-for="Vehicle.RegNumber" class="form-control">@Model.Vehicle.RegNumber</p>
+                <p asp-for="Vehicle.RegNumber">@Model.Vehicle.RegNumber</p>
 
                 <label asp-for="Driver.FullName">Driver name</label>
-                <p asp-for="Driver.FullName" class="form-control">@Model.Driver.FullName</p>
+                <p asp-for="Driver.FullName">@Model.Driver.FullName</p>
             </div>
             <div class="col-4">
                 <label asp-for="Receiver.Name">Receiver name</label>
-                <p asp-for="Receiver.Name" class="form-control">@Model.Receiver.Name</p>
+                <p asp-for="Receiver.Name">@Model.Receiver.Name</p>
 
                 <label asp-for="DeliveryAddress">Delivery address</label>
-                <p asp-for="DeliveryAddress" class="form-control">@Model.DeliveryAddress</p>
+                <p asp-for="DeliveryAddress">@Model.DeliveryAddress</p>
             </div>
         </div>
     </div>
-    <table class="table table-hover mx-auto col-12">
-        <thead>
-            <tr class="row">
-                <th scope="col" class="col-lg-1 suls-text-color">Seq Number</th>
-                <th scope="col" class="col-lg-5 suls-text-color">Product</th>
-                <th scope="col" class="col-lg-2 suls-text-color">Lot</th>
-                <th scope="col" class="col-lg-1 suls-text-color">Pack Count</th>
-                <th scope="col" class="col-lg-1 suls-text-color">Pack Weight</th>
-                <th scope="col" class="col-lg-2 suls-text-color">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @{
-                int counter = 1;
-            }
-            @foreach (var product in Model.OrderedProducts)
-            {
+    <div class="container-fluid">
+        <table class="table table-hover mx-auto col-12">
+            <thead>
                 <tr class="row">
-                    <td class="col-lg-1 suls-text-color">@(counter++)</td>
-                    <td class="col-lg-5 suls-text-color">@product.Product.ProductCode - @product.Product.Name</td>
-                    <td class="col-lg-2 suls-text-color">@product.Lot.SerialNumber</td>
-                    <td class="col-lg-1 suls-text-color">@product.OrderedPackagesCount</td>
-                    <td class="col-lg-1 suls-text-color">@(Math.Round(product.OrderedPackagesWeight, 0))</td>
-                    <td class="col-lg-2 suls-text-color">
-                        <div class="button-holder">
-                            <a href="/Products/Remove?id=@product.OrderId@product.ProductId" class="btn btn-warning">Remove</a>
+                    <th scope="col" class="col-lg-1 suls-text-color">Seq Number</th>
+                    <th scope="col" class="col-lg-5 suls-text-color">Product</th>
+                    <th scope="col" class="col-lg-2 suls-text-color">Lot</th>
+                    <th scope="col" class="col-lg-1 suls-text-color">Pack Count</th>
+                    <th scope="col" class="col-lg-1 suls-text-color">Pack Weight</th>
+                    <th scope="col" class="col-lg-2 suls-text-color">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int counter = 1;
+                }
+                @foreach (var product in Model.OrderedProducts)
+                {
+                    <tr class="row">
+                        <td class="col-lg-1 suls-text-color">@(counter++)</td>
+                        <td class="col-lg-5 suls-text-color">@product.Product.ProductCode - @product.Product.Name</td>
+                        <td class="col-lg-2 suls-text-color">@product.Lot.SerialNumber</td>
+                        <td class="col-lg-1 suls-text-color">@product.OrderedPackagesCount</td>
+                        <td class="col-lg-1 suls-text-color">@(Math.Round(product.OrderedPackagesWeight, 0))</td>
+                        <td class="col-lg-2 suls-text-color">
+                            <div class="button-holder">
+                                <a href="/Products/Remove?id=@product.OrderId@product.ProductId" class="btn btn-warning">Remove</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                <tr class="row">
+                    <td class="col-lg-1 suls-text-color">
+                        <div>
+                            <p>TOTAL</p>
                         </div>
                     </td>
+                    <td class="col-lg-5 suls-text-color">
+                        <div>
+                            -
+                        </div>
+                    </td>
+                    <td class="col-lg-2 suls-text-color">
+                        <div>
+                            -
+                        </div>
+                    </td>
+                    <td class="col-lg-1 suls-text-color">
+                        <div>
+                            @Math.Round((decimal)Model.OrderedProducts.Sum(x => x.OrderedPackagesCount), 0);
+                        </div>
+                    </td>
+                    <td class="col-lg-1 suls-text-color">
+                        <div>
+                            @Math.Round(Model.OrderedProducts.Sum(x => x.OrderedPackagesWeight));
+                        </div>
+                    </td>
+                    <td class="col-lg-2 suls-text-color">
+                    </td>
                 </tr>
+                <tr class="row">
+                    <td class="col-lg-1 suls-text-color">
+                        <div>
+                            <p>#</p>
+                        </div>
+                    </td>
+                    <td class="col-lg-5 suls-text-color">
+                        <div>
+                            <select id="products" name="product" class="form-control"></select>
+                            <span class="error-msg" id="productsErr"></span>
+                        </div>
+                    </td>
+                    <td class="col-lg-2 suls-text-color">
+                        <div>
+                            <select id="lots" name="lot" class="form-control"></select>
+                            <span class="error-msg" id="lotsErr"></span>
+                        </div>
+                    </td>
+                    <td class="col-lg-1 suls-text-color">
+                        <div>
+                            <input id="packagesCount" name="packagesCount" class="form-control" required />
+                            <span class="text-danger"></span>
+                        </div>
+                    </td>
+                    <td class="col-lg-1 suls-text-color">
+                        <div>
+                            ----
+                        </div>
+                    </td>
+                    <td class="col-lg-2 suls-text-color">
+                        <div class="button-holder">
+                            <button class="btn btn-warning" id="includeProduct">Include Product</button>
+                        </div>
+                        <script type='text/javascript'>
+                                                                                                               //TODO to enable the IncludeButton only if selected fields are filled
+                        </script>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="container-fluid d-flex justify-content-end">
+            @if (Model.OrderedProducts.Count > 0)
+            {
+                <a href="/Orders/Release?id=@Model.Id" class="btn btn-warning">Release</a>
             }
-            <tr class="row">
-                <td class="col-lg-1 suls-text-color">
-                    <div>
-                        <p>TOTAL</p>
-                    </div>
-                </td>
-                <td class="col-lg-5 suls-text-color">
-                    <div>
-                        -
-                    </div>
-                </td>
-                <td class="col-lg-2 suls-text-color">
-                    <div>
-                        -
-                    </div>
-                </td>
-                <td class="col-lg-1 suls-text-color">
-                    <div>
-                        @Math.Round((decimal)Model.OrderedProducts.Sum(x => x.OrderedPackagesCount), 0);
-                    </div>
-                </td>
-                <td class="col-lg-1 suls-text-color">
-                    <div>
-                        @Math.Round(Model.OrderedProducts.Sum(x => x.OrderedPackagesWeight));
-                    </div>
-                </td>
-                <td class="col-lg-2 suls-text-color">
-                </td>
-            </tr>
-            <tr class="row">
-                <td class="col-lg-1 suls-text-color">
-                    <div>
-                        <p>#</p>
-                    </div>
-                </td>
-                <td class="col-lg-5 suls-text-color">
-                    <div>
-                        <select id="products" name="product" class="form-control"></select>
-                        <span class="error-msg" id="productsErr"></span>
-                    </div>
-                </td>
-                <td class="col-lg-2 suls-text-color">
-                    <div>
-                        <select id="lots" name="lot" class="form-control" ></select>
-                        <span class="error-msg" id="lotsErr"></span>
-                    </div>
-                </td>
-                <td class="col-lg-1 suls-text-color">
-                    <div>
-                        <input id="packagesCount" name="packagesCount" class="form-control" required />
-                        <span class="text-danger"></span>
-                    </div>
-                </td>
-                <td class="col-lg-1 suls-text-color">
-                    <div>
-                        ----
-                    </div>
-                </td>
-                <td class="col-lg-2 suls-text-color">
-                    <div class="button-holder">
-                        <button class="btn btn-warning" id="includeProduct">Include Product</button>
-                    </div>
-                    <script type='text/javascript'>
-                                       //TODO to enable the IncludeButton only if selected fields are filled
-                    </script>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="container-fluid d-flex justify-content-end">
-        @if (Model.OrderedProducts.Count > 0)
-        {
-            <a href="/Orders/Release?id=@Model.Id" class="btn btn-warning">Release</a>
-        }
 
+        </div>
     </div>
 </form>
 

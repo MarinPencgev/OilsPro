@@ -16,12 +16,13 @@ namespace OilsPro.Services
                     string vehicleNumber);
         Order GetOrderById(string id);
 
-        IQueryable<Order> GetAllUncomleted();
+        IQueryable<Order> GetAllUncompleted();
 
         ICollection<Vehicle> GetVehiclesByCarrierName(string name);
         ICollection<Driver> GetDriversByCarrierName(string name);
 
         Order Remove(string id);
         Order Release(string id);
+        ICollection<Order> GetAllCompleted();
     }
 }

@@ -16,5 +16,7 @@ namespace OilsPro.Services
         Delivery GetById(string id);
 
         Delivery Edit(string deliveryId, string deliveryDate, string supplierName, string lotSerialNumber);
+
+        Lot CreateNewLot(string serialNumber, int packagesCount, decimal packagesWeight, string productName);
     }
 }

@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace OilsPro.Web.Controllers
 {
-    public class DeliveriesController: Controller
+    public class DeliveriesController : Controller
     {
         private readonly IDeliveriesService _deliveriesService;
         private readonly ISuppliersService _suppliersService;
@@ -64,7 +64,7 @@ namespace OilsPro.Web.Controllers
 
             var dlivery = _deliveriesService.Create(input.DeliveryDate.ToString("dd/MM/yyyy"), input.SupplierName, input.LotSerialNumber);
 
-            return this.Redirect($"/Deliveries/All"); 
+            return this.Redirect($"/Deliveries/All");
         }
 
         [Authorize]
@@ -72,6 +72,21 @@ namespace OilsPro.Web.Controllers
         {
             ViewBag.Products = SetProductsToSelectListItems();
             return this.View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult CreateNewLot(CreateLotViewModel input)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Products = SetProductsToSelectListItems();
+                return this.View();
+            }
+
+            var lot = _deliveriesService.CreateNewLot(input.SerialNumber, input.PackagesCount, input.PackagesWeight, input.ProductName);
+
+            return this.Redirect("/Deliveries/Create");
         }
 
         [Authorize]
@@ -148,7 +163,7 @@ namespace OilsPro.Web.Controllers
             };
 
             var products = _productsService.GetAll()
-                .Select(x=>x.Name + " - " + x.ProductCode)
+                .Select(x => x.Name + " - " + x.ProductCode)
                 .ToList();
 
             foreach (var product in products)

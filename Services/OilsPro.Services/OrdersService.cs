@@ -70,7 +70,7 @@ namespace OilsPro.Services
             return order;
         }
 
-        public IQueryable<Order> GetAllUncomleted()
+        public IQueryable<Order> GetAllUncompleted()
         {
             var uncomletedOrders = _context.Orders
                 .Include(x => x.OilsUser)
@@ -116,6 +116,8 @@ namespace OilsPro.Services
                 .Include(x=>x.Vehicle)
                 .Include(x=>x.Receiver)
                 .Include(x=>x.DeliveryAddress)
+                .Include(x=>x.Products)
+                .ThenInclude(x=>x.Product)
                 .FirstOrDefault(x => x.Id == id);
 
             order.Status = OrderStatus.Completed;
@@ -124,6 +126,24 @@ namespace OilsPro.Services
             _context.SaveChanges();
 
             return order;
+        }
+
+        public ICollection<Order> GetAllCompleted()
+        {
+            var completedOrders = _context.Orders
+                .Include(x => x.OilsUser)
+                .Include(x => x.DeliveryAddress)
+                .Include(x => x.Driver)
+                .Include(x => x.Vehicle)
+                .Include(x => x.Receiver)
+                .Include(x => x.Carrier)
+                .Include(x => x.Products)
+                .ThenInclude(x => x.Product)
+                .ThenInclude(x => x.Lots)
+                .Where(x => x.Status == OrderStatus.Completed && x.IsDeleted == false)
+                .ToList();
+
+            return completedOrders;
         }
     }
 }

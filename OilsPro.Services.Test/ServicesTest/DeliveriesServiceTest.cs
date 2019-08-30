@@ -144,5 +144,28 @@ namespace OilsPro.Services.Test.ServicesTest
 
             Assert.True(result.Count == 2);
         }
+
+        [Test]
+        public void CreateNewLot_works_Properly()
+        {
+            string errorMessagePrefix = "DeliveriesService CreateNewLot() method does not work properly.";
+
+            var context = OilsProDbContextInMemoryFactory.InitializeContext();
+            this.deliveriesService = new DeliveriesService(context);
+
+            var product = new Product
+            {
+                Name = "Product1",
+                ProductCode = "01010101",
+                PackageCapacity = 10,
+            };
+            context.Products.Add(product);
+
+            context.SaveChanges();
+
+            var result = deliveriesService.CreateNewLot("88/88", 10, 1800, "Product1 - 01010101");
+
+            Assert.True(context.Lots.Count() == 1);
+        }
     }
 }

@@ -1,11 +1,8 @@
 ﻿@{
     this.ViewData["Title"] = "Home Page";
 }
-
-<div class="container-fluid ml-5">
-    <div class="text-left">
-        <h1 class="display-4">UNCOMLETED ORDERS</h1>
-    </div>
+<h1 class="text-center suls-text-color">ACTIVE ORDERS</h1>
+<div class="container-fluid">
     <table class="table table-hover">
         <thead>
             <tr class="row">
@@ -45,21 +42,21 @@
                     </td>
                 </tr>
 
-                <input class="invisible" id="Id" name="Id" value="@order.OrderId" />
+                @*<input class="invisible" id="Id" name="Id" value="@order.OrderId" />* I use it for Modal*@
             }
-        <tr class="row">
-            <td class="col-lg-1 suls-text-color">-</td>
-            <td class="col-lg-2 suls-text-color">-</td>
-            <td class="col-lg-1 suls-text-color">-</td>
-            <td class="col-lg-1 suls-text-color">-</td>
-            <td class="col-lg-3 suls-text-color">-</td>
-            <td class="col-lg-4 suls-text-color">
-                <div class="button-holder">
-                    <a href="/Orders/Create" class="btn btn-warning">+ New Order</a>
-                </div>
-            </td>
-        </tr>
-        <hr />
+            <tr class="row">
+                <td class="col-lg-1 suls-text-color">-</td>
+                <td class="col-lg-2 suls-text-color">-</td>
+                <td class="col-lg-1 suls-text-color">-</td>
+                <td class="col-lg-1 suls-text-color">-</td>
+                <td class="col-lg-3 suls-text-color">-</td>
+                <td class="col-lg-4 suls-text-color">
+                    <div class="button-holder">
+                        <a href="/Orders/Create" class="btn btn-warning">+ New Order</a>
+                    </div>
+                </td>
+            </tr>
+            <hr />
         </tbody>
     </table>
 </div>
@@ -78,7 +75,7 @@
                 <p>Selected order will be removed! Are you sure!</p>
             </div>
             <div class="modal-footer">
-                <button  class="btn btn-primary" id="proceed">Proceed</button>
+                <button class="btn btn-primary" id="proceed">Proceed</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
         </div>
@@ -86,11 +83,11 @@
 </div>
 
 @*<script>
-    $("#remove").click(function () {
-        var orderId = $("#Id").val();
+        $("#remove").click(function () {
+            var orderId = $("#Id").val();
 
-        var href = '/Orders/Remove?id=' + orderId;
-        document.getElementById("proceed").href = href;
+            var href = '/Orders/Remove?id=' + orderId;
+            document.getElementById("proceed").href = href;
 
-    });
-</script>*@
+        });
+    </script>*@

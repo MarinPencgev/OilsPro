@@ -78,5 +78,27 @@ namespace OilsPro.Services
 
             return delivery;
         }
+
+        public Lot CreateNewLot(string serialNumber, int packagesCount, decimal packagesWeight, string productName)
+        {
+            var productCode = productName.Split(" - ").Last();
+            var selectedProduct = _context.Products
+                .Include(x=>x.Lots)
+                .FirstOrDefault(x => x.ProductCode == productCode);
+
+            var lot = new Lot
+            {
+                SerialNumber = serialNumber,
+                PackagesCount = packagesCount,
+                PackagesWeight = packagesWeight,
+                Product = selectedProduct,
+                Density = packagesWeight / (packagesCount * selectedProduct.PackageCapacity),
+            };
+
+            _context.Lots.Add(lot);
+            _context.SaveChanges();
+
+            return lot;
+        }
     }
 }
