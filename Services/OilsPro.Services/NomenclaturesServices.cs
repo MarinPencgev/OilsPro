@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
+using System.Reflection;
 using AutoMapper;
+using AutoMapper.Execution;
 using Microsoft.EntityFrameworkCore;
 using OilsPro.Data;
 
@@ -44,9 +47,12 @@ namespace OilsPro.Services
             return recordings;
         }
 
-        public ICollection All(string entityType)
+        public ICollection All(string entityName)
         {
-            switch (entityType)
+            var curEntityPI = _context.GetType().GetProperties().FirstOrDefault(pr => pr.Name == entityName);
+            var curEntityType = curEntityPI.PropertyType.GetGenericArguments().First();
+
+            switch (entityName)
             {
                 case "Products":
                     return _context.Products

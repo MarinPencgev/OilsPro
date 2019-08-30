@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Server.IISIntegration;
 using OilsPro.Data.Models;
 using OilsPro.Services;
 using OilsPro.Web.Models.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OilsPro.Web.Controllers
 {

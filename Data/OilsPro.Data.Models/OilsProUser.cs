@@ -6,10 +6,10 @@ namespace OilsPro.Data.Models
 {
     public class OilsProUser: IdentityUser
     {
-        [MaxLength(50)]
+        [MaxLength(30)]
         public string FirstName { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(30)]
         public string LastName { get; set; }
     }
 }

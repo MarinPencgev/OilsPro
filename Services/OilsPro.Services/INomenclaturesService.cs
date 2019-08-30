@@ -5,6 +5,6 @@ namespace OilsPro.Services
     public interface INomenclaturesService
     {
         int GetRecordings(string entityName);
-        ICollection All(string entityType);
+        ICollection All(string entityName);
     }
 }

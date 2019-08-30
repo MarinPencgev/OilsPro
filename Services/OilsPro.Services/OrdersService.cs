@@ -110,7 +110,13 @@ namespace OilsPro.Services
 
         public Order Release(string id)
         {
-            var order = _context.Orders.FirstOrDefault(x => x.Id == id);
+            var order = _context.Orders
+                .Include(x=>x.Carrier)
+                .Include(x=>x.Driver)
+                .Include(x=>x.Vehicle)
+                .Include(x=>x.Receiver)
+                .Include(x=>x.DeliveryAddress)
+                .FirstOrDefault(x => x.Id == id);
 
             order.Status = OrderStatus.Completed;
             order.ReleaseDate = DateTime.UtcNow;

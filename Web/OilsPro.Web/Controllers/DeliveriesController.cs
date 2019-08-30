@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OilsPro.Data.Models;
 using OilsPro.Services;
 using OilsPro.Web.Models.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OilsPro.Web.Controllers
 {
@@ -22,6 +22,8 @@ namespace OilsPro.Web.Controllers
             _suppliersService = suppliersService;
             _productsService = productsService;
         }
+
+        [Authorize]
         public IActionResult All()
         {
             var deliveries = _deliveriesService.GetAll();
@@ -29,6 +31,7 @@ namespace OilsPro.Web.Controllers
             return this.View(deliveries);
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             var model = new Delivery
@@ -42,6 +45,7 @@ namespace OilsPro.Web.Controllers
             return this.View(model);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Create(CreateDeliveryViewModel input)
         {
@@ -63,12 +67,14 @@ namespace OilsPro.Web.Controllers
             return this.Redirect($"/Deliveries/All"); 
         }
 
+        [Authorize]
         public IActionResult CreateNewLot()
         {
             ViewBag.Products = SetProductsToSelectListItems();
             return this.View();
         }
 
+        [Authorize]
         public IActionResult Edit(string id)
         {
             var delivery = _deliveriesService.GetById(id);
@@ -79,6 +85,7 @@ namespace OilsPro.Web.Controllers
             return this.View(delivery);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Edit(EditDeliveryViewModel input)
         {
@@ -96,7 +103,6 @@ namespace OilsPro.Web.Controllers
 
             return this.Redirect("/Deliveries/All");
         }
-
 
         private List<SelectListItem> SetSuppliersToSelectListItems()
         {

@@ -20,8 +20,6 @@ namespace OilsPro.Data.Models
 
         public bool isDeleted { get; set; }
 
-       
-
         public ICollection<Delivery> Deliveries { get; set; }
 
     }

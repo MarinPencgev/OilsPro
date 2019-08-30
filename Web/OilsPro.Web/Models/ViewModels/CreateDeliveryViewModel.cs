@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace OilsPro.Web.Models.ViewModels
 {
@@ -10,8 +7,12 @@ namespace OilsPro.Web.Models.ViewModels
     {
         public DateTime DeliveryDate { get; set; }
 
+        [Required]
+        [MaxLength(30)]
         public string SupplierName { get; set; }
 
+        [Required]
+        [MaxLength(20)]
         public string LotSerialNumber { get; set; }
     }
 }

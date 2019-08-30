@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using OilsPro.Data;
 using OilsPro.Services;
 using OilsPro.Web.Models.ViewModels;
 
@@ -22,11 +16,13 @@ namespace OilsPro.Web.Controllers
             _deliveriesService = deliveriesService;
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             return this.View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Create(CreateSupplierViewModel input)
         {
@@ -39,6 +35,5 @@ namespace OilsPro.Web.Controllers
 
             return this.Redirect("/Deliveries/Create");
         }
-        
     }
 }

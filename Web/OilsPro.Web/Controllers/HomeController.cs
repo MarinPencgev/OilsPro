@@ -1,10 +1,9 @@
-﻿using System.Diagnostics;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.AspNetCore.Mvc;
 using OilsPro.Data;
 using OilsPro.Services;
 using OilsPro.Web.Models.ViewModels;
+using System.Diagnostics;
+using System.Linq;
 
 namespace OilsPro.Web.Controllers
 {

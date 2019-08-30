@@ -7,7 +7,7 @@ namespace OilsPro.Data.Models
         public string Id { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(30)]
         public string FullName { get; set; }
 
         public bool isDeleted { get; set; }

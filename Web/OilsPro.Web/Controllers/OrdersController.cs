@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using System.Security.Claims;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OilsPro.Services;
 using OilsPro.Web.Models.ViewModels;
+using System.Linq;
+using System.Security.Claims;
 
 namespace OilsPro.Web.Controllers
 {
