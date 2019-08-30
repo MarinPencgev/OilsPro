@@ -49,9 +49,6 @@ namespace OilsPro.Services
 
         public ICollection All(string entityName)
         {
-            var curEntityPI = _context.GetType().GetProperties().FirstOrDefault(pr => pr.Name == entityName);
-            var curEntityType = curEntityPI.PropertyType.GetGenericArguments().First();
-
             switch (entityName)
             {
                 case "Products":
@@ -87,7 +84,6 @@ namespace OilsPro.Services
                         .Include(x=>x.Receiver)
                         .ToList();
             }
-
             return null;
         }
     }

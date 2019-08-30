@@ -5,89 +5,85 @@
 <div class="container-fluid">
     <table class="table table-hover">
         <thead>
-            <tr class="row">
-                <th scope="col" class="col-lg-1 suls-text-color">Sequence</th>
-                <th scope="col" class="col-lg-2 suls-text-color">Receiver</th>
-                <th scope="col" class="col-lg-1 suls-text-color">Packs total count</th>
-                <th scope="col" class="col-lg-1 suls-text-color">Packs total weight</th>
-                <th scope="col" class="col-lg-3 suls-text-color">Delivery address</th>
-                <th scope="col" class="col-lg-4 suls-text-color">Action</th>
-            </tr>
+        <tr class="row">
+            <th scope="col" class="col-lg-1 suls-text-color">Sequence</th>
+            <th scope="col" class="col-lg-2 suls-text-color">Receiver</th>
+            <th scope="col" class="col-lg-1 suls-text-color">Packs total count</th>
+            <th scope="col" class="col-lg-1 suls-text-color">Packs total weight</th>
+            <th scope="col" class="col-lg-3 suls-text-color">Delivery address</th>
+            <th scope="col" class="col-lg-4 suls-text-color">Action</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var order in Model)
-            {
-                <tr class="row">
-                    <td class="col-lg-1 suls-text-color">@order.Sequence</td>
-                    <td class="col-lg-2 suls-text-color">@order.ReceiverName</td>
-                    <td class="col-lg-1 suls-text-color">@order.OrderedPackagesCount</td>
-                    <td class="col-lg-1 suls-text-color">@order.OrderedPackagesWeight</td>
-                    <td class="col-lg-3 suls-text-color">@order.DeliveryAddress</td>
-                    <td class="col-lg-4 suls-text-color">
-                        <div class="button-holder">
-                            <a href="/Orders/Edit?id=@order.OrderId" class="btn btn-warning">Complete</a>
-                            <a href="/Orders/Remove?id=@order.OrderId" class="btn btn-warning" id="remove">Remove</a>
-
-                            <script src="~/Js/RemoveOrder.js"></script>
-
-                            @if (order.OrderedPackagesCount > 0)
-                            {
-                                <a href="/Orders/Release?id=@order.OrderId" class="btn btn-warning">Release</a>
-                            }
-                            else
-                            {
-                                <a class="btn btn-secondary disabled">Release</a>
-                            }
-                        </div>
-                    </td>
-                </tr>
-
-                @*<input class="invisible" id="Id" name="Id" value="@order.OrderId" />* I use it for Modal*@
-            }
+        @foreach (var order in Model)
+        {
             <tr class="row">
-                <td class="col-lg-1 suls-text-color">-</td>
-                <td class="col-lg-2 suls-text-color">-</td>
-                <td class="col-lg-1 suls-text-color">-</td>
-                <td class="col-lg-1 suls-text-color">-</td>
-                <td class="col-lg-3 suls-text-color">-</td>
+                <td class="col-lg-1 suls-text-color">@order.Sequence</td>
+                <td class="col-lg-2 suls-text-color">@order.ReceiverName</td>
+                <td class="col-lg-1 suls-text-color">@order.OrderedPackagesCount</td>
+                <td class="col-lg-1 suls-text-color">@order.OrderedPackagesWeight</td>
+                <td class="col-lg-3 suls-text-color">@order.DeliveryAddress</td>
                 <td class="col-lg-4 suls-text-color">
                     <div class="button-holder">
-                        <a href="/Orders/Create" class="btn btn-warning">+ New Order</a>
+                        <a href="/Orders/Edit?id=@order.OrderId" class="btn btn-warning">Complete</a>
+                        <a @*href="/Orders/Remove?id=@order.OrderId"*@ class="btn btn-warning" id="remove">Remove</a>
+
+                        <script>
+                            $("#remove").click(function () {
+
+                                $('#myModal').modal('show');
+                            });
+                        </script>
+
+                        @if (order.OrderedPackagesCount > 0)
+                        {
+                            <a href="/Orders/Release?id=@order.OrderId" class="btn btn-warning">Release</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-secondary disabled">Release</a>
+                        }
                     </div>
                 </td>
             </tr>
-            <hr />
+
+                @*<input class="invisible" id="Id" name="Id" value="@order.OrderId" />* I use it for Modal*@
+        }
+        <tr class="row">
+            <td class="col-lg-1 suls-text-color">-</td>
+            <td class="col-lg-2 suls-text-color">-</td>
+            <td class="col-lg-1 suls-text-color">-</td>
+            <td class="col-lg-1 suls-text-color">-</td>
+            <td class="col-lg-3 suls-text-color">-</td>
+            <td class="col-lg-4 suls-text-color">
+                <div class="button-holder">
+                    <a href="/Orders/Create" class="btn btn-warning">+ New Order</a>
+                </div>
+            </td>
+        </tr>
+        <hr />
         </tbody>
     </table>
 </div>
 
-@*----------------MODAL-----------------------------*@
-<div class="modal" tabindex="-1" role="dialog" id="myModal">
-    <div class="modal-dialog" role="document">
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">ATENTION!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
             </div>
             <div class="modal-body">
-                <p>Selected order will be removed! Are you sure!</p>
+                <p>Some text in the modal.</p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" id="proceed">Proceed</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
+
     </div>
 </div>
 
-@*<script>
-        $("#remove").click(function () {
-            var orderId = $("#Id").val();
-
-            var href = '/Orders/Remove?id=' + orderId;
-            document.getElementById("proceed").href = href;
-
-        });
-    </script>*@

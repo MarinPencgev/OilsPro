@@ -131,7 +131,7 @@ namespace OilsPro.Services
         public ICollection<Order> GetAllCompleted()
         {
             var completedOrders = _context.Orders
-                .Include(x => x.OilsUser)
+                //.Include(x => x.OilsUser)
                 .Include(x => x.DeliveryAddress)
                 .Include(x => x.Driver)
                 .Include(x => x.Vehicle)
@@ -147,3 +147,5 @@ namespace OilsPro.Services
         }
     }
 }
+
+

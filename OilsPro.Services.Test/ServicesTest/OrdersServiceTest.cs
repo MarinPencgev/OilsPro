@@ -98,7 +98,7 @@ namespace OilsPro.Services.Test.ServicesTest
 
 
             var result = ordersService.Release(order.Id);
-            
+
             Assert.True(result.Status == OrderStatus.Completed);
             Assert.True(result.ReleaseDate != null);
         }
@@ -252,6 +252,62 @@ namespace OilsPro.Services.Test.ServicesTest
             var expected = "RegNumber1";
 
             Assert.AreEqual(expected, result, errorMessagePrefix);
+        }
+
+        [Test]
+        public void GetAllCompleted_works_Properly()
+        {
+            string errorMessagePrefix = "OrdersService GetAllCompleted() method does not work properly.";
+
+            var context = OilsProDbContextInMemoryFactory.InitializeContext();
+            this.ordersService = new OrdersService(context);
+
+            var receiver = new Receiver
+            {
+                Name = "Receiver1"
+            };
+            context.Receivers.Add(receiver);
+
+            var carrier = new Carrier
+            {
+                Name = "Carrier1"
+            };
+            context.Carriers.Add(carrier);
+
+            var driver = new Driver
+            {
+                FullName = "Driver1"
+            };
+            context.Drivers.Add(driver);
+
+            var vehicle = new Vehicle
+            {
+                RegNumber = "RegNumber1"
+            };
+            context.Vehicles.Add(vehicle);
+
+            var address = new DeliveryAddress()
+            {
+                Town = "Town1",
+                Street = "Street1"
+            };
+            context.DeliveryAddresses.Add(address);
+
+            context.SaveChanges();
+
+            for (int i = 0; i < 10; i++)
+            {
+                    var order = ordersService.Create("UserId", "Ropa", "Town1, Street1", "Receiver1", "Carrier1", "Driver1",
+           "RegNumber1");
+            }
+
+            context.Orders.First().Status = OrderStatus.Completed;
+            context.Orders.Last().Status = OrderStatus.Completed;
+            context.SaveChanges();
+
+            var result = ordersService.GetAllCompleted();
+
+            Assert.True(result.Count == 2, errorMessagePrefix);
         }
     }
 }

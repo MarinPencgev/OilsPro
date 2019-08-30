@@ -25,7 +25,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.PackageCapacity)
             </th>
-            <th></th>
+            <th>
+                @if (this.User.IsInRole("Admin"))
+                {
+
+                }
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -48,7 +53,7 @@
                     @if (this.User.IsInRole("Admin"))
                     {
                         <a asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id">Edit |</a>
-                        <a asp-controller="Products" asp-action = "Delete" asp-route-id ="@item.Id"> Delete</a>
+                        <a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id"> Delete</a>
                     }
                 </td>
             </tr>
