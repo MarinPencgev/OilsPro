@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OilsPro.Web.Models.ViewModels
+namespace OilsPro.Web.Models.ViewModels.Product
 {
     public class CreateProductInputView
     {

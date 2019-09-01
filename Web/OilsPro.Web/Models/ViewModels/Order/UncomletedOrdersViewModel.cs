@@ -1,4 +1,4 @@
-﻿namespace OilsPro.Web.Models.ViewModels
+﻿namespace OilsPro.Web.Models.ViewModels.Order
 {
     public class UncomletedOrdersViewModel
     {

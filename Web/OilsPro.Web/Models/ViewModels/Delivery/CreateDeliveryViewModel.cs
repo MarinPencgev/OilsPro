@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace OilsPro.Web.Models.ViewModels
+namespace OilsPro.Web.Models.ViewModels.Delivery
 {
     public class CreateDeliveryViewModel
     {

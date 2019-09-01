@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using OilsPro.Data.Models;
 
-namespace OilsPro.Web.Models.ViewModels
+namespace OilsPro.Web.Models.ViewModels.Order
 {
     public class CreateOrderViewModel
     {
@@ -29,11 +29,11 @@ namespace OilsPro.Web.Models.ViewModels
         [Required]
         [Display(Name = "Receiver Name")]
         [DataType(DataType.Text)]
-        public Receiver Receiver { get; set; }
+        public Data.Models.Receiver Receiver { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
-        public Carrier Carrier { get; set; }
+        public Data.Models.Carrier Carrier { get; set; }
 
         [Required]
         [DataType(DataType.Text)]

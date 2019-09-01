@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OilsPro.Web.Models.ViewModels
+namespace OilsPro.Web.Models.ViewModels.Receiver
 {
-    public class CreateDeliveryAddress
+    public class IncludeAddressViewModel
     {
+        public string ReceiverId { get; set; }
+
         [Required]
         [MinLength(3)]
         [MaxLength(20)]
@@ -13,7 +15,5 @@ namespace OilsPro.Web.Models.ViewModels
         [MinLength(3)]
         [MaxLength(20)]
         public string Street { get; set; }
-
-        public string ReceiverName { get; set; }
     }
 }

@@ -1,10 +1,19 @@
 ﻿@using System.Linq
 @using OilsPro.Web.Models.ViewModels
 @using OilsPro.Services
-@model CreateOrderViewModel
+@model OilsPro.Web.Models.ViewModels.Order.CreateOrderViewModel
 @inject IOrdersService orderServices
 
-<h1 class="text-center suls-text-color">Order №@Model.SequenceNumber</h1>
+<div class="row">
+    <div class="button-holder col-2" >
+        <a class="btn btn-warning" id="back" href="/"><<< Back to active orders</a>
+    </div>
+    <div class="col-8">
+        <h1 class="text-center suls-text-color" >Order №@Model.SequenceNumber</h1>
+    </div>
+
+</div>
+
 <br />
 <form asp-controller="Products" asp-action="Include" method="post">
     <div class="container-fluid">
@@ -132,7 +141,7 @@
                             <button class="btn btn-warning" id="includeProduct">Include Product</button>
                         </div>
                         <script type='text/javascript'>
-                                                                                                                                       //TODO to enable the IncludeButton only if selected fields are filled
+
                         </script>
                     </td>
                 </tr>

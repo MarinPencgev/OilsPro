@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using OilsPro.Data.Models;
 using OilsPro.Services;
 using OilsPro.Web.Models.ViewModels;
+using OilsPro.Web.Models.ViewModels.Product;
 
 namespace OilsPro.Web.Controllers
 {

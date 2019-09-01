@@ -7,6 +7,7 @@ using OilsPro.Services;
 using OilsPro.Web.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using OilsPro.Web.Models.ViewModels.Receiver;
 
 namespace OilsPro.Web.Controllers
 {

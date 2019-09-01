@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace OilsPro.Web.Models.ViewModels
+﻿namespace OilsPro.Web.Models.ViewModels.Delivery
 {
     public class EditDeliveryViewModel
     {

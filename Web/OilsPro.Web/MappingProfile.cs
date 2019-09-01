@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using OilsPro.Data.Models;
-using OilsPro.Web.Models.ViewModels;
+using OilsPro.Web.Models.ViewModels.Carrier;
+using OilsPro.Web.Models.ViewModels.Order;
+using OilsPro.Web.Models.ViewModels.Product;
+using OilsPro.Web.Models.ViewModels.Receiver;
 
-namespace Oils
+namespace OilsPro.Web
 {
     public class MappingProfile : Profile
     {

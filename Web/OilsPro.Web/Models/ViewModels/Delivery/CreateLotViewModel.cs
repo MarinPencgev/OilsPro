@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using OilsPro.Data.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace OilsPro.Web.Models.ViewModels
+namespace OilsPro.Web.Models.ViewModels.Delivery
 {
     public class CreateLotViewModel
     {
