@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -31,6 +30,7 @@ namespace OilsPro.Web
             {
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+                
             });
 
             services.AddDbContext<OilsProDbContext>(options =>
@@ -47,7 +47,6 @@ namespace OilsPro.Web
                 o.Password.RequireDigit = false;
 
             })
-                .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<OilsProDbContext>()
                 .AddDefaultTokenProviders(); ;
 
@@ -62,6 +61,8 @@ namespace OilsPro.Web
             IMapper mapper = mappingConfig.CreateMapper();
 
             services.AddSingleton(mapper);
+
+            services.AddMvc(option => option.EnableEndpointRouting = false);
 
             //Application services
             services.AddTransient<IOrdersService, OrdersService>();
@@ -107,7 +108,6 @@ namespace OilsPro.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
             }
             else
             {

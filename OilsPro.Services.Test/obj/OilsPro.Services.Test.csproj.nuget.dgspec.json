@@ -1,34 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nora\\Desktop\\OilsPro\\OilsPro.Services.Test\\OilsPro.Services.Test.csproj": {}
+    "C:\\Projects\\C#\\OilsPro\\OilsPro.Services.Test\\OilsPro.Services.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {
+    "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj",
+        "projectUniqueName": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj",
         "projectName": "OilsPro.Data.Models",
-        "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj",
-        "packagesPath": "C:\\Users\\Nora\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\obj\\",
+        "projectPath": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj",
+        "packagesPath": "C:\\Users\\norit\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Nora\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\norit\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.2"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.2": {
+          "netcoreapp3.1": {
             "projectReferences": {}
           }
         },
@@ -39,51 +36,57 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.2": {
+        "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
+            "Microsoft.Extensions.Identity.Stores": {
               "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
+              "version": "[2.2.0, )"
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj": {
+    "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj",
+        "projectUniqueName": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj",
         "projectName": "OilsPro.Data",
-        "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj",
-        "packagesPath": "C:\\Users\\Nora\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data\\obj\\",
+        "projectPath": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj",
+        "packagesPath": "C:\\Users\\norit\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Nora\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\norit\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.2"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.2": {
+          "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {
-                "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj"
+              "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {
+                "projectPath": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj"
               }
             }
           }
@@ -95,7 +98,7 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.2": {
+        "netcoreapp3.1": {
           "dependencies": {
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
@@ -104,59 +107,61 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[2.2.6, )"
-            },
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Nora\\Desktop\\OilsPro\\OilsPro.Services.Test\\OilsPro.Services.Test.csproj": {
+    "C:\\Projects\\C#\\OilsPro\\OilsPro.Services.Test\\OilsPro.Services.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nora\\Desktop\\OilsPro\\OilsPro.Services.Test\\OilsPro.Services.Test.csproj",
+        "projectUniqueName": "C:\\Projects\\C#\\OilsPro\\OilsPro.Services.Test\\OilsPro.Services.Test.csproj",
         "projectName": "OilsPro.Services.Test",
-        "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\OilsPro.Services.Test\\OilsPro.Services.Test.csproj",
-        "packagesPath": "C:\\Users\\Nora\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\OilsPro.Services.Test\\obj\\",
+        "projectPath": "C:\\Projects\\C#\\OilsPro\\OilsPro.Services.Test\\OilsPro.Services.Test.csproj",
+        "packagesPath": "C:\\Users\\norit\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\C#\\OilsPro\\OilsPro.Services.Test\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Nora\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\norit\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.2"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.2": {
+          "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {
-                "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj"
+              "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {
+                "projectPath": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj"
               },
-              "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj": {
-                "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj"
+              "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj": {
+                "projectPath": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj"
               },
-              "C:\\Users\\Nora\\Desktop\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj": {
-                "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj"
+              "C:\\Projects\\C#\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj": {
+                "projectPath": "C:\\Projects\\C#\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj"
               },
-              "C:\\Users\\Nora\\Desktop\\OilsPro\\Web\\OilsPro.Web\\OilsPro.Web.csproj": {
-                "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Web\\OilsPro.Web\\OilsPro.Web.csproj"
+              "C:\\Projects\\C#\\OilsPro\\Web\\OilsPro.Web\\OilsPro.Web.csproj": {
+                "projectPath": "C:\\Projects\\C#\\OilsPro\\Web\\OilsPro.Web\\OilsPro.Web.csproj"
               }
             }
           }
@@ -168,7 +173,7 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.2": {
+        "netcoreapp3.1": {
           "dependencies": {
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
@@ -177,12 +182,6 @@
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[15.9.0, )"
-            },
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
             },
             "Moq": {
               "target": "Package",
@@ -198,44 +197,55 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Nora\\Desktop\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj": {
+    "C:\\Projects\\C#\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nora\\Desktop\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj",
+        "projectUniqueName": "C:\\Projects\\C#\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj",
         "projectName": "OilsPro.Services",
-        "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj",
-        "packagesPath": "C:\\Users\\Nora\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Services\\OilsPro.Services\\obj\\",
+        "projectPath": "C:\\Projects\\C#\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj",
+        "packagesPath": "C:\\Users\\norit\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\C#\\OilsPro\\Services\\OilsPro.Services\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Nora\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\norit\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.2"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.2": {
+          "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {
-                "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj"
+              "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {
+                "projectPath": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj"
               },
-              "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj": {
-                "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj"
+              "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj": {
+                "projectPath": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj"
               }
             }
           }
@@ -247,61 +257,63 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.2": {
+        "netcoreapp3.1": {
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
               "version": "[5.1.1, )"
-            },
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Nora\\Desktop\\OilsPro\\Web\\OilsPro.Web\\OilsPro.Web.csproj": {
+    "C:\\Projects\\C#\\OilsPro\\Web\\OilsPro.Web\\OilsPro.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nora\\Desktop\\OilsPro\\Web\\OilsPro.Web\\OilsPro.Web.csproj",
+        "projectUniqueName": "C:\\Projects\\C#\\OilsPro\\Web\\OilsPro.Web\\OilsPro.Web.csproj",
         "projectName": "OilsPro.Web",
-        "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Web\\OilsPro.Web\\OilsPro.Web.csproj",
-        "packagesPath": "C:\\Users\\Nora\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Web\\OilsPro.Web\\obj\\",
+        "projectPath": "C:\\Projects\\C#\\OilsPro\\Web\\OilsPro.Web\\OilsPro.Web.csproj",
+        "packagesPath": "C:\\Users\\norit\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\C#\\OilsPro\\Web\\OilsPro.Web\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Nora\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\norit\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.2"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.2": {
+          "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {
-                "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj"
+              "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {
+                "projectPath": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj"
               },
-              "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj": {
-                "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj"
+              "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj": {
+                "projectPath": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data\\OilsPro.Data.csproj"
               },
-              "C:\\Users\\Nora\\Desktop\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj": {
-                "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj"
+              "C:\\Projects\\C#\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj": {
+                "projectPath": "C:\\Projects\\C#\\OilsPro\\Services\\OilsPro.Services\\OilsPro.Services.csproj"
               }
             }
           }
@@ -313,17 +325,11 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.2": {
+        "netcoreapp3.1": {
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[5.1.1, )"
-            },
-            "Microsoft.AspNetCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
+              "version": "[9.0.0, )"
             },
             "Microsoft.AspNetCore.Mvc.ViewFeatures": {
               "target": "Package",
@@ -334,22 +340,30 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
-            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[2.2.3, )"
+              "version": "[3.1.2, )"
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

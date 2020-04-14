@@ -1,0 +1,3 @@
+C:\Projects\C#\OilsPro\OilsPro.Services.Test\obj\Debug\netcoreapp3.1\OilsPro.Services.Test.csprojAssemblyReference.cache
+C:\Projects\C#\OilsPro\OilsPro.Services.Test\obj\Debug\netcoreapp3.1\OilsPro.Services.Test.AssemblyInfoInputs.cache
+C:\Projects\C#\OilsPro\OilsPro.Services.Test\obj\Debug\netcoreapp3.1\OilsPro.Services.Test.AssemblyInfo.cs

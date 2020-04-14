@@ -22,7 +22,7 @@ namespace OilsPro.Services.Test.ServicesTest
             var context = OilsProDbContextInMemoryFactory.InitializeContext();
             this.nomenclaturesService = new NomenclaturesServices(context, mapper.Object);
 
-            var result = nomenclaturesService.All()
+            //var result = nomenclaturesService.All();
 
         }
     }

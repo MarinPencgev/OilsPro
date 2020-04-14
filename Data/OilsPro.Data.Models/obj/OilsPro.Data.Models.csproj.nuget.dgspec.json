@@ -1,34 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {}
+    "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {
+    "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj",
+        "projectUniqueName": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj",
         "projectName": "OilsPro.Data.Models",
-        "projectPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj",
-        "packagesPath": "C:\\Users\\Nora\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nora\\Desktop\\OilsPro\\Data\\OilsPro.Data.Models\\obj\\",
+        "projectPath": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\OilsPro.Data.Models.csproj",
+        "packagesPath": "C:\\Users\\norit\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\C#\\OilsPro\\Data\\OilsPro.Data.Models\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Nora\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\norit\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.2"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.2": {
+          "netcoreapp3.1": {
             "projectReferences": {}
           }
         },
@@ -39,20 +36,29 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.2": {
+        "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
+            "Microsoft.Extensions.Identity.Stores": {
               "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
+              "version": "[2.2.0, )"
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

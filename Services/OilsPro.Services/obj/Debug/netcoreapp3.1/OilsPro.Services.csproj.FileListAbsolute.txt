@@ -1,0 +1,13 @@
+C:\Projects\C#\OilsPro\Services\OilsPro.Services\bin\Debug\netcoreapp3.1\OilsPro.Services.deps.json
+C:\Projects\C#\OilsPro\Services\OilsPro.Services\bin\Debug\netcoreapp3.1\OilsPro.Services.dll
+C:\Projects\C#\OilsPro\Services\OilsPro.Services\bin\Debug\netcoreapp3.1\OilsPro.Services.pdb
+C:\Projects\C#\OilsPro\Services\OilsPro.Services\bin\Debug\netcoreapp3.1\OilsPro.Data.dll
+C:\Projects\C#\OilsPro\Services\OilsPro.Services\bin\Debug\netcoreapp3.1\OilsPro.Data.Models.dll
+C:\Projects\C#\OilsPro\Services\OilsPro.Services\bin\Debug\netcoreapp3.1\OilsPro.Data.Models.pdb
+C:\Projects\C#\OilsPro\Services\OilsPro.Services\bin\Debug\netcoreapp3.1\OilsPro.Data.pdb
+C:\Projects\C#\OilsPro\Services\OilsPro.Services\obj\Debug\netcoreapp3.1\OilsPro.Services.csprojAssemblyReference.cache
+C:\Projects\C#\OilsPro\Services\OilsPro.Services\obj\Debug\netcoreapp3.1\OilsPro.Services.AssemblyInfoInputs.cache
+C:\Projects\C#\OilsPro\Services\OilsPro.Services\obj\Debug\netcoreapp3.1\OilsPro.Services.AssemblyInfo.cs
+C:\Projects\C#\OilsPro\Services\OilsPro.Services\obj\Debug\netcoreapp3.1\OilsPro.Services.csproj.CopyComplete
+C:\Projects\C#\OilsPro\Services\OilsPro.Services\obj\Debug\netcoreapp3.1\OilsPro.Services.dll
+C:\Projects\C#\OilsPro\Services\OilsPro.Services\obj\Debug\netcoreapp3.1\OilsPro.Services.pdb

@@ -1,0 +1,8 @@
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\bin\Debug\netcoreapp3.1\OilsPro.Data.Models.deps.json
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\bin\Debug\netcoreapp3.1\OilsPro.Data.Models.dll
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\bin\Debug\netcoreapp3.1\OilsPro.Data.Models.pdb
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp3.1\OilsPro.Data.Models.AssemblyInfoInputs.cache
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp3.1\OilsPro.Data.Models.AssemblyInfo.cs
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp3.1\OilsPro.Data.Models.dll
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp3.1\OilsPro.Data.Models.pdb
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp3.1\OilsPro.Data.Models.csprojAssemblyReference.cache

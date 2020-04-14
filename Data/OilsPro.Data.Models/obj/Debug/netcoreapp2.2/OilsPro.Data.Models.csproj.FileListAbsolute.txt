@@ -10,3 +10,11 @@ C:\Users\Nora\Desktop\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp2.2\O
 C:\Users\Nora\Desktop\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp2.2\OilsPro.Data.Models.dll
 C:\Users\Nora\Desktop\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp2.2\OilsPro.Data.Models.pdb
 C:\Users\Nora\Desktop\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp2.2\OilsPro.Data.Models.csprojAssemblyReference.cache
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\bin\Debug\netcoreapp2.2\OilsPro.Data.Models.deps.json
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\bin\Debug\netcoreapp2.2\OilsPro.Data.Models.dll
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\bin\Debug\netcoreapp2.2\OilsPro.Data.Models.pdb
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp2.2\OilsPro.Data.Models.csprojAssemblyReference.cache
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp2.2\OilsPro.Data.Models.AssemblyInfoInputs.cache
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp2.2\OilsPro.Data.Models.AssemblyInfo.cs
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp2.2\OilsPro.Data.Models.dll
+C:\Projects\C#\OilsPro\Data\OilsPro.Data.Models\obj\Debug\netcoreapp2.2\OilsPro.Data.Models.pdb

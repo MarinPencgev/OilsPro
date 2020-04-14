@@ -10,3 +10,14 @@ C:\Users\Nora\Desktop\OilsPro\Data\OilsPro.Data\bin\Debug\netcoreapp2.2\OilsPro.
 C:\Users\Nora\Desktop\OilsPro\Data\OilsPro.Data\obj\Debug\netcoreapp2.2\OilsPro.Data.csproj.CopyComplete
 C:\Users\Nora\Desktop\OilsPro\Data\OilsPro.Data\obj\Debug\netcoreapp2.2\OilsPro.Data.dll
 C:\Users\Nora\Desktop\OilsPro\Data\OilsPro.Data\obj\Debug\netcoreapp2.2\OilsPro.Data.pdb
+C:\Projects\C#\OilsPro\Data\OilsPro.Data\bin\Debug\netcoreapp2.2\OilsPro.Data.deps.json
+C:\Projects\C#\OilsPro\Data\OilsPro.Data\bin\Debug\netcoreapp2.2\OilsPro.Data.dll
+C:\Projects\C#\OilsPro\Data\OilsPro.Data\bin\Debug\netcoreapp2.2\OilsPro.Data.pdb
+C:\Projects\C#\OilsPro\Data\OilsPro.Data\bin\Debug\netcoreapp2.2\OilsPro.Data.Models.dll
+C:\Projects\C#\OilsPro\Data\OilsPro.Data\bin\Debug\netcoreapp2.2\OilsPro.Data.Models.pdb
+C:\Projects\C#\OilsPro\Data\OilsPro.Data\obj\Debug\netcoreapp2.2\OilsPro.Data.csprojAssemblyReference.cache
+C:\Projects\C#\OilsPro\Data\OilsPro.Data\obj\Debug\netcoreapp2.2\OilsPro.Data.AssemblyInfoInputs.cache
+C:\Projects\C#\OilsPro\Data\OilsPro.Data\obj\Debug\netcoreapp2.2\OilsPro.Data.AssemblyInfo.cs
+C:\Projects\C#\OilsPro\Data\OilsPro.Data\obj\Debug\netcoreapp2.2\OilsPro.Data.csproj.CopyComplete
+C:\Projects\C#\OilsPro\Data\OilsPro.Data\obj\Debug\netcoreapp2.2\OilsPro.Data.dll
+C:\Projects\C#\OilsPro\Data\OilsPro.Data\obj\Debug\netcoreapp2.2\OilsPro.Data.pdb
