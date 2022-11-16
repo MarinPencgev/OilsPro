@@ -18,7 +18,7 @@ namespace OilsPro.Web.Controllers
 
         public CarriersController(ICarriersService carriersService, IMapper mapper)
         {
-            _carriersService = carriersService;
+            _carriersService = carriersService; 
             _mapper = mapper;
         }
 
